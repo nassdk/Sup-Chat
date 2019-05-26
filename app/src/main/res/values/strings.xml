@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">FiraBaseFirstExperience</string>
+    <string name="userName">Name</string>
+    <string name="RegistrationText">Please , Sign Up</string>
+    <string name="emailTextView">Email</string>
+    <string name="passwordEditText">Password</string>
+    <string name="buttonSignUp">Sign Up</string>
+    <string name="please_log_in">Please , Log in</string>
+    <string name="sup_chat">Sup Chat</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="log_in">Log In</string>
+    <string name="log_in1">Log In</string>
+    <string name="username1">UserName</string>
+    <string name="logout">Log out</string>
+    <string name="log_out">Log out</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_boy">Hello Boy</string>
+</resources>
