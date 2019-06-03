@@ -10,10 +10,10 @@ public class User {
     private String password;
     private String eMail;
 
-    public User(String id, String userName, String imageURL, String password, String eMail) {
+    public User(String id, String userName, String password, String eMail) {
+
         this.id = id;
         this.userName = userName;
-        this.imageURL = imageURL;
         this.password = password;
         this.eMail = eMail;
     }

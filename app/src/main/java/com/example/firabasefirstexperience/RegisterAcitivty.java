@@ -1,7 +1,10 @@
 package com.example.firabasefirstexperience;
 
 import android.app.ProgressDialog;
+import android.graphics.PostProcessor;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -34,7 +37,6 @@ public class RegisterAcitivty extends AppCompatActivity {
     private FirebaseDatabase database;
     private FirebaseUser firebaseUser;
 
-    private User user;
 
 
     private ProgressDialog progressDialog;
@@ -59,7 +61,6 @@ public class RegisterAcitivty extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("Users");
         auth = FirebaseAuth.getInstance();
-        user = new User();
 
         Toolbar toolbar = findViewById(R.id.tbForRegisterActivity);
         setSupportActionBar(toolbar);
@@ -69,9 +70,9 @@ public class RegisterAcitivty extends AppCompatActivity {
         butSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String textUserName = etUserName.getText().toString();
-                String textPassword = etPassword.getText().toString();
-                String textEmail = etEmail.getText().toString();
+                final String textUserName = etUserName.getText().toString().trim();
+                final String textPassword = etPassword.getText().toString();
+                final String textEmail = etEmail.getText().toString().trim();
 
 
                 if (TextUtils.isEmpty(textUserName) || TextUtils.isEmpty(textPassword) || TextUtils.isEmpty(textEmail)) {
@@ -80,21 +81,17 @@ public class RegisterAcitivty extends AppCompatActivity {
                     Toast.makeText(RegisterAcitivty.this, "Password must constist at least of 8 characters", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    register(textEmail, textPassword);
+                    register(textEmail, textPassword, textUserName);
 
 
                     reference.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                            String id = reference.push().getKey();
 
+                            updateUser(id, textUserName ,textPassword, textEmail);
 
-
-                            FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
-                            getValue();
-                            String userId = firebaseUser.getUid();
-                            reference.child(userId).setValue(user);
                         }
 
                         @Override
@@ -112,7 +109,7 @@ public class RegisterAcitivty extends AppCompatActivity {
     }
 
 
-    public void register(String eMail, String password) {
+    public void register(final String eMail, final String password, final String personName) {
 
         progressDialog.setMessage("Registering User...");
         progressDialog.show();
@@ -122,7 +119,6 @@ public class RegisterAcitivty extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(RegisterAcitivty.this, "User successfully registered!", Toast.LENGTH_SHORT).show();
-
                             progressDialog.hide();
 
                             Log.d(TAG, "User successfully registered");
@@ -135,11 +131,13 @@ public class RegisterAcitivty extends AppCompatActivity {
                 });
     }
 
-    private void getValue() {
-        user.setUserName(etUserName.getText().toString());
-        user.seteMail(etEmail.getText().toString());
-        user.setPassword(etPassword.getText().toString());
-        user.setImageURL("default");
+    private boolean updateUser (String id, String name, String password, String eMail) {
+
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(id);
+
+        User user = new User(id, name, password, eMail);
+        reference.setValue(user);
+        return true;
     }
 }
 

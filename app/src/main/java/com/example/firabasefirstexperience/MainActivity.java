@@ -61,11 +61,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                tv_UserName.setText(user.getUserName());
 
-                if(user.getImageURL() != null) {
-                    Glide.with(MainActivity.this).load(user.getImageURL()).into(profileImage);
-                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -143,6 +139,12 @@ public class MainActivity extends AppCompatActivity {
             return titles.get(position);
         }
     }
+
+
+
+
+
+
 
 }
 
