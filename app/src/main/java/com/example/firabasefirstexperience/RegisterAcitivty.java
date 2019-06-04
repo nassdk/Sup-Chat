@@ -84,21 +84,22 @@ public class RegisterAcitivty extends AppCompatActivity {
                     register(textEmail, textPassword, textUserName);
 
 
-                    reference.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                            String id = reference.push().getKey();
-
-                            updateUser(id, textUserName ,textPassword, textEmail);
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
+//                    reference.addValueEventListener(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                            FirebaseUser firebaseUser = auth.getCurrentUser();
+//
+//                            String id = firebaseUser.getUid();
+//
+//                            updateUser(id, textUserName ,textPassword, textEmail);
+//
+//                        }
+//
+//                        @Override
+//                        public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                        }
+//                    });
 
 
                 }
@@ -112,7 +113,7 @@ public class RegisterAcitivty extends AppCompatActivity {
     public void register(final String eMail, final String password, final String personName) {
 
         progressDialog.setMessage("Registering User...");
-        progressDialog.show();
+        //progressDialog.show();
         auth.createUserWithEmailAndPassword(eMail, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -120,6 +121,23 @@ public class RegisterAcitivty extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(RegisterAcitivty.this, "User successfully registered!", Toast.LENGTH_SHORT).show();
                             progressDialog.hide();
+
+                            reference.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    FirebaseUser firebaseUser = auth.getCurrentUser();
+
+                                    String id = firebaseUser.getUid();
+
+                                    updateUser(id, personName ,password, eMail);
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
 
                             Log.d(TAG, "User successfully registered");
 

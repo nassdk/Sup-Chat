@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1000314739221",
+    "firebase_url": "https://sup-chat-50cdf.firebaseio.com",
+    "project_id": "sup-chat-50cdf",
+    "storage_bucket": "sup-chat-50cdf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1000314739221:android:c0a1e1e874b3718f",
+        "android_client_info": {
+          "package_name": "com.example.firabasefirstexperience"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1000314739221-6k9745f39ru2m5sil2ve87njtl18667j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0Su3Q4XiWN5PFvCTytDZvn69rIuH7ed4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1000314739221-6k9745f39ru2m5sil2ve87njtl18667j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
