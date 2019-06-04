@@ -8,18 +8,19 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/userImage"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@mipmap/ic_launcher"/>
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@mipmap/ic_launcher_round"/>
 
     <TextView
         android:id="@+id/tv_Name"
         android:text="User Amina"
+        android:textColor="#000000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/userImage"
         android:layout_marginStart="10dp"
         android:layout_centerVertical="true"
-        android:textSize="18sp"/>
+        android:textSize="15sp"/>
 
 </RelativeLayout>

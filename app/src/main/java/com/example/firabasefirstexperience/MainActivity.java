@@ -1,7 +1,6 @@
 package com.example.firabasefirstexperience;
 
 import android.content.Intent;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -16,7 +15,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.firabasefirstexperience.Fragments.ChatsFragment;
 import com.example.firabasefirstexperience.Fragments.UserFragment;
 import com.example.firabasefirstexperience.Profile.User;
@@ -38,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView tv_UserName;
     private FirebaseUser firebaseUser;
     private DatabaseReference reference;
-    private FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
+
+                tv_UserName.setText(user.getUserName());
 
             }
             @Override

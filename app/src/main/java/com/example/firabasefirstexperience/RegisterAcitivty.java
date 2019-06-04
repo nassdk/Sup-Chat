@@ -1,10 +1,7 @@
 package com.example.firabasefirstexperience;
 
 import android.app.ProgressDialog;
-import android.graphics.PostProcessor;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -27,7 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class RegisterAcitivty extends AppCompatActivity {
+public class RegisterAcitivty extends AppCompatActivity implements View.OnClickListener {
 
     private EditText etEmail, etPassword, etUserName;
     private Button butSignUp;
@@ -35,7 +32,6 @@ public class RegisterAcitivty extends AppCompatActivity {
     private FirebaseAuth auth;
     private DatabaseReference reference;
     private FirebaseDatabase database;
-    private FirebaseUser firebaseUser;
 
 
 
@@ -57,7 +53,6 @@ public class RegisterAcitivty extends AppCompatActivity {
 
         butSignUp = (Button) findViewById(R.id.butSingUp);
 
-
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("Users");
         auth = FirebaseAuth.getInstance();
@@ -67,47 +62,11 @@ public class RegisterAcitivty extends AppCompatActivity {
         getSupportActionBar().setTitle("Sup Chat");
 
 
-        butSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final String textUserName = etUserName.getText().toString().trim();
-                final String textPassword = etPassword.getText().toString();
-                final String textEmail = etEmail.getText().toString().trim();
-
-
-                if (TextUtils.isEmpty(textUserName) || TextUtils.isEmpty(textPassword) || TextUtils.isEmpty(textEmail)) {
-                    Toast.makeText(RegisterAcitivty.this, "All fields must be filled", Toast.LENGTH_SHORT).show();
-                } else if (textPassword.length() < 8) {
-                    Toast.makeText(RegisterAcitivty.this, "Password must constist at least of 8 characters", Toast.LENGTH_SHORT).show();
-                } else {
-
-                    register(textEmail, textPassword, textUserName);
-
-
-//                    reference.addValueEventListener(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                            FirebaseUser firebaseUser = auth.getCurrentUser();
-//
-//                            String id = firebaseUser.getUid();
-//
-//                            updateUser(id, textUserName ,textPassword, textEmail);
-//
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                        }
-//                    });
-
-
-                }
-            }
-        });
-
-
+        butSignUp.setOnClickListener(this);
     }
+
+
+
 
 
     public void register(final String eMail, final String password, final String personName) {
@@ -156,6 +115,31 @@ public class RegisterAcitivty extends AppCompatActivity {
         User user = new User(id, name, password, eMail);
         reference.setValue(user);
         return true;
+    }
+
+
+    @Override
+    public void onClick(View v) {
+
+        int id = v.getId();
+
+        switch (id) {
+            case R.id.butSingUp:
+                final String textUserName = etUserName.getText().toString().trim();
+                final String textPassword = etPassword.getText().toString();
+                final String textEmail = etEmail.getText().toString().trim();
+
+
+                if (TextUtils.isEmpty(textUserName) || TextUtils.isEmpty(textPassword) || TextUtils.isEmpty(textEmail)) {
+                    Toast.makeText(RegisterAcitivty.this, "All fields must be filled", Toast.LENGTH_SHORT).show();
+                } else if (textPassword.length() < 8) {
+                    Toast.makeText(RegisterAcitivty.this, "Password must constist at least of 8 characters", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    register(textEmail, textPassword, textUserName);
+                }
+
+        }
     }
 }
 

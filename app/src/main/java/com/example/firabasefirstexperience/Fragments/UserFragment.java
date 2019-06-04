@@ -46,42 +46,42 @@ public class UserFragment extends Fragment {
 
         listUsers = new ArrayList<>();
 
-        //readUsers();
+        readUsers();
 
         return view;
 
     }
 
-//    private void readUsers() {
-//
-//        final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-//
-//
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                listUsers.clear();
-//
-//                for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-//                    User user = dataSnapshot.getValue(User.class);
-//
-//                    if(!user.getId().equals(firebaseUser.getUid())) {
-//                        listUsers.add(user);
-//
-//                    }
-//                }
-//
-//                userAdapter = new Adapter(getContext() , listUsers);
-//                recView_Users.setAdapter(userAdapter);
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//    }
+    private void readUsers() {
+
+        final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                listUsers.clear();
+
+                for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    User user = dataSnapshot1.getValue(User.class);
+
+                    if(!user.getId().equals(firebaseUser.getUid())) {
+                        listUsers.add(user);
+
+                    }
+                }
+
+                userAdapter = new Adapter(getContext() , listUsers);
+                recView_Users.setAdapter(userAdapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 
 }

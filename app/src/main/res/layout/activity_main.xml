@@ -24,7 +24,7 @@
                 android:id="@+id/profileImage"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/ic_launcher_round" />
 
             <TextView
                 android:id="@+id/tv_UserName"

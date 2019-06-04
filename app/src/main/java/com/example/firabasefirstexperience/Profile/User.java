@@ -10,6 +10,7 @@ public class User {
     private String password;
     private String eMail;
 
+
     public User(String id, String userName, String password, String eMail) {
 
         this.id = id;
@@ -61,9 +62,6 @@ public class User {
     public void seteMail(String eMail) {
         this.eMail = eMail;
     }
-
-
-
 
 
 }
