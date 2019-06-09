@@ -1,4 +1,4 @@
-package com.example.firabasefirstexperience;
+package com.example.firabasefirstexperience.Activities;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -17,7 +17,8 @@ import android.widget.TextView;
 
 import com.example.firabasefirstexperience.Fragments.ChatsFragment;
 import com.example.firabasefirstexperience.Fragments.UserFragment;
-import com.example.firabasefirstexperience.Profile.User;
+import com.example.firabasefirstexperience.Model.User;
+import com.example.firabasefirstexperience.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -53,21 +54,22 @@ public class MainActivity extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
 
 
-
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
 
-                tv_UserName.setText(user.getUserName());
+                if (user.getUserName() != null) {
+
+                    tv_UserName.setText(user.getUserName());
+                }
 
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-
-
 
 
         TabLayout tabLayout_MainActivity = findViewById(R.id.tabLayout_MainActivity);
@@ -76,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
         PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager());
         pageAdapter.addFragment(new ChatsFragment(), "Chats");
-        pageAdapter.addFragment(new UserFragment(),"Users");
+        pageAdapter.addFragment(new UserFragment(), "Users");
 
         vP_MainActivity.setAdapter(pageAdapter);
         tabLayout_MainActivity.setupWithViewPager(vP_MainActivity);
@@ -95,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.item_logout:
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(MainActivity.this , StartActivity.class));
+                startActivity(new Intent(MainActivity.this, StartActivity.class));
                 finish();
 
 
@@ -127,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
             return fragments.size();
         }
 
-        public void addFragment (Fragment fragment , String title) {
+        public void addFragment(Fragment fragment, String title) {
             fragments.add(fragment);
             titles.add(title);
         }
@@ -138,13 +140,6 @@ public class MainActivity extends AppCompatActivity {
             return titles.get(position);
         }
     }
-
-
-
-
-
-
-
 }
 
 

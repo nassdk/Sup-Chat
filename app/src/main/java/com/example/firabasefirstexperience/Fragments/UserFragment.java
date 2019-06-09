@@ -1,7 +1,5 @@
 package com.example.firabasefirstexperience.Fragments;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -11,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.firabasefirstexperience.Adapter.Adapter;
-import com.example.firabasefirstexperience.Profile.User;
+import com.example.firabasefirstexperience.Adapter.UserAdapter;
+import com.example.firabasefirstexperience.Model.User;
 import com.example.firabasefirstexperience.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,7 +20,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.nio.file.attribute.UserPrincipalLookupService;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +28,7 @@ public class UserFragment extends Fragment {
 
 
     private RecyclerView recView_Users;
-    private Adapter userAdapter;
+    private UserAdapter userAdapter;
     private List<User> listUsers;
 
     @Override
@@ -72,7 +69,7 @@ public class UserFragment extends Fragment {
                     }
                 }
 
-                userAdapter = new Adapter(getContext() , listUsers);
+                userAdapter = new UserAdapter(getContext() , listUsers);
                 recView_Users.setAdapter(userAdapter);
 
             }
