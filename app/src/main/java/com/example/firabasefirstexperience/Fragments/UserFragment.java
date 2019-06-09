@@ -39,7 +39,9 @@ public class UserFragment extends Fragment {
 
         recView_Users = view.findViewById(R.id.recView_Users);
         recView_Users.setHasFixedSize(true);
-        recView_Users.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recView_Users.setLayoutManager(linearLayoutManager);
 
         listUsers = new ArrayList<>();
 

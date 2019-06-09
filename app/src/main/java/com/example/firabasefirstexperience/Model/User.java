@@ -2,14 +2,10 @@ package com.example.firabasefirstexperience.Model;
 
 public class User {
 
-
-
     private String id;
     private String userName;
-    private String imageURL;
     private String password;
     private String eMail;
-
 
     public User(String id, String userName, String password, String eMail) {
 
@@ -37,14 +33,6 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public String getImageURL() {
-        return imageURL;
-    }
-
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
     }
 
     public String getPassword() {

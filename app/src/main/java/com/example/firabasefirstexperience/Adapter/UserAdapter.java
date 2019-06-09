@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.firabasefirstexperience.Activities.ChatActivity;
 import com.example.firabasefirstexperience.Model.User;
 import com.example.firabasefirstexperience.R;
@@ -41,9 +40,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         final User user = listUsers.get(i);
         viewHolder.tv_Name.setText(user.getUserName());
 
-        if (!(user.getImageURL() == null)) {
-            Glide.with(mContext).load(user.getImageURL()).into(viewHolder.userImage);
-        }
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
