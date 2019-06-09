@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@mipmap/ic_launcher_round" />
+
+    <TextView
+        android:id="@+id/tv_showMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@id/backgroundImage"
+        android:background="@drawable/background_left"
+        android:padding="8dp"
+        android:text="@string/sup_bitch"
+        android:textColor="@color/colorWhite"
+        android:textSize="15dp"/>
+
+</RelativeLayout>
