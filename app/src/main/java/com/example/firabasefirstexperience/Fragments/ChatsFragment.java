@@ -28,19 +28,19 @@ import java.util.List;
 public class ChatsFragment extends Fragment {
 
     private RecyclerView recView_displayChats;
-    private UserAdapter userXadapter;
+    private UserAdapter userAdapter;
+    private List<User> mUsers;
 
-    private List<User> xUsers;
-
-    private FirebaseUser fb_User;
+    private FirebaseUser fuser;
     private DatabaseReference reference;
 
-    private List<String> listOfUsers;
+    private List<String> usersList;
+
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             final Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_chats, container, false);
 
@@ -48,30 +48,27 @@ public class ChatsFragment extends Fragment {
         recView_displayChats.setHasFixedSize(true);
         recView_displayChats.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        fb_User = FirebaseAuth.getInstance().getCurrentUser();
+        fuser = FirebaseAuth.getInstance().getCurrentUser();
 
-        listOfUsers = new ArrayList<>();
+        usersList = new ArrayList<>();
 
         reference = FirebaseDatabase.getInstance().getReference("Chats");
 
         reference.addValueEventListener(new ValueEventListener() {
-
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                listOfUsers.clear();
+                usersList.clear();
 
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Chat chat = snapshot.getValue(Chat.class);
 
-
-                    if (chat.getSender().equals(fb_User.getUid())) {
-                        listOfUsers.add(chat.getReceiver());
+                    if(chat.getSender().equals(fuser.getUid()) && (!usersList.contains(chat.getReceiver()))) {
+                        usersList.add(chat.getReceiver());
                     }
 
-
-                    if (chat.getReceiver().equals(fb_User.getUid())) {
-                        listOfUsers.add(chat.getSender());
+                    if(chat.getReceiver().equals(fuser.getUid()) && (!usersList.contains(chat.getSender()))) {
+                        usersList.add(chat.getSender());
                     }
 
                 }
@@ -89,7 +86,8 @@ public class ChatsFragment extends Fragment {
     }
 
     private void readChats() {
-        xUsers = new ArrayList<>();
+
+        mUsers = new ArrayList<>();
 
         reference = FirebaseDatabase.getInstance().getReference("Users");
 
@@ -97,30 +95,29 @@ public class ChatsFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                xUsers.clear();
+                mUsers.clear();
 
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    User user = dataSnapshot.getValue(User.class);
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    User user = snapshot.getValue(User.class);
 
-                    if (user.getId() != null) {
-                        for (String id : listOfUsers) {
-                            if (user.getId().equals(id)) {
-                                if (xUsers.size() != 0) {
-                                    for (User user1 : xUsers) {
-                                        if (!user.getId().equals(user1.getId())) {
-                                            xUsers.add(user);
-                                        }
+                    for(String id : usersList) {
+                        if(user.getId().equals(id)) {
+                            if(mUsers.size()!= 0) {
+                                for(User user1 : mUsers) {
+                                    if(!user.getId().equals(user1.getId())) {
+                                        mUsers.add(user);
+                                        break;
                                     }
-                                } else {
-                                    xUsers.add(user);
                                 }
+                            } else {
+                                mUsers.add(user);
                             }
                         }
                     }
                 }
 
-                userXadapter = new UserAdapter(getContext(), xUsers);
-                recView_displayChats.setAdapter(userXadapter);
+                userAdapter = new UserAdapter(getContext(), mUsers);
+                recView_displayChats.setAdapter(userAdapter);
             }
 
             @Override
@@ -128,6 +125,8 @@ public class ChatsFragment extends Fragment {
 
             }
         });
+
+
     }
 
 }

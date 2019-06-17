@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.ProfileActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background='@color/colorMyColor'>
+
+        <ImageButton
+            android:id="@+id/ibProfile_Back"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/imagebut_back"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/tvProfile_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivProfile_Image"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:text="@string/user"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivProfile_Image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/ic_launcher_round" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -1,5 +1,7 @@
 package com.example.firabasefirstexperience.Model;
 
+import java.util.Objects;
+
 public class User {
 
     private String id;
@@ -50,6 +52,5 @@ public class User {
     public void seteMail(String eMail) {
         this.eMail = eMail;
     }
-
 
 }
