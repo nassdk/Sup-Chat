@@ -1,6 +1,4 @@
-package com.example.firabasefirstexperience.Model;
-
-import java.util.Objects;
+package com.example.firabasefirstexperience.model;
 
 public class User {
 
@@ -8,18 +6,30 @@ public class User {
     private String userName;
     private String password;
     private String eMail;
+    private String imageUri;
 
-    public User(String id, String userName, String password, String eMail) {
+    public User(String id, String userName, String password, String eMail, String imageUri) {
 
         this.id = id;
         this.userName = userName;
         this.password = password;
         this.eMail = eMail;
+        this.imageUri = imageUri;
     }
 
     public User() {
 
     }
+
+    public String getImageUri() {
+        return imageUri;
+    }
+
+    public void setImageUri(String imageUri) {
+        this.imageUri = imageUri;
+    }
+
+
 
     public String getId() {
         return id;

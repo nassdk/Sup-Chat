@@ -1,22 +1,24 @@
-package com.example.firabasefirstexperience.Adapter;
+package com.example.firabasefirstexperience.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.firabasefirstexperience.Model.Chat;
+import com.bumptech.glide.Glide;
+import com.example.firabasefirstexperience.activity.MainActivity;
+import com.example.firabasefirstexperience.model.Chat;
 import com.example.firabasefirstexperience.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
-public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
+public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
 
 
     public static final int MSG_LEFT = 0;
@@ -27,7 +29,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
     private FirebaseUser fUser;
 
-    public ChatAdapter(Context mContext, List<Chat> listChats) {
+    public MessageAdapter(Context mContext, List<Chat> listChats) {
         this.mContext = mContext;
         this.listChats = listChats;
     }
@@ -35,22 +37,23 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
     @NonNull
     @Override
-    public ChatAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public MessageAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         if (i == MSG_RIGHT) {
             View view = LayoutInflater.from(mContext).inflate(R.layout.chat_item_right, viewGroup, false);
-            return new ChatAdapter.ViewHolder(view);
+            return new MessageAdapter.ViewHolder(view);
         } else {
             View view = LayoutInflater.from(mContext).inflate(R.layout.chat_item_left, viewGroup, false);
-            return new ChatAdapter.ViewHolder(view);
+            return new MessageAdapter.ViewHolder(view);
         }
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ChatAdapter.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull MessageAdapter.ViewHolder viewHolder, int i) {
 
         Chat chat = listChats.get(i);
 
         viewHolder.tv_showMessage.setText(chat.getMessage());
+
     }
 
     @Override

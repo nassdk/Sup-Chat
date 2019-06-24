@@ -1,10 +1,10 @@
-package com.example.firabasefirstexperience.Activities;
+package com.example.firabasefirstexperience.activity;
 
 import android.app.ProgressDialog;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.firabasefirstexperience.Model.User;
+import com.example.firabasefirstexperience.model.User;
 import com.example.firabasefirstexperience.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -70,7 +70,7 @@ public class RegisterAcitivty extends AppCompatActivity implements View.OnClickL
 
 
 
-    public void register(final String eMail, final String password, final String personName) {
+    public void register(final String eMail, final String password, final String personName, final String imageUri) {
 
         progressDialog.setMessage("Registering User...");
         //progressDialog.show();
@@ -89,7 +89,7 @@ public class RegisterAcitivty extends AppCompatActivity implements View.OnClickL
 
                                     String id = firebaseUser.getUid();
 
-                                    updateUser(id, personName ,password, eMail);
+                                    updateUser(id, personName ,password, eMail, imageUri);
 
                                 }
 
@@ -109,11 +109,11 @@ public class RegisterAcitivty extends AppCompatActivity implements View.OnClickL
                 });
     }
 
-    private boolean updateUser (String id, String name, String password, String eMail) {
+    private boolean updateUser (String id, String name, String password, String eMail, String imageUri) {
 
         reference = FirebaseDatabase.getInstance().getReference("Users").child(id);
 
-        User user = new User(id, name, password, eMail);
+        User user = new User(id, name, password, eMail, imageUri);
         reference.setValue(user);
         return true;
     }
@@ -129,6 +129,7 @@ public class RegisterAcitivty extends AppCompatActivity implements View.OnClickL
                 final String textUserName = etUserName.getText().toString().trim();
                 final String textPassword = etPassword.getText().toString();
                 final String textEmail = etEmail.getText().toString().trim();
+                final String imageUri = "default";
 
 
                 if (TextUtils.isEmpty(textUserName) || TextUtils.isEmpty(textPassword) || TextUtils.isEmpty(textEmail)) {
@@ -137,7 +138,9 @@ public class RegisterAcitivty extends AppCompatActivity implements View.OnClickL
                     Toast.makeText(RegisterAcitivty.this, "Password must constist at least of 8 characters", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    register(textEmail, textPassword, textUserName);
+
+
+                    register(textEmail, textPassword, textUserName, imageUri);
                 }
 
         }

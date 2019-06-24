@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FiraBaseFirstExperience</string>
+    <string name="app_name">Sup Chat</string>
     <string name="userName">Name</string>
     <string name="RegistrationText">Please , Sign Up</string>
     <string name="emailTextView">Email</string>

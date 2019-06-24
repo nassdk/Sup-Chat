@@ -1,21 +1,22 @@
-package com.example.firabasefirstexperience.Activities;
+package com.example.firabasefirstexperience.activity;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.firabasefirstexperience.Adapter.ChatAdapter;
-import com.example.firabasefirstexperience.Model.Chat;
-import com.example.firabasefirstexperience.Model.User;
+import com.bumptech.glide.Glide;
+import com.example.firabasefirstexperience.adapter.MessageAdapter;
+import com.example.firabasefirstexperience.model.Chat;
+import com.example.firabasefirstexperience.model.User;
 import com.example.firabasefirstexperience.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -43,7 +44,7 @@ public class ChatActivity extends AppCompatActivity {
 
     private Intent intent;
 
-    private ChatAdapter chatAdapter;
+    private MessageAdapter messageAdapter;
     private List<Chat> listOfChats;
 
     private RecyclerView recView_Chats;
@@ -97,6 +98,15 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
 
+        tv_UserName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ChatActivity.this , DiffProfileActivity.class);
+                intent.putExtra("id", userId);
+                startActivity(intent);
+            }
+        });
+
 
         fb_User = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -110,6 +120,10 @@ public class ChatActivity extends AppCompatActivity {
                 User user = dataSnapshot.getValue(User.class);
 
                 tv_UserName.setText(user.getUserName());
+
+                if(user.getImageUri().equals("default")) {
+
+                }
 
                 readMessage(fb_User.getUid(), userId);
             }
@@ -154,8 +168,8 @@ public class ChatActivity extends AppCompatActivity {
                         if ((chat.getReceiver().equals(myId) && chat.getSender().equals(userId)) || (chat.getReceiver().equals(userId) && chat.getSender().equals(myId))) {
                             listOfChats.add(chat);
 
-                            chatAdapter = new ChatAdapter(ChatActivity.this, listOfChats);
-                            recView_Chats.setAdapter(chatAdapter);
+                            messageAdapter = new MessageAdapter(ChatActivity.this, listOfChats);
+                            recView_Chats.setAdapter(messageAdapter);
                         }
                     }
 

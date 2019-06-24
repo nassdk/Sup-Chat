@@ -21,6 +21,6 @@
         android:layout_toEndOf="@id/userImage"
         android:layout_marginStart="10dp"
         android:layout_centerVertical="true"
-        android:textSize="15sp"/>
+        android:textSize="18sp"/>
 
 </RelativeLayout>

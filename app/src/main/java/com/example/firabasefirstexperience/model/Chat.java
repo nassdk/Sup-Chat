@@ -1,4 +1,4 @@
-package com.example.firabasefirstexperience.Model;
+package com.example.firabasefirstexperience.model;
 
 public class Chat {
 

@@ -1,24 +1,26 @@
-package com.example.firabasefirstexperience.Activities;
+package com.example.firabasefirstexperience.activity;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.bumptech.glide.Glide;
+import com.google.android.material.tabs.TabLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.firabasefirstexperience.Fragments.ChatsFragment;
-import com.example.firabasefirstexperience.Fragments.UserFragment;
-import com.example.firabasefirstexperience.Model.User;
+import com.example.firabasefirstexperience.fragments.ChatsFragment;
+import com.example.firabasefirstexperience.fragments.UserFragment;
+import com.example.firabasefirstexperience.model.User;
 import com.example.firabasefirstexperience.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -61,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
                 User user = dataSnapshot.getValue(User.class);
 
                 if (user.getUserName() != null) {
-
                     tv_UserName.setText(user.getUserName());
                 }
 
@@ -109,8 +110,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, StartActivity.class));
                 finish();
 
-
                 break;
+
+            case R.id.item_profile:
+                startActivity(new Intent(MainActivity.this , ProfileActivity.class));
+                break;
+
         }
         return super.onOptionsItemSelected(item);
     }

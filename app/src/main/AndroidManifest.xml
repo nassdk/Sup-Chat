@@ -2,28 +2,44 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.firabasefirstexperience">
+    
+    
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/app_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/app_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Activities.ProfileActivity"></activity>
-        <activity android:name=".Activities.ChatActivity" />
+
+        <activity android:name=".activity.DiffProfileActivity"
+            android:parentActivityName=".activity.ChatActivity"/>
+
+        <activity android:name=".activity.ProfileActivity"
+            android:parentActivityName=".activity.ChatActivity"/>
+
+        <activity android:name=".activity.ChatActivity"
+            android:parentActivityName=".activity.MainActivity"/>
+
         <activity
-            android:name=".Activities.LoginActivity"
-            android:parentActivityName=".Activities.StartActivity" />
+            android:name=".activity.LoginActivity"
+            android:parentActivityName=".activity.StartActivity" />
+
         <activity
-            android:name=".Activities.MainActivity"
+            android:name=".activity.MainActivity"
             android:label=""
-            android:parentActivityName=".Activities.StartActivity" />
+            android:parentActivityName=".activity.StartActivity" />
+
         <activity
-            android:name=".Activities.RegisterAcitivty"
-            android:parentActivityName=".Activities.StartActivity" />
-        <activity android:name=".Activities.StartActivity">
+            android:name=".activity.RegisterAcitivty"
+            android:parentActivityName=".activity.StartActivity" />
+
+        <activity android:name=".activity.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
