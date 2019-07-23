@@ -32,18 +32,17 @@
             android:layout_toEndOf="@+id/ivProfile_Image"
             android:text="@string/user"
             android:textColor="@color/colorMyColor"
-            android:textSize="30sp"
+            android:textSize="40sp"
             android:textStyle="bold" />
+
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ivProfile_Image"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:src="@mipmap/ic_launcher_round" />
-
-
     </RelativeLayout>
 
 
@@ -53,7 +52,6 @@
         android:layout_below="@id/re_Layout">
 
     </RelativeLayout>
-
 
     <com.github.clans.fab.FloatingActionButton
         android:id="@+id/fab_photo"

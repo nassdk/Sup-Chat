@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Sup Chat</string>
+    <string name="app_name">    Sup Chat</string>
     <string name="userName">Name</string>
     <string name="RegistrationText">Please , Sign Up</string>
     <string name="emailTextView">Email</string>
@@ -14,7 +14,6 @@
     <string name="logout">Log out</string>
     <string name="log_out">Log out</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hello_boy">Hello Boy</string>
     <string name="messagetextRes">  Type a message . . .</string>
@@ -25,4 +24,17 @@
     <string name="user">User</string>
     <string name="profile">Profile</string>
     <string name="profile1">Profile</string>
+    <string name="home">Home</string>
+    <string name="profile111">Profile</string>
+    <string name="settings">Settings</string>
+
+
+    <string name="nav_drawer_open">Open Navigation Drawer</string>
+    <string name="nav_drawer_close">Close Navigation Drawer</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="offline">offline</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="reset_email">Type in your Email</string>
+    <string name="reset">RESET</string>
+
 </resources>

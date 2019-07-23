@@ -1,10 +1,14 @@
 package com.example.firabasefirstexperience.activity;
 
 import android.app.ProgressDialog;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import androidx.appcompat.widget.Toolbar;
+
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -28,12 +32,9 @@ import com.google.firebase.database.ValueEventListener;
 public class RegisterAcitivty extends AppCompatActivity implements View.OnClickListener {
 
     private EditText etEmail, etPassword, etUserName;
-    private Button butSignUp;
 
     private FirebaseAuth auth;
     private DatabaseReference reference;
-    private FirebaseDatabase database;
-
 
 
     private ProgressDialog progressDialog;
@@ -52,9 +53,9 @@ public class RegisterAcitivty extends AppCompatActivity implements View.OnClickL
         etPassword = (EditText) findViewById(R.id.etPassword);
         etUserName = (EditText) findViewById(R.id.etUserName);
 
-        butSignUp = (Button) findViewById(R.id.butSingUp);
+        Button butSignUp = (Button) findViewById(R.id.butSingUp);
 
-        database = FirebaseDatabase.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
         reference = database.getReference("Users");
         auth = FirebaseAuth.getInstance();
 
@@ -67,10 +68,7 @@ public class RegisterAcitivty extends AppCompatActivity implements View.OnClickL
     }
 
 
-
-
-
-    public void register(final String eMail, final String password, final String personName, final String imageUri) {
+    public void register(final String eMail, final String password, final String personName, final String imageURL, final String status) {
 
         progressDialog.setMessage("Registering User...");
         //progressDialog.show();
@@ -89,7 +87,7 @@ public class RegisterAcitivty extends AppCompatActivity implements View.OnClickL
 
                                     String id = firebaseUser.getUid();
 
-                                    updateUser(id, personName ,password, eMail, imageUri);
+                                    updateUser(id, personName, password, eMail, imageURL, status);
 
                                 }
 
@@ -103,17 +101,19 @@ public class RegisterAcitivty extends AppCompatActivity implements View.OnClickL
 
                             finish();
                         } else {
+
+                            Toast.makeText(RegisterAcitivty.this, "An error occurred , please try later", Toast.LENGTH_LONG).show();
                             Log.d(TAG, "There is an error");
                         }
                     }
                 });
     }
 
-    private boolean updateUser (String id, String name, String password, String eMail, String imageUri) {
+    private boolean updateUser(String id, String name, String password, String eMail, String imageURL, String status) {
 
         reference = FirebaseDatabase.getInstance().getReference("Users").child(id);
 
-        User user = new User(id, name, password, eMail, imageUri);
+        User user = new User(id, name, password, eMail, imageURL, status);
         reference.setValue(user);
         return true;
     }
@@ -129,7 +129,8 @@ public class RegisterAcitivty extends AppCompatActivity implements View.OnClickL
                 final String textUserName = etUserName.getText().toString().trim();
                 final String textPassword = etPassword.getText().toString();
                 final String textEmail = etEmail.getText().toString().trim();
-                final String imageUri = "default";
+                final String imageURL = "default";
+                final String status = "offline";
 
 
                 if (TextUtils.isEmpty(textUserName) || TextUtils.isEmpty(textPassword) || TextUtils.isEmpty(textEmail)) {
@@ -138,9 +139,7 @@ public class RegisterAcitivty extends AppCompatActivity implements View.OnClickL
                     Toast.makeText(RegisterAcitivty.this, "Password must constist at least of 8 characters", Toast.LENGTH_SHORT).show();
                 } else {
 
-
-
-                    register(textEmail, textPassword, textUserName, imageUri);
+                    register(textEmail, textPassword, textUserName, imageURL, status);
                 }
 
         }

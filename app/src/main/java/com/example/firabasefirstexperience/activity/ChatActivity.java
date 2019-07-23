@@ -1,12 +1,16 @@
 package com.example.firabasefirstexperience.activity;
 
 import android.content.Intent;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -34,15 +38,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ChatActivity extends AppCompatActivity {
 
-    private CircleImageView profileImage;
+    private CircleImageView profileImageChat;
     private TextView tv_UserName;
-    private ImageButton but_Send;
     private EditText et_Message;
 
     private FirebaseUser fb_User;
     private DatabaseReference reference;
-
-    private Intent intent;
 
     private MessageAdapter messageAdapter;
     private List<Chat> listOfChats;
@@ -55,9 +56,9 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        profileImage = findViewById(R.id.profileImage);
+        profileImageChat = findViewById(R.id.profileImage_Chat);
         tv_UserName = findViewById(R.id.tv_UserName);
-        but_Send = findViewById(R.id.but_Send);
+        ImageButton but_Send = findViewById(R.id.but_Send);
         et_Message = findViewById(R.id.et_Message);
 
 
@@ -79,7 +80,7 @@ public class ChatActivity extends AppCompatActivity {
         recView_Chats.setLayoutManager(linearLayoutManager);
 
 
-        intent = getIntent();
+        Intent intent = getIntent();
 
         final String userId = intent.getStringExtra("userId");
 
@@ -101,7 +102,7 @@ public class ChatActivity extends AppCompatActivity {
         tv_UserName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ChatActivity.this , DiffProfileActivity.class);
+                Intent intent = new Intent(ChatActivity.this, DiffProfileActivity.class);
                 intent.putExtra("id", userId);
                 startActivity(intent);
             }
@@ -119,13 +120,23 @@ public class ChatActivity extends AppCompatActivity {
 
                 User user = dataSnapshot.getValue(User.class);
 
-                tv_UserName.setText(user.getUserName());
 
-                if(user.getImageUri().equals("default")) {
+                if (user != null) {
+                    tv_UserName.setText(user.getUserName());
 
+                    if (user.getImageURL().equals("default")) {
+                        profileImageChat.setImageResource(R.mipmap.ic_launcher_round);
+                    } else {
+                        Glide
+                                .with(getApplicationContext())
+                                .load(user.getImageURL())
+                                .into(profileImageChat);
+                    }
                 }
 
-                readMessage(fb_User.getUid(), userId);
+                if (user != null) {
+                    readMessage(fb_User.getUid(), userId);
+                }
             }
 
 
@@ -163,7 +174,7 @@ public class ChatActivity extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Chat chat = snapshot.getValue(Chat.class);
 
-                    if (chat.getReceiver() != null) {
+                    if (chat != null) {
 
                         if ((chat.getReceiver().equals(myId) && chat.getSender().equals(userId)) || (chat.getReceiver().equals(userId) && chat.getSender().equals(myId))) {
                             listOfChats.add(chat);
@@ -172,8 +183,6 @@ public class ChatActivity extends AppCompatActivity {
                             recView_Chats.setAdapter(messageAdapter);
                         }
                     }
-
-
                 }
             }
 
@@ -183,6 +192,5 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
     }
-
 
 }

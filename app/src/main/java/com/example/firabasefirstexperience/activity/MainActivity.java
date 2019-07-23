@@ -1,25 +1,25 @@
 package com.example.firabasefirstexperience.activity;
 
 import android.content.Intent;
+
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
-import com.google.android.material.tabs.TabLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
+import com.google.android.material.navigation.NavigationView;
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import androidx.appcompat.widget.Toolbar;
-import android.view.Menu;
+
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.firabasefirstexperience.fragments.ChatsFragment;
-import com.example.firabasefirstexperience.fragments.UserFragment;
 import com.example.firabasefirstexperience.model.User;
 import com.example.firabasefirstexperience.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,129 +30,136 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private CircleImageView profileImage;
-    private TextView tv_UserName;
-    private FirebaseUser firebaseUser;
+    private CircleImageView navHeader_ivProfile;
+    private TextView navHeader_tvUserName, navHeader_tvEmail;
+
+    private DrawerLayout drawerLayout;
+
     private DatabaseReference reference;
+    private FirebaseUser firebaseUser;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = findViewById(R.id.toolBar);
-        setSupportActionBar(toolbar);
-        toolbar.inflateMenu(R.menu.menu_main);
 
-        profileImage = (CircleImageView) findViewById(R.id.profileImage);
-        tv_UserName = (TextView) findViewById(R.id.tv_UserName);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        Toolbar toolbarChats = findViewById(R.id.toolBarChats);
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
 
+
+        setSupportActionBar(toolbarChats);
+        toolbarChats.inflateMenu(R.menu.menu_main);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbarChats, R.string.nav_drawer_open, R.string.nav_drawer_close);
+        toggle.setDrawerIndicatorEnabled(true);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+
+        NavigationView nView = findViewById(R.id.nav_view);
+        nView.setNavigationItemSelectedListener(this);
+        View header = nView.getHeaderView(0);
+        navHeader_tvUserName = header.findViewById(R.id.navHeader_tvUserName);
+        navHeader_tvEmail = header.findViewById(R.id.navHeader_tvEmail);
+        navHeader_ivProfile = header.findViewById(R.id.navHeader_ivProfile);
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
 
-                if (user.getUserName() != null) {
-                    tv_UserName.setText(user.getUserName());
-                }
+                if (user != null) {
+                    navHeader_tvUserName.setText(user.getUserName());
+                    navHeader_tvEmail.setText(user.geteMail());
 
+                    Glide
+                            .with(MainActivity.this)
+                            .load(user.getImageURL())
+                            .into(navHeader_ivProfile);
+                }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+    }
 
 
-        TabLayout tabLayout_MainActivity = findViewById(R.id.tabLayout_MainActivity);
-        ViewPager vP_MainActivity = findViewById(R.id.vP_MainActivity);
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
+        menuItem.setCheckable(false);
 
-        PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager());
-        pageAdapter.addFragment(new ChatsFragment(), "Chats");
-        pageAdapter.addFragment(new UserFragment(), "Users");
+        switch (menuItem.getItemId()) {
+            case R.id.nav_Home:
 
-        vP_MainActivity.setAdapter(pageAdapter);
-        tabLayout_MainActivity.setupWithViewPager(vP_MainActivity);
+                break;
 
-        tv_UserName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            case R.id.nav_Profile:
                 Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
                 startActivity(intent);
-            }
-        });
+                break;
 
-    }
+            case R.id.nav_Settings:
+                break;
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.item_logout:
+            case R.id.nav_LogOut:
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(MainActivity.this, StartActivity.class));
                 finish();
 
                 break;
-
-            case R.id.item_profile:
-                startActivity(new Intent(MainActivity.this , ProfileActivity.class));
-                break;
-
         }
-        return super.onOptionsItemSelected(item);
+
+        drawerLayout.closeDrawer(GravityCompat.START);
+
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 
 
-    class PageAdapter extends FragmentPagerAdapter {
+    private void status(String status) {
 
-        ArrayList<Fragment> fragments;
-        ArrayList<String> titles;
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
 
-        public PageAdapter(FragmentManager fm) {
-            super(fm);
-            this.fragments = new ArrayList<>();
-            this.titles = new ArrayList<>();
+        HashMap<String, Object> statusMap = new HashMap<>();
+        statusMap.put("status", status);
 
-        }
+        reference.updateChildren(statusMap);
+    }
 
-        @Override
-        public Fragment getItem(int i) {
-            return fragments.get(i);
-        }
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
 
-        @Override
-        public int getCount() {
-            return fragments.size();
-        }
+        status("online");
+    }
 
-        public void addFragment(Fragment fragment, String title) {
-            fragments.add(fragment);
-            titles.add(title);
-        }
-
-        @Nullable
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return titles.get(position);
-        }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        status("offline");
     }
 }
 

@@ -2,14 +2,19 @@ package com.example.firabasefirstexperience.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import androidx.appcompat.widget.Toolbar;
+
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.firabasefirstexperience.R;
@@ -23,13 +28,12 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
 
+    private TextView tvResetPassword;
     private EditText eMail, password;
-    private Button butLogIn;
 
     private FirebaseAuth auth;
     private FirebaseUser firebaseUser;
 
-    private ProgressDialog progressDialog;
 
     @Override
     protected void onStart() {
@@ -49,22 +53,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        if(firebaseUser != null) {
+        if (firebaseUser != null) {
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
         }
 
 
         auth = FirebaseAuth.getInstance();
 
+        tvResetPassword = (TextView) findViewById(R.id.tvResetPassword);
 
-
-        progressDialog = new ProgressDialog(this);
         eMail = (EditText) findViewById(R.id.etEmail);
         password = (EditText) findViewById(R.id.etPassword);
 
-        butLogIn = (Button) findViewById(R.id.butLogIn);
+        Button butLogIn = (Button) findViewById(R.id.butLogIn);
 
         butLogIn.setOnClickListener(this);
+        tvResetPassword.setOnClickListener(this);
     }
 
     @Override
@@ -96,7 +100,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 }
                             });
                 }
-
+                break;
+            case R.id.tvResetPassword:
+                Intent intent = new Intent(LoginActivity.this, ResetPassActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 }

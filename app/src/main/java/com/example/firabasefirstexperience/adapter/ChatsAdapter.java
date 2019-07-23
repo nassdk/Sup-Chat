@@ -14,11 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.firabasefirstexperience.R;
 import com.example.firabasefirstexperience.activity.ChatActivity;
-import com.example.firabasefirstexperience.activity.DiffProfileActivity;
-import com.example.firabasefirstexperience.activity.MainActivity;
 import com.example.firabasefirstexperience.model.User;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ViewHolder> {
 
@@ -40,17 +40,8 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ChatsAdapter.ViewHolder viewHolder, int i) {
-        final User user = listUsers.get(i);
-        viewHolder.tv_Name.setText(user.getUserName());
 
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, ChatActivity.class);
-                intent.putExtra("userId", user.getId());
-                mContext.startActivity(intent);
-            }
-        });
+        viewHolder.bind(listUsers.get(i));
 
     }
 
@@ -59,19 +50,56 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ViewHolder> 
         return listUsers.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView tv_Name;
-        public ImageView userImage;
+        private TextView tv_Name;
+        private ImageView userImage;
+        private CircleImageView civ_StatusOn;
+        private CircleImageView civ_StatusOff;
 
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
 
             tv_Name = itemView.findViewById(R.id.tv_Name);
             userImage = itemView.findViewById(R.id.userImage);
+            civ_StatusOff = itemView.findViewById(R.id.civStatus_Off);
+            civ_StatusOn = itemView.findViewById(R.id.civStatus_On);
+        }
+
+
+        void bind(final User user) {
+
+            tv_Name.setText(user.getUserName());
+
+            if (user.getImageURL().equals("default")) {
+                userImage.setImageResource(R.mipmap.ic_launcher_round);
+            } else {
+
+                Glide
+                        .with(mContext)
+                        .load(user.getImageURL())
+                        .into(userImage);
+            }
+
+            if (user.getStatus().equals("online")) {
+                civ_StatusOn.setVisibility(View.VISIBLE);
+                civ_StatusOff.setVisibility(View.GONE);
+            } else {
+                civ_StatusOn.setVisibility(View.GONE);
+                civ_StatusOff.setVisibility(View.VISIBLE);
+            }
+
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, ChatActivity.class);
+                    intent.putExtra("userId", user.getId());
+                    mContext.startActivity(intent);
+                }
+            });
+
         }
     }
-
-
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activity.SearchActivity"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBarSearch"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorMyColor"
+        android:theme="@style/Cursor"
+        app:popupTheme="@style/MainMenuStyle">
+
+        <ImageButton
+            android:id="@+id/ibSearch_back"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/imagebut_back"/>
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recView_SearchUsers"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="3dp">
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>

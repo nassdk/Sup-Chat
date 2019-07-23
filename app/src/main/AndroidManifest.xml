@@ -2,11 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.firabasefirstexperience">
-    
-    
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -17,14 +16,31 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".activity.DiffProfileActivity"
-            android:parentActivityName=".activity.ChatActivity"/>
+        <activity android:name=".activity.ResetPassActivity"
+            android:parentActivityName=".activity.LoginActivity">
+        </activity>
 
-        <activity android:name=".activity.ProfileActivity"
-            android:parentActivityName=".activity.ChatActivity"/>
+        <activity android:name=".activity.StartLoadingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <activity android:name=".activity.ChatActivity"
-            android:parentActivityName=".activity.MainActivity"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activity.SearchActivity" />
+
+        <activity
+            android:name=".activity.DiffProfileActivity"
+            android:parentActivityName=".activity.ChatActivity" />
+
+        <activity
+            android:name=".activity.ProfileActivity"
+            android:parentActivityName=".activity.ChatActivity" />
+
+        <activity
+            android:name=".activity.ChatActivity"
+            android:parentActivityName=".activity.MainActivity" />
 
         <activity
             android:name=".activity.LoginActivity"
@@ -32,20 +48,14 @@
 
         <activity
             android:name=".activity.MainActivity"
-            android:label=""
+            android:label="Sup Chat"
             android:parentActivityName=".activity.StartActivity" />
 
         <activity
             android:name=".activity.RegisterAcitivty"
             android:parentActivityName=".activity.StartActivity" />
 
-        <activity android:name=".activity.StartActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".activity.StartActivity" />
     </application>
 
 </manifest>

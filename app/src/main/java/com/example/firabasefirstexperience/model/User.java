@@ -6,30 +6,31 @@ public class User {
     private String userName;
     private String password;
     private String eMail;
-    private String imageUri;
+    private String imageURL;
+    private String status;
 
-    public User(String id, String userName, String password, String eMail, String imageUri) {
+    public User(String id, String userName, String password, String eMail, String imageURL, String status) {
 
         this.id = id;
         this.userName = userName;
         this.password = password;
         this.eMail = eMail;
-        this.imageUri = imageUri;
+        this.imageURL = imageURL;
+        this.status = status;
     }
 
     public User() {
 
     }
 
-    public String getImageUri() {
-        return imageUri;
+
+    public String getImageURL() {
+        return imageURL;
     }
 
-    public void setImageUri(String imageUri) {
-        this.imageUri = imageUri;
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
-
-
 
     public String getId() {
         return id;
@@ -63,4 +64,11 @@ public class User {
         this.eMail = eMail;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

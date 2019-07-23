@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
-import android.content.ContentProvider;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
@@ -18,6 +17,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.firabasefirstexperience.model.User;
 import com.example.firabasefirstexperience.R;
+import com.github.clans.fab.FloatingActionButton;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -42,7 +42,6 @@ public class ProfileActivity extends AppCompatActivity {
 
     private CircleImageView ivProfile_Image;
     private TextView tvProfile_Name;
-    private ImageButton ibProfile_back;
 
 
     private FirebaseUser fbUser;
@@ -64,7 +63,8 @@ public class ProfileActivity extends AppCompatActivity {
 
         ivProfile_Image = findViewById(R.id.ivProfile_Image);
         tvProfile_Name = findViewById(R.id.tvProfile_Name);
-        ibProfile_back = findViewById(R.id.ibProfile_back);
+        ImageButton ibProfile_back = findViewById(R.id.ibProfile_back);
+        FloatingActionButton fab_photo = findViewById(R.id.fab_photo);
 
         ibProfile_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +85,18 @@ public class ProfileActivity extends AppCompatActivity {
 
                 User user = dataSnapshot.getValue(User.class);
 
-                tvProfile_Name.setText(user.getUserName());
+                if (user != null) {
+                    tvProfile_Name.setText(user.getUserName());
+
+                    if (user.getImageURL().equals("default")) {
+                        ivProfile_Image.setImageResource(R.mipmap.ic_launcher_round);
+                    } else {
+                        Glide
+                                .with(getApplicationContext())
+                                .load(user.getImageURL())
+                                .into(ivProfile_Image);
+                    }
+                }
 
             }
 
@@ -96,7 +107,7 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
 
-        ivProfile_Image.setOnClickListener(new View.OnClickListener() {
+        fab_photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openImage();
@@ -118,22 +129,18 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void uploadImage() {
-        final ProgressDialog progressDialog = new ProgressDialog(getApplicationContext());
-        progressDialog.setMessage("Uploading");
-        progressDialog.show();
+        final ProgressDialog pd = new ProgressDialog(getApplicationContext());
+        pd.setMessage("Uploading");
 
-        if(imageUri != null) {
-            final StorageReference fileReference = storageRef
-                    .child(System.currentTimeMillis()
-                            + "." + getFileExtension(imageUri));
-
+        if (imageUri != null) {
+            final StorageReference fileReference = storageRef.child(System.currentTimeMillis()
+                    + "." + getFileExtension(imageUri));
 
             sTask = fileReference.putFile(imageUri);
-            sTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot,Task<Uri>>() {
+            sTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
                 public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-
-                    if(!task.isSuccessful()) {
+                    if (!task.isSuccessful()) {
                         throw task.getException();
                     }
 
@@ -142,46 +149,43 @@ public class ProfileActivity extends AppCompatActivity {
             }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                 @Override
                 public void onComplete(@NonNull Task<Uri> task) {
-
-                    if(task.isSuccessful()) {
-                        Uri downoloadUri = task.getResult();
-                        String mUri = downoloadUri.toString();
+                    if (task.isSuccessful()) {
+                        Uri downloadUri = task.getResult();
+                        String mUri = downloadUri.toString();
 
                         reference = FirebaseDatabase.getInstance().getReference("Users").child(fbUser.getUid());
-
-                        HashMap<String , Object> map = new HashMap<>();
-                        map.put("imageUri", mUri);
+                        HashMap<String, Object> map = new HashMap<>();
+                        map.put("imageURL", "" + mUri);
                         reference.updateChildren(map);
 
-                        progressDialog.dismiss();
+                        pd.dismiss();
                     } else {
-                        Toast.makeText(ProfileActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-                        progressDialog.dismiss();
-
+                        Toast.makeText(getApplicationContext(), "Failed!", Toast.LENGTH_SHORT).show();
+                        pd.dismiss();
                     }
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(ProfileActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                    progressDialog.dismiss();
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    pd.dismiss();
                 }
-
             });
         } else {
-            Toast.makeText(this, "No Image Selected", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "No image selected", Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
-    public void onActivityReenter(int resultCode, Intent data) {
-        super.onActivityReenter(resultCode, data);
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-        if(resultCode == IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            imageUri  = data.getData();
+        if (requestCode == IMAGE_REQUEST && resultCode == RESULT_OK
+                && data != null && data.getData() != null) {
+            imageUri = data.getData();
 
-            if(sTask != null && sTask.isInProgress()) {
-                Toast.makeText(this, "Upload in progress", Toast.LENGTH_SHORT).show();
+            if (sTask != null && sTask.isInProgress()) {
+                Toast.makeText(getApplicationContext(), "Upload in preogress", Toast.LENGTH_SHORT).show();
             } else {
                 uploadImage();
             }

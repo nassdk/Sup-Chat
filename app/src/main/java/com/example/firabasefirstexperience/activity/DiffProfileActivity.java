@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.firabasefirstexperience.R;
 import com.example.firabasefirstexperience.model.User;
 import com.github.clans.fab.FloatingActionButton;
@@ -25,14 +26,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class DiffProfileActivity extends AppCompatActivity {
 
     private TextView tvDifProfile_Name;
-    private ImageButton ibDifProfile_back;
     private CircleImageView ivDifProfile_Image;
     private FloatingActionButton fab_message;
-
-    private FirebaseUser fbUser;
-    private DatabaseReference reference;
-
-    private Intent intent;
+    private TextView tvDifProfile_Status;
 
 
     @Override
@@ -41,10 +37,12 @@ public class DiffProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_diff_profile);
 
         tvDifProfile_Name = findViewById(R.id.tvDifProfile_Name);
-        ibDifProfile_back = findViewById(R.id.ibDifProfile_back);
+        ImageButton ibDifProfile_back = findViewById(R.id.ibDifProfile_back);
+        tvDifProfile_Status = findViewById(R.id.tvDifProfile_Status);
         fab_message = findViewById(R.id.fab_message);
+        ivDifProfile_Image = findViewById(R.id.ivDifProfile_Image);
 
-        intent = getIntent();
+        Intent intent = getIntent();
         String id = intent.getStringExtra("id");
 
         ibDifProfile_back.setOnClickListener(new View.OnClickListener() {
@@ -54,16 +52,33 @@ public class DiffProfileActivity extends AppCompatActivity {
             }
         });
 
-        fbUser = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(id);
+        FirebaseUser fbUser = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(id);
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 final User user = dataSnapshot.getValue(User.class);
-                tvDifProfile_Name.setText(user.getUserName());
 
+                if (user != null) {
+                    tvDifProfile_Name.setText(user.getUserName());
+
+                    if (!user.getStatus().equals("offline")) {
+                        tvDifProfile_Status.setVisibility(View.VISIBLE);
+                    } else {
+                        tvDifProfile_Status.setVisibility(View.GONE);
+                    }
+
+                    if (user.getImageURL().equals("default")) {
+                        ivDifProfile_Image.setImageResource(R.mipmap.ic_launcher_round);
+                    } else {
+                        Glide
+                                .with(getApplicationContext())
+                                .load(user.getImageURL())
+                                .into(ivDifProfile_Image);
+                    }
+                }
 
 
                 fab_message.setOnClickListener(new View.OnClickListener() {

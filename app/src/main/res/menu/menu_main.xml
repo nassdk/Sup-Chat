@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <item android:title="@string/log_out"
-        android:id="@+id/item_logout"
-        app:showAsAction="never"
-        android:actionLayout="@layout/activity_main"/>
 
     <item
         android:title=""
-        android:id="@+id/item_profile"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/profile_icon" />
+        android:id="@+id/item_search"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:icon="@drawable/search_but"
+        app:actionViewClass="android.widget.SearchView"
+        android:theme="@style/AppTheme" />
 </menu>

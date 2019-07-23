@@ -1,8 +1,11 @@
 package com.example.firabasefirstexperience.adapter;
 
 import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +13,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.firabasefirstexperience.activity.MainActivity;
 import com.example.firabasefirstexperience.model.Chat;
 import com.example.firabasefirstexperience.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 
 import java.util.List;
 
@@ -26,8 +29,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
     private Context mContext;
     private List<Chat> listChats;
-
-    private FirebaseUser fUser;
 
     public MessageAdapter(Context mContext, List<Chat> listChats) {
         this.mContext = mContext;
@@ -50,9 +51,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull MessageAdapter.ViewHolder viewHolder, int i) {
 
-        Chat chat = listChats.get(i);
-
-        viewHolder.tv_showMessage.setText(chat.getMessage());
+        viewHolder.bind(listChats.get(i));
 
     }
 
@@ -61,23 +60,28 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         return listChats.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView tv_showMessage;
-        public ImageView backgroundImage;
+        private TextView tv_showMessage;
 
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
 
             tv_showMessage = itemView.findViewById(R.id.tv_showMessage);
-            backgroundImage = itemView.findViewById(R.id.backgroundImage);
         }
+
+
+        void bind(Chat chat) {
+            tv_showMessage.setText(chat.getMessage());
+        }
+
+
     }
 
     @Override
     public int getItemViewType(int position) {
-        fUser = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
 
         if (listChats.get(position).getSender().equals(fUser.getUid())) {
             return MSG_RIGHT;

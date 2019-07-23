@@ -23,9 +23,9 @@
             app:popupTheme="@style/MainMenuStyle">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profileImage"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:id="@+id/profileImage_Chat"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:src="@mipmap/ic_launcher_round" />
 
             <TextView
@@ -36,7 +36,7 @@
                 android:textColor="@color/colorWhite"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                android:layout_marginStart="20dp"/>
+                android:layout_marginStart="30dp"/>
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -71,6 +71,7 @@
             android:layout_centerVertical="true"
             android:background="@android:color/transparent"
             android:hint="@string/messagetextRes"
+            android:textCursorDrawable="@drawable/cursor_color"
             />
 
         <ImageButton

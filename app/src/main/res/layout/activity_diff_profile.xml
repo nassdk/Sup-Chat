@@ -32,15 +32,27 @@
             android:layout_toEndOf="@+id/ivDifProfile_Image"
             android:text="@string/user"
             android:textColor="@color/colorMyColor"
-            android:textSize="30sp"
+            android:textSize="40sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvDifProfile_Status"
+            android:text="Online"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvDifProfile_Name"
+            android:layout_toEndOf="@+id/ivDifProfile_Image"
+            android:layout_marginStart="35dp"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ivDifProfile_Image"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:src="@mipmap/ic_launcher_round" />
 
 
