@@ -1,4 +1,4 @@
-package com.example.firabasefirstexperience.adapter;
+package com.example.firabasefirstexperience.java.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,9 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.firabasefirstexperience.activity.DiffProfileActivity;
-import com.example.firabasefirstexperience.model.User;
+import com.example.firabasefirstexperience.java.model.User;
 import com.example.firabasefirstexperience.R;
+import com.example.firabasefirstexperience.kotlin.DiffProfileActivity;
 
 
 import java.util.List;

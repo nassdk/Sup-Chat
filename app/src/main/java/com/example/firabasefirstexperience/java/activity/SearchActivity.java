@@ -1,4 +1,4 @@
-package com.example.firabasefirstexperience.activity;
+package com.example.firabasefirstexperience.java.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,8 +15,8 @@ import android.widget.ImageButton;
 import android.widget.SearchView;
 
 import com.example.firabasefirstexperience.R;
-import com.example.firabasefirstexperience.adapter.UserAdapter;
-import com.example.firabasefirstexperience.model.User;
+import com.example.firabasefirstexperience.java.adapter.UserAdapter;
+import com.example.firabasefirstexperience.java.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

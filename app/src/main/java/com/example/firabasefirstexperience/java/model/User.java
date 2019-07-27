@@ -1,4 +1,4 @@
-package com.example.firabasefirstexperience.model;
+package com.example.firabasefirstexperience.java.model;
 
 public class User {
 

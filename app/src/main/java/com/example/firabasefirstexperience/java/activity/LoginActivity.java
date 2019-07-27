@@ -1,6 +1,5 @@
-package com.example.firabasefirstexperience.activity;
+package com.example.firabasefirstexperience.java.activity;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 
 import androidx.annotation.NonNull;
@@ -18,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.firabasefirstexperience.R;
+import com.example.firabasefirstexperience.kotlin.ResetPassActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -36,16 +36,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
     @Override
-    protected void onStart() {
-        super.onStart();
-
-
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+
 
         Toolbar toolbar = findViewById(R.id.tbForRegisterActivity);
         setSupportActionBar(toolbar);

@@ -1,10 +1,11 @@
-package com.example.firabasefirstexperience.activity;
+package com.example.firabasefirstexperience.java.activity;
 
 import android.content.Intent;
 
 import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
+import com.example.firabasefirstexperience.kotlin.StartActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -20,7 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.firabasefirstexperience.model.User;
+import com.example.firabasefirstexperience.java.model.User;
 import com.example.firabasefirstexperience.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -104,7 +105,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch (menuItem.getItemId()) {
             case R.id.nav_Home:
-
                 break;
 
             case R.id.nav_Profile:

@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.RegisterAcitivty">
+    tools:context=".java.activity.RegisterActivity">
 
     <include
-        layout="@layout/bar_layout"
-        android:id="@+id/tbForRegisterActivity"/>
+        layout="@layout/bar_layout" />
 
     <LinearLayout
         android:layout_width="match_parent"

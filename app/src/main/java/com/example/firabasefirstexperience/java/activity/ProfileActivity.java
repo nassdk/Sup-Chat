@@ -1,4 +1,4 @@
-package com.example.firabasefirstexperience.activity;
+package com.example.firabasefirstexperience.java.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.firabasefirstexperience.model.User;
+import com.example.firabasefirstexperience.java.model.User;
 import com.example.firabasefirstexperience.R;
 import com.github.clans.fab.FloatingActionButton;
 import com.google.android.gms.tasks.Continuation;
@@ -59,7 +59,6 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
 
         ivProfile_Image = findViewById(R.id.ivProfile_Image);
         tvProfile_Name = findViewById(R.id.tvProfile_Name);

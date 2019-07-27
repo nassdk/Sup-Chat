@@ -1,4 +1,4 @@
-package com.example.firabasefirstexperience.activity;
+package com.example.firabasefirstexperience.java.activity;
 
 import android.app.ProgressDialog;
 
@@ -16,7 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.firabasefirstexperience.model.User;
+import com.example.firabasefirstexperience.java.model.User;
 import com.example.firabasefirstexperience.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,7 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class RegisterAcitivty extends AppCompatActivity implements View.OnClickListener {
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText etEmail, etPassword, etUserName;
 
@@ -45,7 +45,6 @@ public class RegisterAcitivty extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_acitivty);
 
         progressDialog = new ProgressDialog(this);
 
@@ -77,7 +76,7 @@ public class RegisterAcitivty extends AppCompatActivity implements View.OnClickL
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(RegisterAcitivty.this, "User successfully registered!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, "User successfully registered!", Toast.LENGTH_SHORT).show();
                             progressDialog.hide();
 
                             reference.addValueEventListener(new ValueEventListener() {
@@ -102,7 +101,7 @@ public class RegisterAcitivty extends AppCompatActivity implements View.OnClickL
                             finish();
                         } else {
 
-                            Toast.makeText(RegisterAcitivty.this, "An error occurred , please try later", Toast.LENGTH_LONG).show();
+                            Toast.makeText(RegisterActivity.this, "An error occurred , please try later", Toast.LENGTH_LONG).show();
                             Log.d(TAG, "There is an error");
                         }
                     }
@@ -134,9 +133,9 @@ public class RegisterAcitivty extends AppCompatActivity implements View.OnClickL
 
 
                 if (TextUtils.isEmpty(textUserName) || TextUtils.isEmpty(textPassword) || TextUtils.isEmpty(textEmail)) {
-                    Toast.makeText(RegisterAcitivty.this, "All fields must be filled", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "All fields must be filled", Toast.LENGTH_SHORT).show();
                 } else if (textPassword.length() < 8) {
-                    Toast.makeText(RegisterAcitivty.this, "Password must constist at least of 8 characters", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Password must constist at least of 8 characters", Toast.LENGTH_SHORT).show();
                 } else {
 
                     register(textEmail, textPassword, textUserName, imageURL, status);

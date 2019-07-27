@@ -1,23 +1,19 @@
-package com.example.firabasefirstexperience.adapter;
+package com.example.firabasefirstexperience.java.adapter;
 
 import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.example.firabasefirstexperience.model.Chat;
+import com.example.firabasefirstexperience.java.model.Chat;
 import com.example.firabasefirstexperience.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
 
 import java.util.List;
 

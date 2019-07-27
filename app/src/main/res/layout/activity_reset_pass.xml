@@ -5,11 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ResetPassActivity"
+    tools:context=".kotlin.ResetPassActivity"
     android:orientation="vertical">
 
      <include
-         android:id="@+id/toolBarForResetPass"
          layout="@layout/bar_layout"/>
 
     <LinearLayout

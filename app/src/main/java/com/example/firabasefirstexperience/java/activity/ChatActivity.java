@@ -1,4 +1,4 @@
-package com.example.firabasefirstexperience.activity;
+package com.example.firabasefirstexperience.java.activity;
 
 import android.content.Intent;
 
@@ -18,10 +18,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.firabasefirstexperience.adapter.MessageAdapter;
-import com.example.firabasefirstexperience.model.Chat;
-import com.example.firabasefirstexperience.model.User;
+import com.example.firabasefirstexperience.java.adapter.MessageAdapter;
+import com.example.firabasefirstexperience.java.model.Chat;
+import com.example.firabasefirstexperience.java.model.User;
 import com.example.firabasefirstexperience.R;
+import com.example.firabasefirstexperience.kotlin.DiffProfileActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -54,7 +55,7 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat);
+
 
         profileImageChat = findViewById(R.id.profileImage_Chat);
         tv_UserName = findViewById(R.id.tv_UserName);
@@ -112,8 +113,6 @@ public class ChatActivity extends AppCompatActivity {
         fb_User = FirebaseAuth.getInstance().getCurrentUser();
 
         reference = FirebaseDatabase.getInstance().getReference("Users").child(userId);
-
-
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

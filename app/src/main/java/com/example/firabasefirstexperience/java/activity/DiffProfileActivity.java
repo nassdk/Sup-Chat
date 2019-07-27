@@ -1,4 +1,4 @@
-package com.example.firabasefirstexperience.activity;
+package com.example.firabasefirstexperience.java.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.firabasefirstexperience.R;
-import com.example.firabasefirstexperience.model.User;
+import com.example.firabasefirstexperience.java.model.User;
 import com.github.clans.fab.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,7 +34,6 @@ public class DiffProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_diff_profile);
 
         tvDifProfile_Name = findViewById(R.id.tvDifProfile_Name);
         ImageButton ibDifProfile_back = findViewById(R.id.ibDifProfile_back);

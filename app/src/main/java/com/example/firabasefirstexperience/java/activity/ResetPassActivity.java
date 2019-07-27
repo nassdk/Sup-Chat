@@ -1,4 +1,4 @@
-package com.example.firabasefirstexperience.activity;
+package com.example.firabasefirstexperience.java.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,14 +25,13 @@ public class ResetPassActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reset_pass);
 
         etEmailReset = findViewById(R.id.etEmailReset);
         Button butReset = findViewById(R.id.butReset);
 
 
-        Toolbar toolbar = findViewById(R.id.toolBarForResetPass);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = findViewById(R.id.toolBarForResetPass);
+        //setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Reset Password");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

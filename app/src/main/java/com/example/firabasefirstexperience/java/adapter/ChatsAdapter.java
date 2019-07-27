@@ -1,4 +1,4 @@
-package com.example.firabasefirstexperience.adapter;
+package com.example.firabasefirstexperience.java.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.firabasefirstexperience.R;
-import com.example.firabasefirstexperience.activity.ChatActivity;
-import com.example.firabasefirstexperience.model.User;
+import com.example.firabasefirstexperience.java.model.User;
+import com.example.firabasefirstexperience.kotlin.ChatActivity;
 
 import java.util.List;
 

@@ -6,7 +6,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity"
+    tools:context=".java.activity.MainActivity"
     tools:openDrawer="start">
 
     <LinearLayout
@@ -51,7 +51,7 @@
 
         <fragment
             android:id="@+id/fragment_chats"
-            android:name="com.example.firabasefirstexperience.fragments.ChatsFragment"
+            android:name="com.example.firabasefirstexperience.java.fragments.ChatsFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>

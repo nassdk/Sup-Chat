@@ -1,4 +1,4 @@
-package com.example.firabasefirstexperience.fragments;
+package com.example.firabasefirstexperience.java.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,10 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import com.example.firabasefirstexperience.activity.SearchActivity;
-import com.example.firabasefirstexperience.adapter.ChatsAdapter;
-import com.example.firabasefirstexperience.model.Chat;
-import com.example.firabasefirstexperience.model.User;
+import com.example.firabasefirstexperience.java.activity.SearchActivity;
+import com.example.firabasefirstexperience.java.adapter.ChatsAdapter;
+import com.example.firabasefirstexperience.java.model.Chat;
+import com.example.firabasefirstexperience.java.model.User;
 import com.example.firabasefirstexperience.R;
 import com.github.clans.fab.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
