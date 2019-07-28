@@ -14,10 +14,10 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.example.firabasefirstexperience.java.activity.SearchActivity;
-import com.example.firabasefirstexperience.java.adapter.ChatsAdapter;
 import com.example.firabasefirstexperience.java.model.Chat;
 import com.example.firabasefirstexperience.java.model.User;
 import com.example.firabasefirstexperience.R;
+import com.example.firabasefirstexperience.kotlin.ChatsAdapterkt;
 import com.github.clans.fab.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,7 +34,7 @@ import java.util.List;
 public class ChatsFragment extends Fragment {
 
     private RecyclerView recView_displayChats;
-    private ChatsAdapter chatsAdapter;
+    private ChatsAdapterkt chatsAdapter;
     private List<User> mUsers;
 
     private FirebaseUser fuser;
@@ -138,7 +138,7 @@ public class ChatsFragment extends Fragment {
                     }
                 }
 
-                chatsAdapter = new ChatsAdapter(getContext(), mUsers);
+                chatsAdapter = new ChatsAdapterkt(mUsers);
                 recView_displayChats.setAdapter(chatsAdapter);
             }
 

@@ -1,19 +1,16 @@
-package com.example.firabasefirstexperience.kotlin
+package com.example.firabasefirstexperience.kotlin.activity
 
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import com.example.firabasefirstexperience.R
 import com.example.firabasefirstexperience.java.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_register_acitivty.*
 import kotlinx.android.synthetic.main.bar_layout.*
-import kotlinx.android.synthetic.main.bar_layout.view.*
-import kotlinx.android.synthetic.main.bar_layout.view.tbForRegisterActivity
 
 class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 

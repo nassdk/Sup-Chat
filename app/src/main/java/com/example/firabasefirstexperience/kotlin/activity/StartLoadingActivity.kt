@@ -1,4 +1,4 @@
-package com.example.firabasefirstexperience.kotlin
+package com.example.firabasefirstexperience.kotlin.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -19,7 +19,7 @@ class StartLoadingActivity : AppCompatActivity() {
 
         Handler().postDelayed({
             if (user != null) {
-                val intent = Intent(this@StartLoadingActivity, com.example.firabasefirstexperience.kotlin.MainActivity::class.java)
+                val intent = Intent(this@StartLoadingActivity, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {

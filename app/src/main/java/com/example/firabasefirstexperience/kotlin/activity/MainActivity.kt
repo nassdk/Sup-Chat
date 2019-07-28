@@ -1,4 +1,4 @@
-package com.example.firabasefirstexperience.kotlin
+package com.example.firabasefirstexperience.kotlin.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,6 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.bumptech.glide.Glide
 import com.example.firabasefirstexperience.R
-import com.example.firabasefirstexperience.java.activity.ProfileActivity
 import com.example.firabasefirstexperience.java.model.User
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth

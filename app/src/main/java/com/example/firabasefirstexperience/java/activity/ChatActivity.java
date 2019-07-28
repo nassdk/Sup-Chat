@@ -22,7 +22,7 @@ import com.example.firabasefirstexperience.java.adapter.MessageAdapter;
 import com.example.firabasefirstexperience.java.model.Chat;
 import com.example.firabasefirstexperience.java.model.User;
 import com.example.firabasefirstexperience.R;
-import com.example.firabasefirstexperience.kotlin.DiffProfileActivity;
+import com.example.firabasefirstexperience.kotlin.activity.DiffProfileActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -74,6 +74,7 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
 
+
         recView_Chats = findViewById(R.id.recView_Chats);
         recView_Chats.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false);
@@ -108,6 +109,7 @@ public class ChatActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
 
         fb_User = FirebaseAuth.getInstance().getCurrentUser();

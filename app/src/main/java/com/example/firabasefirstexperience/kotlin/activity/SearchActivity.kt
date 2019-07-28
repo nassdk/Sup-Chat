@@ -1,4 +1,4 @@
-package com.example.firabasefirstexperience.kotlin
+package com.example.firabasefirstexperience.kotlin.activity
 
 import android.os.Bundle
 import android.view.Menu

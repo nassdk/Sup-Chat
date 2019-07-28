@@ -16,11 +16,11 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".kotlin.ResetPassActivity"
-            android:parentActivityName=".kotlin.LoginActivity">
+        <activity android:name=".kotlin.activity.ResetPassActivity"
+            android:parentActivityName=".kotlin.activity.LoginActivity">
         </activity>
 
-        <activity android:name=".kotlin.StartLoadingActivity">
+        <activity android:name=".kotlin.activity.StartLoadingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,32 +31,32 @@
         <activity android:name=".java.activity.SearchActivity" />
 
         <activity
-            android:name=".kotlin.DiffProfileActivity"
+            android:name=".kotlin.activity.DiffProfileActivity"
             android:parentActivityName=".java.activity.ChatActivity" />
 
         <activity
-            android:name=".kotlin.SearchActivity"
+            android:name=".kotlin.activity.SearchActivity"
             android:parentActivityName=".java.activity.ChatActivity" />
 
         <activity
-            android:name=".kotlin.ChatActivity"
-            android:parentActivityName=".kotlin.MainActivity" />
+            android:name=".kotlin.activity.ChatActivity"
+            android:parentActivityName=".kotlin.activity.MainActivity" />
 
         <activity
-            android:name=".kotlin.LoginActivity"
-            android:parentActivityName=".kotlin.StartActivity" />
+            android:name=".kotlin.activity.LoginActivity"
+            android:parentActivityName=".kotlin.activity.StartActivity" />
 
         <activity
-            android:name=".kotlin.MainActivity"
+            android:name=".kotlin.activity.MainActivity"
             android:label="Sup Chat"
-            android:parentActivityName=".kotlin.StartActivity" />
+            android:parentActivityName=".kotlin.activity.StartActivity" />
 
         <activity
-            android:name=".kotlin.RegisterActivity"
-            android:parentActivityName=".kotlin.StartActivity" />
+            android:name=".kotlin.activity.RegisterActivity"
+            android:parentActivityName=".kotlin.activity.StartActivity" />
 
-        <activity android:name=".kotlin.StartActivity" />
-        <activity android:name=".kotlin.ProfileActivity"/>
+        <activity android:name=".kotlin.activity.StartActivity" />
+        <activity android:name=".kotlin.activity.ProfileActivity"/>
     </application>
 
 </manifest>

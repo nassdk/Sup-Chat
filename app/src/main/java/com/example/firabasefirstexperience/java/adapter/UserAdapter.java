@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.firabasefirstexperience.java.model.User;
 import com.example.firabasefirstexperience.R;
-import com.example.firabasefirstexperience.kotlin.DiffProfileActivity;
+import com.example.firabasefirstexperience.kotlin.activity.DiffProfileActivity;
 
 
 import java.util.List;

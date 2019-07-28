@@ -1,4 +1,4 @@
-package com.example.firabasefirstexperience.kotlin
+package com.example.firabasefirstexperience.kotlin.activity
 
 import android.content.Intent
 import android.os.Bundle

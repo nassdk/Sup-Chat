@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".kotlin.ResetPassActivity"
+    tools:context=".kotlin.activity.ResetPassActivity"
     android:orientation="vertical">
 
      <include

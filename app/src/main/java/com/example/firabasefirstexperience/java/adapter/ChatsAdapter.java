@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.firabasefirstexperience.R;
 import com.example.firabasefirstexperience.java.model.User;
-import com.example.firabasefirstexperience.kotlin.ChatActivity;
+import com.example.firabasefirstexperience.kotlin.activity.ChatActivity;
 
 import java.util.List;
 
@@ -59,7 +59,7 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ViewHolder> 
 
 
         ViewHolder(View itemView) {
-            super(itemView);
+                super(itemView);
 
             tv_Name = itemView.findViewById(R.id.tv_Name);
             userImage = itemView.findViewById(R.id.userImage);

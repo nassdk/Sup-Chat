@@ -5,7 +5,7 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
-import com.example.firabasefirstexperience.kotlin.StartActivity;
+import com.example.firabasefirstexperience.kotlin.activity.StartActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;

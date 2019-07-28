@@ -1,4 +1,4 @@
-package com.example.firabasefirstexperience.kotlin
+package com.example.firabasefirstexperience.kotlin.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.firabasefirstexperience.R
-import com.example.firabasefirstexperience.java.activity.ChatActivity
 import com.example.firabasefirstexperience.java.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -62,7 +61,7 @@ class DiffProfileActivity : AppCompatActivity() {
         })
 
         fab_message.setOnClickListener {
-            val intent = Intent(this@DiffProfileActivity, com.example.firabasefirstexperience.kotlin.ChatActivity::class.java)
+            val intent = Intent(this@DiffProfileActivity, ChatActivity::class.java)
             intent.putExtra("userId", id)
             startActivity(intent)
         }

@@ -1,11 +1,10 @@
-package com.example.firabasefirstexperience.kotlin
+package com.example.firabasefirstexperience.kotlin.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.firabasefirstexperience.R
-import com.example.firabasefirstexperience.java.activity.LoginActivity
 
 class StartActivity : AppCompatActivity() {
 
@@ -23,7 +22,7 @@ class StartActivity : AppCompatActivity() {
         }
 
         butLog.setOnClickListener {
-            val intent = Intent(this@StartActivity, com.example.firabasefirstexperience.kotlin.LoginActivity::class.java)
+            val intent = Intent(this@StartActivity, LoginActivity::class.java)
             startActivity(intent)
         }
     }

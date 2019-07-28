@@ -1,4 +1,4 @@
-package com.example.firabasefirstexperience.kotlin
+package com.example.firabasefirstexperience.kotlin.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -40,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
                 auth.signInWithEmailAndPassword(textEmail, textPassword)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
-                                val intent = Intent(applicationContext, com.example.firabasefirstexperience.kotlin.MainActivity::class.java)
+                                val intent = Intent(applicationContext, MainActivity::class.java)
                                 startActivity(intent)
                                 Toast.makeText(this@LoginActivity, "Welcome to your Account!", Toast.LENGTH_SHORT).show()
                                 finish()
