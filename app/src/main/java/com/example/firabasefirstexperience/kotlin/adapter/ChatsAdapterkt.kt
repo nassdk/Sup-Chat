@@ -1,4 +1,4 @@
-package com.example.firabasefirstexperience.kotlin
+package com.example.firabasefirstexperience.kotlin.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.firabasefirstexperience.R
-import com.example.firabasefirstexperience.java.model.User
+import com.example.firabasefirstexperience.kotlin.model.User
 import com.example.firabasefirstexperience.kotlin.activity.ChatActivity
 import de.hdodenhof.circleimageview.CircleImageView
 
@@ -48,7 +48,7 @@ class ChatsAdapterkt(private val listUsers: List<User>) : RecyclerView.Adapter<C
                         .into(userImage)
             }
 
-            if(user.status == "online") {
+            if (user.status == "online") {
                 civ_StatusOn.visibility = View.VISIBLE
                 civ_Status_Off.visibility = View.GONE
             } else {

@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firabasefirstexperience.R
-import com.example.firabasefirstexperience.java.adapter.UserAdapter
-import com.example.firabasefirstexperience.java.model.User
+import com.example.firabasefirstexperience.kotlin.model.User
+import com.example.firabasefirstexperience.kotlin.adapter.UserAdapterkt
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -31,8 +31,8 @@ class SearchActivity : AppCompatActivity() {
 
         usersList = ArrayList<User>()
 
-        if(reference != null) {
-            reference.addValueEventListener(object : ValueEventListener{
+        if (reference != null) {
+            reference.addValueEventListener(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError) {
 
                 }
@@ -51,7 +51,7 @@ class SearchActivity : AppCompatActivity() {
                         }
                     }
 
-                    val userAdapter = UserAdapter(this@SearchActivity, usersList)
+                    val userAdapter = UserAdapterkt(usersList as ArrayList<User>)
                     recView_SearchUsers.adapter = userAdapter
 
                 }
@@ -102,12 +102,12 @@ class SearchActivity : AppCompatActivity() {
         val myList = ArrayList<User>()
 
         for (user in usersList!!) {
-            if (user.userName.toLowerCase().contains(newText.toLowerCase())) {
+            if (user.userName?.toLowerCase()!!.contains(newText.toLowerCase())) {
                 myList.add(user)
             }
         }
 
-        val userAdapter = UserAdapter(this@SearchActivity,myList)
+        val userAdapter = UserAdapterkt(myList)
         recView_SearchUsers.adapter = userAdapter
     }
 }

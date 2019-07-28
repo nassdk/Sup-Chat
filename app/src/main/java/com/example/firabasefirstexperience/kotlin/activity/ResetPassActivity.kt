@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.firabasefirstexperience.R
-import com.example.firabasefirstexperience.java.activity.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_reset_pass.*
 import kotlinx.android.synthetic.main.bar_layout.*
@@ -29,7 +28,7 @@ class ResetPassActivity : AppCompatActivity() {
         butReset.setOnClickListener {
             val eMail = etEmailReset.text.toString()
 
-            if(eMail.isEmpty()) {
+            if (eMail.isEmpty()) {
                 Toast.makeText(applicationContext, "Please, write your Email", Toast.LENGTH_SHORT).show()
             } else run {
                 auth?.sendPasswordResetEmail(eMail)?.addOnCompleteListener { task ->

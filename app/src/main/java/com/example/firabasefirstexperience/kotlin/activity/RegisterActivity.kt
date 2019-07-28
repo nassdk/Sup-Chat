@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.firabasefirstexperience.R
-import com.example.firabasefirstexperience.java.model.User
+import com.example.firabasefirstexperience.kotlin.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_register_acitivty.*
@@ -63,7 +63,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun register(textEmail: String, textPassword: String, textUserName: String, imageURL: String, status: String) {
         auth?.createUserWithEmailAndPassword(textEmail, textPassword)?.addOnCompleteListener { task ->
-            if(task.isSuccessful){
+            if (task.isSuccessful) {
                 Toast.makeText(applicationContext, "User Successfully Registered", Toast.LENGTH_SHORT).show()
 
                 reference?.addValueEventListener(object : ValueEventListener {
@@ -82,8 +82,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
                 })
 
                 finish()
-        }
-            else {
+            } else {
                 Toast.makeText(applicationContext, "An error occurred, please try later", Toast.LENGTH_LONG).show()
             }
         }

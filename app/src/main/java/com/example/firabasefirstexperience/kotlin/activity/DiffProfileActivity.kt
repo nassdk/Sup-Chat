@@ -6,7 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.firabasefirstexperience.R
-import com.example.firabasefirstexperience.java.model.User
+import com.example.firabasefirstexperience.kotlin.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -29,7 +29,7 @@ class DiffProfileActivity : AppCompatActivity() {
         val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
         val reference: DatabaseReference? = FirebaseDatabase.getInstance().getReference("Users").child(id)
 
-        reference?.addValueEventListener(object: ValueEventListener {
+        reference?.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
 
             }
@@ -37,17 +37,17 @@ class DiffProfileActivity : AppCompatActivity() {
             override fun onDataChange(p0: DataSnapshot) {
                 val user = p0.getValue(User::class.java)
 
-                if(user != null) {
+                if (user != null) {
                     tvDifProfile_Name.text = user.userName
 
-                    if(!user.status.equals("offline")) {
+                    if (!user.status.equals("offline")) {
                         tvDifProfile_Status.visibility = View.VISIBLE
                     } else {
                         tvDifProfile_Status.visibility = View.GONE
                     }
 
 
-                    if(user.imageURL == "default") {
+                    if (user.imageURL == "default") {
                         ivDifProfile_Image.setImageResource(R.mipmap.ic_launcher_round)
                     } else {
                         Glide

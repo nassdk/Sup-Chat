@@ -10,7 +10,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.bumptech.glide.Glide
 import com.example.firabasefirstexperience.R
-import com.example.firabasefirstexperience.java.model.User
+import com.example.firabasefirstexperience.kotlin.model.User
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -55,14 +55,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             override fun onDataChange(p0: DataSnapshot) {
                 val user = p0.getValue(User::class.java)
 
-                if(user != null) {
+                if (user != null) {
                     navHeader_tvUserName.text = user.userName
                     navHeader_tvEmail.text = user.geteMail()
 
-                    Glide
-                            .with(this@MainActivity)
-                            .load(user.imageURL)
-                            .into(navHeader_ivProfile)
+                    if (user.imageURL == "default") {
+                        navHeader_ivProfile.setImageResource(R.mipmap.ic_launcher_round)
+                    } else {
+                        Glide
+                                .with(this@MainActivity)
+                                .load(user.imageURL)
+                                .into(navHeader_ivProfile)
+                    }
                 }
 
             }

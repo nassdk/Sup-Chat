@@ -17,11 +17,11 @@
         android:theme="@style/Cursor"
         app:popupTheme="@style/MainMenuStyle">
 
-        <ImageButton
-            android:id="@+id/ibSearch_back"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:background="@drawable/imagebut_back"/>
+        <!--<ImageButton-->
+            <!--android:id="@+id/ibSearch_back"-->
+            <!--android:layout_width="28dp"-->
+            <!--android:layout_height="28dp"-->
+            <!--android:background="@drawable/imagebut_back"/>-->
     </androidx.appcompat.widget.Toolbar>
 
 

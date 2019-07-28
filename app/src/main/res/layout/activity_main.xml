@@ -51,7 +51,7 @@
 
         <fragment
             android:id="@+id/fragment_chats"
-            android:name="com.example.firabasefirstexperience.java.fragments.ChatsFragment"
+            android:name="com.example.firabasefirstexperience.kotlin.fragment.ChatsFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>

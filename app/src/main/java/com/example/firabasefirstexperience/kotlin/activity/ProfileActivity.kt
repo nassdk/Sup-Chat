@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.firabasefirstexperience.R
-import com.example.firabasefirstexperience.java.model.User
+import com.example.firabasefirstexperience.kotlin.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -125,10 +125,10 @@ class ProfileActivity : AppCompatActivity() {
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(requestCode == IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
+        if (requestCode == IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
             imageUri = data.data
 
-            if(sTask != null && sTask!!.isInProgress) {
+            if (sTask != null && sTask!!.isInProgress) {
                 Toast.makeText(applicationContext, "Upload in Progress", Toast.LENGTH_SHORT).show()
             } else {
                 uploadImage()

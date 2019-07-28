@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import android.widget.*
 
 import com.bumptech.glide.Glide
-import com.example.firabasefirstexperience.java.adapter.MessageAdapter
-import com.example.firabasefirstexperience.java.model.Chat
-import com.example.firabasefirstexperience.java.model.User
 import com.example.firabasefirstexperience.R
+import com.example.firabasefirstexperience.kotlin.model.User
+import com.example.firabasefirstexperience.kotlin.model.Chat
+import com.example.firabasefirstexperience.kotlin.adapter.MessageAdapterkt
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
@@ -33,7 +33,7 @@ class ChatActivity : AppCompatActivity() {
     private var fb_User: FirebaseUser? = null
     private var reference: DatabaseReference? = null
 
-    private var messageAdapter: MessageAdapter? = null
+    private var messageAdapter: MessageAdapterkt? = null
     private var listOfChats: List<Chat>? = null
 
     private var recView_Chats: RecyclerView? = null
@@ -142,7 +142,7 @@ class ChatActivity : AppCompatActivity() {
                         if (chat.receiver == myId && chat.sender == userId || chat.receiver == userId && chat.sender == myId) {
                             (listOfChats as ArrayList<Chat>).add(chat)
 
-                            messageAdapter = MessageAdapter(this@ChatActivity, listOfChats)
+                            messageAdapter = MessageAdapterkt(listOfChats as ArrayList<Chat>)
                             recView_Chats?.adapter = messageAdapter
                         }
                     }
