@@ -30,7 +30,7 @@
 
         <fragment
             android:id="@+id/fragment_chats"
-            android:name="com.example.firabasefirstexperience.kotlin.presentation.lastchats.ui.ChatsFragment"
+            android:name="com.nassdk.supchat.presentation.lastchats.ui.ChatsFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>
