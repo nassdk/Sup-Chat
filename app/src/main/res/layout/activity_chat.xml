@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".java.activity.ChatActivity"
     android:background="#FFFFFF">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -32,11 +30,11 @@
                 android:id="@+id/tv_UserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/username1"
+                android:layout_marginStart="30dp"
                 android:textColor="@color/colorWhite"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                android:layout_marginStart="30dp"/>
+                tools:text="@string/username1" />
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -47,8 +45,8 @@
         android:id="@+id/recView_Chats"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/bar_layout"
         android:layout_above="@+id/layoutRelative_message"
+        android:layout_below="@id/bar_layout"
         android:layout_centerVertical="false">
 
     </androidx.recyclerview.widget.RecyclerView>
@@ -58,21 +56,19 @@
         android:id="@+id/layoutRelative_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:background="#FFFFFF"
         android:layout_alignParentBottom="true"
-        >
+        android:background="#FFFFFF"
+        android:padding="5dp">
 
         <EditText
             android:id="@+id/et_Message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toStartOf="@id/but_Send"
             android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/but_Send"
             android:background="@android:color/transparent"
             android:hint="@string/messagetextRes"
-            android:textCursorDrawable="@drawable/cursor_color"
-            />
+            android:textCursorDrawable="@drawable/cursor_color" />
 
         <ImageButton
             android:id="@+id/but_Send"
@@ -80,8 +76,7 @@
             android:layout_height="35dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:background="@drawable/imagebut_send"
-            />
+            android:background="@drawable/imagebut_send" />
 
     </RelativeLayout>
 

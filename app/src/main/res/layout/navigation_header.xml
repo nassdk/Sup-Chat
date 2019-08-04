@@ -1,40 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:background="@drawable/space"
     android:gravity="bottom"
+    android:orientation="vertical"
     android:padding="16dp">
-    
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/navHeader_ivProfile"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@mipmap/ic_launcher_round"/>
+        android:src="@mipmap/ic_launcher_round" />
 
     <TextView
-        android:text="name"
-        android:textSize="25sp"
-        android:textColor="@color/colorWhite"
-        android:textStyle="bold"
         android:id="@+id/navHeader_tvUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="3dp"
         android:paddingStart="5dp"
-        />
+        android:paddingTop="3dp"
+        android:paddingEnd="0dp"
+        android:textColor="@color/colorWhite"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        tools:text="name" />
 
     <TextView
         android:id="@+id/navHeader_tvEmail"
-        android:text="eMail"
-        android:textSize="15sp"
-        android:textColor="@color/colorWhite"
-        android:textStyle="italic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingStart="5dp"
         android:paddingTop="3dp"
-        android:paddingStart="5dp"/>
+        android:paddingEnd="0dp"
+        android:textColor="@color/colorWhite"
+        android:textSize="15sp"
+        android:textStyle="italic"
+        tools:text="eMail" />
 
 </LinearLayout>

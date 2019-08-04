@@ -36,5 +36,7 @@
     <string name="forgot_your_password">Forgot your password?</string>
     <string name="reset_email">Type in your Email</string>
     <string name="reset">RESET</string>
+    <string name="user_reg_success_msg">User Successfully Registered! Please Enter in your Profile</string>
+    <string name="user_reg_failure_msg">Something went wrong. Please use different email address or try later</string>
 
 </resources>

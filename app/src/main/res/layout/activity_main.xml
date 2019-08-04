@@ -6,7 +6,6 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".java.activity.MainActivity"
     tools:openDrawer="start">
 
     <LinearLayout
@@ -27,31 +26,11 @@
                 android:theme="@style/Cursor"
                 app:popupTheme="@style/MainMenuStyle">
             </androidx.appcompat.widget.Toolbar>
-
-
-            <!--<com.google.android.material.tabs.TabLayout-->
-                <!--android:id="@+id/tabLayout_MainActivity"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:background="@color/colorWhite"-->
-                <!--app:tabSelectedTextColor="@color/colorMyColor"-->
-                <!--app:tabIndicatorColor="@color/colorMyColor"-->
-                <!--app:tabTextColor="@color/colorMyColor">-->
-            <!--</com.google.android.material.tabs.TabLayout>-->
-
-            <!--<androidx.viewpager.widget.ViewPager-->
-                <!--android:id="@+id/vP_MainActivity"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:background="#FFFFFF"-->
-                <!--app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
-
-            <!--</androidx.viewpager.widget.ViewPager>-->
         </com.google.android.material.appbar.AppBarLayout>
 
         <fragment
             android:id="@+id/fragment_chats"
-            android:name="com.example.firabasefirstexperience.kotlin.fragment.ChatsFragment"
+            android:name="com.example.firabasefirstexperience.kotlin.presentation.lastchats.ui.ChatsFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>

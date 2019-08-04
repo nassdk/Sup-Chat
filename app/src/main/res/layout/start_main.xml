@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".java.activity.StartActivity"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
@@ -19,31 +17,25 @@
         android:id="@+id/butRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sign_up"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
-        android:textSize="15sp"
         android:background="@color/colorMyColor"
+        android:text="@string/sign_up"
         android:textColor="@color/colorWhite"
-        />
+        android:textSize="15sp" />
+
     <Button
         android:id="@+id/butLog"
-        android:textSize="15sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/log_in"
-        android:background="@color/colorMyColor"
-        android:textColor="@color/colorWhite"
-        android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"/>
-
-
-
-
-
-
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/colorMyColor"
+        android:text="@string/log_in"
+        android:textColor="@color/colorWhite"
+        android:textSize="15sp" />
 
 
 </LinearLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.firabasefirstexperience">
 
@@ -16,11 +17,11 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name="com.example.firabasefirstexperience.kotlin.activity.ResetPassActivity"
-            android:parentActivityName="com.example.firabasefirstexperience.kotlin.activity.LoginActivity">
+        <activity android:name=".kotlin.presentation.resetpassword.ui.ResetPassActivity"
+            android:parentActivityName=".kotlin.presentation.login.ui.LoginActivity">
         </activity>
 
-        <activity android:name="com.example.firabasefirstexperience.kotlin.activity.StartLoadingActivity">
+        <activity android:name=".kotlin.presentation.StartLoadingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,32 +30,31 @@
         </activity>
 
         <activity
-            android:name="com.example.firabasefirstexperience.kotlin.activity.DiffProfileActivity"
-            android:parentActivityName="com.example.firabasefirstexperience.kotlin.activity.ChatActivity" />
+            android:name=".kotlin.presentation.diffprofile.ui.DiffProfileActivity"
+            android:parentActivityName=".kotlin.presentation.chat.ui.ChatActivity" />
 
         <activity
-            android:name="com.example.firabasefirstexperience.kotlin.activity.SearchActivity"
-            android:parentActivityName="com.example.firabasefirstexperience.kotlin.activity.ChatActivity" />
+            android:name=".kotlin.presentation.searchusers.ui.SearchActivity"
+            android:parentActivityName=".kotlin.presentation.chat.ui.ChatActivity" />
 
         <activity
-            android:name="com.example.firabasefirstexperience.kotlin.activity.ChatActivity"
-            android:parentActivityName="com.example.firabasefirstexperience.kotlin.activity.MainActivity" />
+            android:name=".kotlin.presentation.chat.ui.ChatActivity"
+            android:parentActivityName=".kotlin.presentation.main.ui.MainActivity" />
 
         <activity
-            android:name="com.example.firabasefirstexperience.kotlin.activity.LoginActivity"
-            android:parentActivityName="com.example.firabasefirstexperience.kotlin.activity.StartActivity" />
+            android:name=".kotlin.presentation.login.ui.LoginActivity"
+            android:parentActivityName=".kotlin.presentation.startscreen.ui.StartActivity" />
 
         <activity
-            android:name="com.example.firabasefirstexperience.kotlin.activity.MainActivity"
-            android:label="Sup Chat"
-            android:parentActivityName="com.example.firabasefirstexperience.kotlin.activity.StartActivity" />
+            android:name=".kotlin.presentation.main.ui.MainActivity"
+            android:label="Sup Chat"/>
 
         <activity
-            android:name="com.example.firabasefirstexperience.kotlin.activity.RegisterActivity"
-            android:parentActivityName="com.example.firabasefirstexperience.kotlin.activity.StartActivity" />
+            android:name=".kotlin.presentation.registerscreen.ui.RegisterActivity"
+            android:parentActivityName=".kotlin.presentation.startscreen.ui.StartActivity" />
 
-        <activity android:name="com.example.firabasefirstexperience.kotlin.activity.StartActivity" />
-        <activity android:name="com.example.firabasefirstexperience.kotlin.activity.ProfileActivity"/>
+        <activity android:name=".kotlin.presentation.startscreen.ui.StartActivity" />
+        <activity android:name=".kotlin.presentation.profilescreen.ui.ProfileActivity"/>
     </application>
 
 </manifest>

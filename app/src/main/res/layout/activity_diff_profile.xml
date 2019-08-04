@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorMyColor"
-    tools:context=".java.activity.DiffProfileActivity">
+    android:background="@color/colorMyColor">
 
 
     <RelativeLayout
@@ -30,22 +28,22 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="70dp"
             android:layout_toEndOf="@+id/ivDifProfile_Image"
-            android:text="@string/user"
             android:textColor="@color/colorMyColor"
             android:textSize="40sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="@string/user" />
 
         <TextView
             android:id="@+id/tvDifProfile_Status"
-            android:text="Online"
-            android:textColor="@color/blue"
-            android:textStyle="bold"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvDifProfile_Name"
+            android:layout_marginStart="35dp"
             android:layout_toEndOf="@+id/ivDifProfile_Image"
-            android:layout_marginStart="35dp"/>
+            android:text="Online"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            android:visibility="gone" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ivDifProfile_Image"
@@ -76,8 +74,8 @@
         android:layout_marginEnd="20dp"
         android:src="@drawable/messagebut"
         app:fab_colorNormal="#ffff"
-        app:fab_shadowColor="#000000"
         app:fab_colorPressed="#838282"
+        app:fab_shadowColor="#000000"
         app:fab_shadowRadius="4dp"
         app:fab_shadowXOffset="1dp"
         app:fab_shadowYOffset="3dp"

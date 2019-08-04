@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingTop="2dp"
     android:paddingEnd="10dp"
-    android:paddingBottom="5dp"
-    android:paddingTop="2dp">
+    android:paddingBottom="5dp">
 
     <RelativeLayout
         android:layout_width="300dp"
@@ -17,14 +17,13 @@
             android:id="@+id/tv_showMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_right"
-            android:textSize="18sp"
-            android:textColor="@color/colorWhite"
-            android:text="@string/sup_sup"
-            android:padding="8dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            />
+            android:background="@drawable/background_right"
+            android:padding="8dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            tools:text="@string/sup_sup" />
 
 
     </RelativeLayout>

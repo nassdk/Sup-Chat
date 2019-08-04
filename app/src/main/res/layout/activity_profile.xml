@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorMyColor"
-    tools:context=".java.activity.DiffProfileActivity">
+    android:background="@color/colorMyColor">
 
 
     <RelativeLayout
@@ -30,10 +28,10 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="70dp"
             android:layout_toEndOf="@+id/ivProfile_Image"
-            android:text="@string/user"
             android:textColor="@color/colorMyColor"
             android:textSize="40sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="@string/user" />
 
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -43,6 +41,15 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="20dp"
             android:src="@mipmap/ic_launcher_round" />
+
+        <ProgressBar
+            android:id="@+id/spinner"
+            android:theme="@style/progressBarStyle"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:visibility="invisible"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="55dp" />
     </RelativeLayout>
 
 
@@ -62,8 +69,8 @@
         android:layout_marginEnd="20dp"
         android:src="@drawable/photo_but"
         app:fab_colorNormal="#ffff"
-        app:fab_shadowColor="#000000"
         app:fab_colorPressed="#838282"
+        app:fab_shadowColor="#000000"
         app:fab_shadowRadius="4dp"
         app:fab_shadowXOffset="1dp"
         app:fab_shadowYOffset="3dp"
