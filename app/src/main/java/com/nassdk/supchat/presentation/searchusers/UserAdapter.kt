@@ -14,7 +14,7 @@ import de.hdodenhof.circleimageview.CircleImageView
 
 class UserAdapter(private var listUsers: List<User>) : RecyclerView.Adapter<UserAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.user_item, parent, false)
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.search_user_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -29,8 +29,8 @@ class UserAdapter(private var listUsers: List<User>) : RecyclerView.Adapter<User
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private var tv_Name: TextView? = itemView.findViewById(R.id.tv_Name)
-        private var userImage: CircleImageView? = itemView.findViewById(R.id.userImage)
+        private var tv_Name: TextView? = itemView.findViewById(R.id.tv_userName)
+        private var userImage: CircleImageView? = itemView.findViewById(R.id.civ_userImage)
 
         fun bind(user: User) {
             tv_Name?.text = user.userName
