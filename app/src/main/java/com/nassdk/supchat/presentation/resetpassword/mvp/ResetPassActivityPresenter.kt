@@ -1,8 +1,10 @@
 package com.nassdk.supchat.presentation.resetpassword.mvp
 
+import android.content.Context
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.google.firebase.auth.FirebaseAuth
+import com.nassdk.supchat.network.isNetworkAvailable
 
 @InjectViewState
 class ResetPassActivityPresenter : MvpPresenter<ResetPassActivityView>() {
@@ -24,5 +26,13 @@ class ResetPassActivityPresenter : MvpPresenter<ResetPassActivityView>() {
                 }
             }
         }
+    }
+
+    fun checkInternetConnection(context: Context) : Boolean {
+        if(!isNetworkAvailable(context)) {
+            viewState.showDialog()
+            return true
+        }
+        return false
     }
 }

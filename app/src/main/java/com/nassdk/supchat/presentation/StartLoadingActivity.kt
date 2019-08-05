@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import com.arellomobile.mvp.MvpAppCompatActivity
-import com.nassdk.supchat.R
 import com.nassdk.supchat.presentation.startscreen.ui.StartActivity
+
 
 class StartLoadingActivity : MvpAppCompatActivity() {
 
@@ -13,7 +13,7 @@ class StartLoadingActivity : MvpAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_start_loading)
+        setContentView(com.nassdk.supchat.R.layout.activity_start_loading)
 
         //val fireBaseUser = FirebaseAuth.getInstance().currentUser
         Handler().postDelayed({

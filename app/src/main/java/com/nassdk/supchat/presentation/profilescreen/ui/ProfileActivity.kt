@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.Glide
@@ -76,7 +77,10 @@ class ProfileActivity : MvpAppCompatActivity(), ProfileActivityView {
             }
         })
         fab_photo.setOnClickListener {
-            openImage()
+            if (presenter.checkInternetConnection(context = applicationContext)) {
+            } else {
+                openImage()
+            }
         }
     }
 
@@ -105,6 +109,18 @@ class ProfileActivity : MvpAppCompatActivity(), ProfileActivityView {
 
     override fun uploadInProgress() {
         Toast.makeText(applicationContext, "Upload in Progress", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun showDialog() {
+        val builder = AlertDialog.Builder(this@ProfileActivity)
+        builder.setTitle("Warning!")
+                .setMessage("Your device is not connected to Internet. Please, try later")
+                .setIcon(R.drawable.ic_warning)
+                .setCancelable(false)
+                .setNegativeButton("Exit"
+                ) { _, _ -> finish() }
+        val alert = builder.create()
+        alert.show()
     }
 
     private fun openImage() {

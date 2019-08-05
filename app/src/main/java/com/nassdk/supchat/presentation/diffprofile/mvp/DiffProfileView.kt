@@ -5,4 +5,5 @@ import com.arellomobile.mvp.MvpView
 interface DiffProfileView : MvpView {
 
     fun openChat()
+    fun showDialog()
 }

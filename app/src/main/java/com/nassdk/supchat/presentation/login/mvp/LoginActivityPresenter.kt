@@ -1,8 +1,10 @@
 package com.nassdk.supchat.presentation.login.mvp
 
+import android.content.Context
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.google.firebase.auth.FirebaseAuth
+import com.nassdk.supchat.network.isNetworkAvailable
 
 @InjectViewState
 class LoginActivityPresenter : MvpPresenter<LoginActivityView>() {
@@ -28,5 +30,13 @@ class LoginActivityPresenter : MvpPresenter<LoginActivityView>() {
 
     fun userResetPass() {
         viewState.openResetPass()
+    }
+
+    fun checkInternetConnection(context: Context) : Boolean {
+        if(!isNetworkAvailable(context)) {
+            viewState.showDialog()
+            return true
+        }
+        return false
     }
 }

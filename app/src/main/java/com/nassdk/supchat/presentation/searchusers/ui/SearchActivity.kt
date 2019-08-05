@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.SearchView
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.arellomobile.mvp.MvpAppCompatActivity
@@ -76,5 +77,4 @@ class SearchActivity : MvpAppCompatActivity(), SearchActivityView {
         val userAdapter = UserAdapter(usersList)
         recView_SearchUsers.adapter = userAdapter
     }
-
 }

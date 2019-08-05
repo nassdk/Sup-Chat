@@ -3,6 +3,7 @@ package com.nassdk.supchat.presentation.resetpassword.ui
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.nassdk.supchat.R
@@ -35,7 +36,10 @@ class ResetPassActivity : MvpAppCompatActivity(), ResetPassActivityView {
         auth = FirebaseAuth.getInstance()
 
         butReset.setOnClickListener {
-            presenter.resetPassword(etEmailReset.text.toString())
+            if (presenter.checkInternetConnection(context = applicationContext)) {
+            } else {
+                presenter.resetPassword(etEmailReset.text.toString())
+            }
         }
     }
 
@@ -53,6 +57,17 @@ class ResetPassActivity : MvpAppCompatActivity(), ResetPassActivityView {
 
     override fun showError(error: String?) {
         Toast.makeText(applicationContext, error, Toast.LENGTH_LONG).show()
+    }
 
+    override fun showDialog() {
+        val builder = AlertDialog.Builder(this@ResetPassActivity)
+        builder.setTitle("Warning!")
+                .setMessage("Your device is not connected to Internet. Please, try later")
+                .setIcon(R.drawable.ic_warning)
+                .setCancelable(false)
+                .setNegativeButton("Exit"
+                ) { _, _ -> finish() }
+        val alert = builder.create()
+        alert.show()
     }
 }

@@ -3,6 +3,7 @@ package com.nassdk.supchat.presentation.diffprofile.ui
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.Glide
@@ -78,7 +79,24 @@ class DiffProfileActivity : MvpAppCompatActivity(), DiffProfileView, View.OnClic
 
         when (v?.id) {
             R.id.ibDifProfile_back -> finish()
-            R.id.fab_message -> presenter.toChat()
+            R.id.fab_message -> {
+                if (presenter.checkInternetConnection(context = applicationContext)) {
+                } else {
+                    presenter.toChat()
+                }
+            }
         }
+    }
+
+    override fun showDialog() {
+        val builder = AlertDialog.Builder(this@DiffProfileActivity)
+        builder.setTitle("Warning!")
+                .setMessage("Your device is not connected to Internet. Please, try later")
+                .setIcon(R.drawable.ic_warning)
+                .setCancelable(false)
+                .setNegativeButton("Exit"
+                ) { _, _ -> finish() }
+        val alert = builder.create()
+        alert.show()
     }
 }

@@ -1,5 +1,6 @@
 package com.nassdk.supchat.presentation.chat.mvp
 
+import android.content.Context
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.nassdk.supchat.model.Chat
@@ -8,10 +9,19 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.nassdk.supchat.network.isNetworkAvailable
 import java.util.ArrayList
 
 @InjectViewState
 class ChatActivityPresenter : MvpPresenter<ChatActivityView>() {
+
+    fun checkInternetConnection(context: Context) : Boolean {
+        if(!isNetworkAvailable(context)) {
+            viewState.showDialog()
+            return true
+        }
+        return false
+    }
 
     fun toDiffProfile() {
         viewState.toDiffProfile()

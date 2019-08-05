@@ -1,5 +1,6 @@
 package com.nassdk.supchat.presentation.profilescreen.mvp
 
+import android.content.Context
 import android.net.Uri
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
@@ -10,6 +11,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
+import com.nassdk.supchat.network.isNetworkAvailable
 import java.util.HashMap
 
 @Suppress("INACCESSIBLE_TYPE")
@@ -21,6 +23,14 @@ class ProfileActivityPresenter : MvpPresenter<ProfileActivityView>() {
     private lateinit var storage: StorageReference
     private var sTask: StorageTask<*>? = null
 
+
+    fun checkInternetConnection(context: Context) : Boolean {
+        if(!isNetworkAvailable(context)) {
+            viewState.showDialog()
+            return true
+        }
+        return false
+    }
 
     fun uploadImage(imageUri: Uri) {
         storage = FirebaseStorage.getInstance().getReference("Uploads")

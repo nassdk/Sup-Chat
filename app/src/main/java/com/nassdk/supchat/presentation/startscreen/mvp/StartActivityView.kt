@@ -6,4 +6,5 @@ interface StartActivityView : MvpView {
 
     fun openRegister()
     fun openLogin()
+    fun showDialog()
 }

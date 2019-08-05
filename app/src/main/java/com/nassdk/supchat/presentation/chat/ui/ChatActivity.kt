@@ -3,6 +3,7 @@ package com.nassdk.supchat.presentation.chat.ui
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.arellomobile.mvp.MvpAppCompatActivity
@@ -66,7 +67,10 @@ class ChatActivity : MvpAppCompatActivity(), ChatActivityView {
             if (msg.isEmpty()) {
                 presenter.onEmptyError()
             } else {
-                presenter.sendMessage(fbUser.uid, userId, msg)
+                if (presenter.checkInternetConnection(context = applicationContext)) {
+                } else {
+                    presenter.sendMessage(fbUser.uid, userId, msg)
+                }
             }
 
             et_Message.text = null
@@ -98,6 +102,7 @@ class ChatActivity : MvpAppCompatActivity(), ChatActivityView {
                     presenter.readMessage(fbUser.uid, userId)
                 }
             }
+
             override fun onCancelled(databaseError: DatabaseError) {
             }
         })
@@ -119,5 +124,17 @@ class ChatActivity : MvpAppCompatActivity(), ChatActivityView {
     override fun setAdapter(listOfChats: ArrayList<Chat>) {
         messageAdapter = MessageAdapter(listOfChats)
         recView_Chats?.adapter = messageAdapter
+    }
+
+    override fun showDialog() {
+        val builder = AlertDialog.Builder(this@ChatActivity)
+        builder.setTitle("Warning!")
+                .setMessage("Your device is not connected to Internet. Please, try later")
+                .setIcon(R.drawable.ic_warning)
+                .setCancelable(false)
+                .setNegativeButton("Exit"
+                ) { _, _ -> finish() }
+        val alert = builder.create()
+        alert.show()
     }
 }

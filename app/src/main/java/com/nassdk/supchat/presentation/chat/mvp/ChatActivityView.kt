@@ -9,4 +9,5 @@ interface ChatActivityView : MvpView {
     fun showEmptyError()
     fun toDiffProfile()
     fun setAdapter(listOfChats: ArrayList<Chat>)
+    fun showDialog()
 }

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.nassdk.supchat.R
@@ -38,7 +39,10 @@ class LoginActivity : MvpAppCompatActivity(), LoginActivityView {
             if (TextUtils.isEmpty(textEmail) || TextUtils.isEmpty(textPassword)) {
                 presenter.onEmptyError()
             } else {
-                presenter.userLog(textEmail, textPassword)
+                if (presenter.checkInternetConnection(context = applicationContext)) {
+                } else {
+                    presenter.userLog(textEmail, textPassword)
+                }
             }
         }
 
@@ -66,5 +70,17 @@ class LoginActivity : MvpAppCompatActivity(), LoginActivityView {
     override fun openMain() {
         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
         finish()
+    }
+
+    override fun showDialog() {
+        val builder = AlertDialog.Builder(this@LoginActivity)
+        builder.setTitle("Warning!")
+                .setMessage("Your device is not connected to Internet. Please, try later")
+                .setIcon(R.drawable.ic_warning)
+                .setCancelable(false)
+                .setNegativeButton("Exit"
+                ) { _, _ -> finish() }
+        val alert = builder.create()
+        alert.show()
     }
 }

@@ -3,6 +3,7 @@ package com.nassdk.supchat.presentation.startscreen.ui
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.nassdk.supchat.R
@@ -24,13 +25,25 @@ class StartActivity : MvpAppCompatActivity(), StartActivityView, View.OnClickLis
 
         butLog.setOnClickListener(this)
         butRegister.setOnClickListener(this)
+
     }
 
     override fun onClick(v: View?) {
 
         when (v?.id) {
-            R.id.butLog -> presenter.toLoginActivity()
-            R.id.butRegister -> presenter.toRegisterActivity()
+            R.id.butLog -> {
+                if (presenter.checkInternetConnection(applicationContext)) {
+                } else {
+                    presenter.toLoginActivity()
+                }
+            }
+            R.id.butRegister -> {
+                if (presenter.checkInternetConnection(context = applicationContext)) {
+                } else {
+                    presenter.toRegisterActivity()
+                }
+            }
+
         }
     }
 
@@ -40,5 +53,17 @@ class StartActivity : MvpAppCompatActivity(), StartActivityView, View.OnClickLis
 
     override fun openLogin() {
         startActivity(Intent(this@StartActivity, LoginActivity::class.java))
+    }
+
+    override fun showDialog() {
+        val builder = AlertDialog.Builder(this@StartActivity)
+        builder.setTitle("Warning!")
+                .setMessage("Your device is not connected to Internet. Please, try later")
+                .setIcon(R.drawable.ic_warning)
+                .setCancelable(false)
+                .setNegativeButton("Exit"
+                ) { _, _ -> finish() }
+        val alert = builder.create()
+        alert.show()
     }
 }

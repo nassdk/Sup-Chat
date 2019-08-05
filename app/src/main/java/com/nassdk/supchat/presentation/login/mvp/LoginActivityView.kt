@@ -8,4 +8,5 @@ interface LoginActivityView : MvpView {
     fun showAuthError()
     fun openResetPass()
     fun openMain()
+    fun showDialog()
 }

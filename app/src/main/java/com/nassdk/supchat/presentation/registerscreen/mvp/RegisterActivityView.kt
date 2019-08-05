@@ -5,4 +5,5 @@ import com.arellomobile.mvp.MvpView
 interface RegisterActivityView : MvpView {
     fun showEmptyError()
     fun showPassError()
+    fun showDialog()
 }

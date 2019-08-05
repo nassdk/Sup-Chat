@@ -11,5 +11,5 @@ interface ProfileActivityView : MvpView {
     fun showProgress()
     fun hideProgress()
     fun uploadInProgress()
-
+    fun showDialog()
 }
