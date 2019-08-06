@@ -1,4 +1,4 @@
-package com.nassdk.supchat.presentation.chat
+package com.nassdk.supchat.presentation.chat.provider
 
 import com.nassdk.supchat.presentation.chat.mvp.ChatActivityPresenter
 import com.google.firebase.database.FirebaseDatabase

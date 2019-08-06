@@ -1,4 +1,4 @@
-package com.nassdk.supchat.presentation.searchusers
+package com.nassdk.supchat.presentation.searchusers.provider
 
 import com.nassdk.supchat.model.User
 import com.nassdk.supchat.presentation.searchusers.mvp.SearchActivityPresenter

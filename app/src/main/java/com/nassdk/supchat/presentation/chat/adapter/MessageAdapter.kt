@@ -1,4 +1,4 @@
-package com.nassdk.supchat.presentation.chat
+package com.nassdk.supchat.presentation.chat.adapter
 
 import android.view.LayoutInflater
 import android.view.View

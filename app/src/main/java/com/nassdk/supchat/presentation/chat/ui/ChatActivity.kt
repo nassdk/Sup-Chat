@@ -10,7 +10,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.Glide
 import com.nassdk.supchat.R
-import com.nassdk.supchat.presentation.chat.MessageAdapter
+import com.nassdk.supchat.presentation.chat.adapter.MessageAdapter
 import com.nassdk.supchat.model.Chat
 import com.nassdk.supchat.model.User
 import com.nassdk.supchat.presentation.chat.mvp.ChatActivityPresenter

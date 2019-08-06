@@ -1,4 +1,4 @@
-package com.nassdk.supchat.presentation.main
+package com.nassdk.supchat.presentation.main.provider
 
 import com.nassdk.supchat.presentation.main.mvp.MainActivityPresenter
 import com.google.firebase.auth.FirebaseAuth

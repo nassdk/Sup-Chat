@@ -1,4 +1,4 @@
-package com.nassdk.supchat.presentation.lastchats
+package com.nassdk.supchat.presentation.searchusers.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -9,12 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.nassdk.supchat.R
 import com.nassdk.supchat.model.User
-import com.nassdk.supchat.presentation.chat.ui.ChatActivity
+import com.nassdk.supchat.presentation.diffprofile.ui.DiffProfileActivity
 import de.hdodenhof.circleimageview.CircleImageView
 
-
-class ChatsAdapter(private val listUsers: List<User>) : RecyclerView.Adapter<ChatsAdapter.ViewHolder>() {
-
+class UserAdapter(private var listUsers: List<User>) : RecyclerView.Adapter<UserAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.user_item, parent, false)
         return ViewHolder(view)
@@ -31,34 +29,24 @@ class ChatsAdapter(private val listUsers: List<User>) : RecyclerView.Adapter<Cha
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private val tv_Name: TextView = itemView.findViewById(R.id.tv_Name)
-        private val userImage: CircleImageView = itemView.findViewById(R.id.userImage)
-        private val civ_StatusOn: CircleImageView = itemView.findViewById(R.id.civStatus_On)
-        private val civ_Status_Off: CircleImageView = itemView.findViewById(R.id.civStatus_Off)
+        private var tv_Name: TextView? = itemView.findViewById(R.id.tv_Name)
+        private var userImage: CircleImageView? = itemView.findViewById(R.id.userImage)
 
         fun bind(user: User) {
-            tv_Name.text = user.userName
+            tv_Name?.text = user.userName
 
             if (user.imageURL == "default") {
-                userImage.setImageResource(R.mipmap.ic_launcher_round)
+                userImage?.setImageResource(R.mipmap.ic_launcher_round)
             } else {
                 Glide
                         .with(itemView.context)
                         .load(user.imageURL)
-                        .into(userImage)
-            }
-
-            if (user.status == "online") {
-                civ_StatusOn.visibility = View.VISIBLE
-                civ_Status_Off.visibility = View.GONE
-            } else {
-                civ_StatusOn.visibility = View.GONE
-                civ_Status_Off.visibility = View.VISIBLE
+                        .into(userImage!!)
             }
 
             itemView.setOnClickListener {
-                val intent = Intent(itemView.context, ChatActivity::class.java)
-                intent.putExtra("userId", user.id)
+                val intent = Intent(itemView.context, DiffProfileActivity::class.java)
+                intent.putExtra("id", user.id)
                 itemView.context.startActivity(intent)
             }
         }

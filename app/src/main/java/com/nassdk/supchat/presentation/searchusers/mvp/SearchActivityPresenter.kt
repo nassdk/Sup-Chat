@@ -4,7 +4,7 @@ import android.widget.SearchView
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.nassdk.supchat.model.User
-import com.nassdk.supchat.presentation.searchusers.SearchActivityProvider
+import com.nassdk.supchat.presentation.searchusers.provider.SearchActivityProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*

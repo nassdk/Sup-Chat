@@ -4,7 +4,7 @@ import android.content.Context
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.nassdk.supchat.model.Chat
-import com.nassdk.supchat.presentation.chat.ChatActivityProvider
+import com.nassdk.supchat.presentation.chat.provider.ChatActivityProvider
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase

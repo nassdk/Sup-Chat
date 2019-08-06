@@ -4,7 +4,7 @@ import android.content.Context
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.nassdk.supchat.network.isNetworkAvailable
-import com.nassdk.supchat.presentation.registerscreen.RegisterProvider
+import com.nassdk.supchat.presentation.registerscreen.provider.RegisterProvider
 
 @InjectViewState
 class RegisterActivityPresenter : MvpPresenter<RegisterActivityView>() {

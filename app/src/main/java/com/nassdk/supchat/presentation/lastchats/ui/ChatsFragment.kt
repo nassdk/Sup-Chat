@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.nassdk.supchat.R
-import com.nassdk.supchat.presentation.lastchats.ChatsAdapter
+import com.nassdk.supchat.presentation.lastchats.adapter.ChatsAdapter
 import com.nassdk.supchat.model.User
 import com.nassdk.supchat.presentation.lastchats.mvp.ChatsFragmentPresenter
 import com.nassdk.supchat.presentation.lastchats.mvp.ChatsFragmentView

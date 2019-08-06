@@ -1,4 +1,4 @@
-package com.nassdk.supchat.presentation.registerscreen
+package com.nassdk.supchat.presentation.registerscreen.provider
 
 import android.content.Context
 import android.widget.Toast
