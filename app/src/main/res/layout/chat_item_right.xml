@@ -24,8 +24,6 @@
             android:textColor="@color/colorWhite"
             android:textSize="18sp"
             tools:text="@string/sup_sup" />
-
-
     </RelativeLayout>
 
 </RelativeLayout>

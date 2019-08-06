@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:padding="10dp">
 
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/userImage"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:src="@mipmap/ic_launcher_round" />
 
     <TextView
         android:id="@+id/tv_Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/userImage"
-        tools:text="User Amina"
         android:textColor="#000000"
-        android:textSize="20sp" />
+        android:textSize="23sp"
+        tools:text="User Amina" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/civStatus_On"
@@ -37,18 +37,16 @@
         app:civ_border_color="#05df29"
         app:civ_border_width="7dp" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-
-        android:id="@+id/civStatus_Off"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
+    <TextView
+        android:id="@+id/tvLastMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/tv_Name"
-        android:layout_marginStart="-15dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="10dp"
         android:layout_toEndOf="@+id/userImage"
-        android:src="@mipmap/ic_launcher_round"
-        android:visibility="gone"
-        app:civ_border_color="#bfbfbf"
-        app:civ_border_width="7dp" />
+        android:maxLines="1"
+        android:textSize="15sp"
+        android:visibility="visible"
+        tools:text="Hey, Sadyk. How are you" />
 
 </RelativeLayout>
