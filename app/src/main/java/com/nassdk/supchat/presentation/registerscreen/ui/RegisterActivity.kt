@@ -7,22 +7,22 @@ import androidx.appcompat.app.AlertDialog
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.nassdk.supchat.R
-import com.nassdk.supchat.presentation.registerscreen.mvp.RegisterActivityPresenter
-import com.nassdk.supchat.presentation.registerscreen.mvp.RegisterActivityView
+import com.nassdk.supchat.presentation.registerscreen.mvp.RegisterPresenter
+import com.nassdk.supchat.presentation.registerscreen.mvp.RegisterView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_register_acitivty.*
 import kotlinx.android.synthetic.main.bar_layout.*
 
-class RegisterActivity : MvpAppCompatActivity(), RegisterActivityView {
+class RegisterActivity : MvpAppCompatActivity(), RegisterView {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var reference: DatabaseReference
     private lateinit var database: FirebaseDatabase
 
     @InjectPresenter
-    lateinit var registerPresenter: RegisterActivityPresenter
+    lateinit var registerPresenter: RegisterPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

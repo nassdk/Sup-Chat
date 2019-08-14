@@ -10,8 +10,8 @@ import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.Glide
 import com.nassdk.supchat.R
-import com.nassdk.supchat.presentation.main.mvp.MainActivityPresenter
-import com.nassdk.supchat.presentation.main.mvp.MainActivityView
+import com.nassdk.supchat.presentation.main.mvp.MainPresenter
+import com.nassdk.supchat.presentation.main.mvp.MainView
 import com.nassdk.supchat.model.User
 import com.nassdk.supchat.presentation.profilescreen.ui.ProfileActivity
 import com.nassdk.supchat.presentation.startscreen.ui.StartActivity
@@ -22,7 +22,7 @@ import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.navigation_header.*
 
-class MainActivity : MvpAppCompatActivity(), MainActivityView, NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : MvpAppCompatActivity(), MainView, NavigationView.OnNavigationItemSelectedListener {
 
 
     private lateinit var fbUser: FirebaseUser
@@ -30,7 +30,7 @@ class MainActivity : MvpAppCompatActivity(), MainActivityView, NavigationView.On
     private lateinit var drawerLayout: DrawerLayout
 
     @InjectPresenter
-    lateinit var mainPresenter: MainActivityPresenter
+    lateinit var mainPresenter: MainPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

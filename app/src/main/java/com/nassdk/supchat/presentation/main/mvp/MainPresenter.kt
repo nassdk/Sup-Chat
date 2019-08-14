@@ -5,7 +5,7 @@ import com.arellomobile.mvp.MvpPresenter
 import com.nassdk.supchat.presentation.main.provider.MainProvider
 
 @InjectViewState
-class MainActivityPresenter : MvpPresenter<MainActivityView>() {
+class MainPresenter : MvpPresenter<MainView>() {
 
     fun toLogOut() {
         viewState.openStart()

@@ -8,17 +8,17 @@ import androidx.appcompat.app.AlertDialog
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.nassdk.supchat.R
-import com.nassdk.supchat.presentation.login.mvp.LoginActivityPresenter
-import com.nassdk.supchat.presentation.login.mvp.LoginActivityView
+import com.nassdk.supchat.presentation.login.mvp.LoginPresenter
+import com.nassdk.supchat.presentation.login.mvp.LoginView
 import com.nassdk.supchat.presentation.main.ui.MainActivity
 import com.nassdk.supchat.presentation.resetpassword.ui.ResetPassActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.bar_layout.*
 
-class LoginActivity : MvpAppCompatActivity(), LoginActivityView {
+class LoginActivity : MvpAppCompatActivity(), LoginView {
 
     @InjectPresenter
-    lateinit var presenter: LoginActivityPresenter
+    lateinit var presenter: LoginPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

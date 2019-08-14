@@ -16,7 +16,7 @@ import java.util.HashMap
 
 @Suppress("INACCESSIBLE_TYPE")
 @InjectViewState
-class ProfileActivityPresenter : MvpPresenter<ProfileActivityView>() {
+class ProfilePresenter : MvpPresenter<ProfileView>() {
 
     private lateinit var fbUser: FirebaseUser
     private lateinit var reference: DatabaseReference

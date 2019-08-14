@@ -9,7 +9,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.Glide
 import com.nassdk.supchat.R
 import com.nassdk.supchat.model.User
-import com.nassdk.supchat.presentation.chat.ui.ChatActivity
+import com.nassdk.supchat.presentation.chat.ui.ConversationActivity
 import com.nassdk.supchat.presentation.diffprofile.mvp.DiffProfilePresenter
 import com.nassdk.supchat.presentation.diffprofile.mvp.DiffProfileView
 import com.google.firebase.database.*
@@ -70,7 +70,7 @@ class DiffProfileActivity : MvpAppCompatActivity(), DiffProfileView, View.OnClic
     }
 
     override fun openChat() {
-        val intentToChatActivity = Intent(applicationContext, ChatActivity::class.java)
+        val intentToChatActivity = Intent(applicationContext, ConversationActivity::class.java)
         intentToChatActivity.putExtra("userId", id)
         startActivity(intentToChatActivity)
     }

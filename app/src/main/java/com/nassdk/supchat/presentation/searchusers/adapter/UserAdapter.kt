@@ -12,10 +12,18 @@ import com.nassdk.supchat.model.User
 import com.nassdk.supchat.presentation.diffprofile.ui.DiffProfileActivity
 import de.hdodenhof.circleimageview.CircleImageView
 
-class UserAdapter(private var listUsers: List<User>) : RecyclerView.Adapter<UserAdapter.ViewHolder>() {
+class UserAdapter(
+        private var listUsers: List<User>,
+        private var clickListener: (String) -> Unit
+) : RecyclerView.Adapter<UserAdapter.ViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.search_user_item, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(
+                itemView = view,
+                clickListener = clickListener
+        )
     }
 
     override fun getItemCount(): Int {
@@ -27,7 +35,10 @@ class UserAdapter(private var listUsers: List<User>) : RecyclerView.Adapter<User
     }
 
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(
+            itemView: View,
+            val clickListener: (String) -> Unit
+    ) : RecyclerView.ViewHolder(itemView) {
 
         private var tv_Name: TextView? = itemView.findViewById(R.id.tv_userName)
         private var userImage: CircleImageView? = itemView.findViewById(R.id.civ_userImage)
@@ -44,11 +55,7 @@ class UserAdapter(private var listUsers: List<User>) : RecyclerView.Adapter<User
                         .into(userImage!!)
             }
 
-            itemView.setOnClickListener {
-                val intent = Intent(itemView.context, DiffProfileActivity::class.java)
-                intent.putExtra("id", user.id)
-                itemView.context.startActivity(intent)
-            }
+            itemView.setOnClickListener {clickListener (user.id ?: null!!)}
         }
     }
 }

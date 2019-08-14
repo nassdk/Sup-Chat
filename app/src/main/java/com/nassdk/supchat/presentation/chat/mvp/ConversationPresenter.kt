@@ -4,7 +4,7 @@ import android.content.Context
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.nassdk.supchat.model.Chat
-import com.nassdk.supchat.presentation.chat.provider.ChatActivityProvider
+import com.nassdk.supchat.presentation.chat.provider.ConverstaionProvider
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -13,7 +13,7 @@ import com.nassdk.supchat.network.isNetworkAvailable
 import java.util.ArrayList
 
 @InjectViewState
-class ChatActivityPresenter : MvpPresenter<ChatActivityView>() {
+class ConversationPresenter : MvpPresenter<ConversationView>() {
 
     fun checkInternetConnection(context: Context) : Boolean {
         if(!isNetworkAvailable(context)) {
@@ -32,7 +32,7 @@ class ChatActivityPresenter : MvpPresenter<ChatActivityView>() {
     }
 
     fun sendMessage(sender: String, receiver: String, message: String) {
-        ChatActivityProvider(presenter = this).updateMessage(sender = sender, receiver = receiver, message = message)
+        ConverstaionProvider(presenter = this).updateMessage(sender = sender, receiver = receiver, message = message)
     }
 
     fun readMessage(myId: String, userId: String) {

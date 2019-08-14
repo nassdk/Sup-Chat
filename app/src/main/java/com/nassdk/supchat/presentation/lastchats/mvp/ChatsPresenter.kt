@@ -10,7 +10,7 @@ import com.google.firebase.database.*
 import java.util.ArrayList
 
 @InjectViewState
-class ChatsFragmentPresenter : MvpPresenter<ChatsFragmentView>() {
+class ChatsPresenter : MvpPresenter<ChatsView>() {
 
 
     private var fbUser: FirebaseUser? = null

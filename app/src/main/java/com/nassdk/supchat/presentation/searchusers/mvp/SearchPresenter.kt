@@ -4,14 +4,14 @@ import android.widget.SearchView
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.nassdk.supchat.model.User
-import com.nassdk.supchat.presentation.searchusers.provider.SearchActivityProvider
+import com.nassdk.supchat.presentation.searchusers.provider.SearchProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import java.util.ArrayList
 
 @InjectViewState
-class SearchActivityPresenter : MvpPresenter<SearchActivityView>() {
+class SearchPresenter : MvpPresenter<com.nassdk.supchat.presentation.searchusers.mvp.SearchView>() {
 
 
     fun searchUser(searchView: SearchView, usersList: List<User>) {
@@ -22,7 +22,7 @@ class SearchActivityPresenter : MvpPresenter<SearchActivityView>() {
                     }
 
                     override fun onQueryTextChange(newText: String): Boolean {
-                        viewState.setAdapter(SearchActivityProvider(presenter = this@SearchActivityPresenter).searchView(newText, usersList))
+                        viewState.setAdapter(SearchProvider(presenter = this@SearchPresenter).searchView(newText, usersList))
                         return true
                     }
                 })

@@ -8,18 +8,18 @@ import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.nassdk.supchat.R
 import com.nassdk.supchat.presentation.login.ui.LoginActivity
-import com.nassdk.supchat.presentation.resetpassword.mvp.ResetPassActivityPresenter
-import com.nassdk.supchat.presentation.resetpassword.mvp.ResetPassActivityView
+import com.nassdk.supchat.presentation.resetpassword.mvp.ResetPassPresenter
+import com.nassdk.supchat.presentation.resetpassword.mvp.ResetPassView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_reset_pass.*
 import kotlinx.android.synthetic.main.bar_layout.*
 
-class ResetPassActivity : MvpAppCompatActivity(), ResetPassActivityView {
+class ResetPassActivity : MvpAppCompatActivity(), ResetPassView {
 
     private lateinit var auth: FirebaseAuth
 
     @InjectPresenter
-    lateinit var presenter: ResetPassActivityPresenter
+    lateinit var presenter: ResetPassPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

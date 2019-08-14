@@ -7,7 +7,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.nassdk.supchat.network.isNetworkAvailable
 
 @InjectViewState
-class ResetPassActivityPresenter : MvpPresenter<ResetPassActivityView>() {
+class ResetPassPresenter : MvpPresenter<ResetPassView>() {
 
     fun resetPassword(eMail: String) {
 

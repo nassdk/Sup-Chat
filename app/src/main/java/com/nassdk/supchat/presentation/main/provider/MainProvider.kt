@@ -1,11 +1,11 @@
 package com.nassdk.supchat.presentation.main.provider
 
-import com.nassdk.supchat.presentation.main.mvp.MainActivityPresenter
+import com.nassdk.supchat.presentation.main.mvp.MainPresenter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 
-class MainProvider(var presenter: MainActivityPresenter) {
+class MainProvider(var presenter: MainPresenter) {
 
     fun loadStatus(status: String) {
         val fbUser = FirebaseAuth.getInstance().currentUser

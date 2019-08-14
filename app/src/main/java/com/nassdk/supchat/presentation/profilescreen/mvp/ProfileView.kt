@@ -3,7 +3,7 @@ package com.nassdk.supchat.presentation.profilescreen.mvp
 import com.arellomobile.mvp.MvpView
 import java.lang.Exception
 
-interface ProfileActivityView : MvpView {
+interface ProfileView : MvpView {
 
     fun showNoImageError()
     fun showFailError(error: Exception)

@@ -13,17 +13,18 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.nassdk.supchat.R
 import com.nassdk.supchat.presentation.lastchats.adapter.ChatsAdapter
 import com.nassdk.supchat.model.User
-import com.nassdk.supchat.presentation.lastchats.mvp.ChatsFragmentPresenter
-import com.nassdk.supchat.presentation.lastchats.mvp.ChatsFragmentView
+import com.nassdk.supchat.presentation.lastchats.mvp.ChatsPresenter
+import com.nassdk.supchat.presentation.lastchats.mvp.ChatsView
 import com.nassdk.supchat.presentation.searchusers.ui.SearchActivity
 import com.github.clans.fab.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.nassdk.supchat.presentation.chat.ui.ConversationActivity
 import kotlin.collections.ArrayList
 
-class ChatsFragment : MvpAppCompatFragment(), ChatsFragmentView {
+class ChatsFragment : MvpAppCompatFragment(), ChatsView {
 
     private lateinit var recView_displayChats: RecyclerView
 
@@ -36,7 +37,8 @@ class ChatsFragment : MvpAppCompatFragment(), ChatsFragmentView {
     private var spinner: ProgressBar? = null
 
     @InjectPresenter
-    lateinit var presenter: ChatsFragmentPresenter
+    lateinit var presenter: ChatsPresenter
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View = inflater.inflate(R.layout.fragment_chats, container, false)
 
@@ -55,7 +57,7 @@ class ChatsFragment : MvpAppCompatFragment(), ChatsFragmentView {
         fabPen = view.findViewById(R.id.fab_newPen)
 
         presenter.setUpChats()
-        fabPen.setOnClickListener { presenter.toSearch()}
+        fabPen.setOnClickListener { presenter.toSearch() }
         return view
     }
 
@@ -64,7 +66,11 @@ class ChatsFragment : MvpAppCompatFragment(), ChatsFragmentView {
     }
 
     override fun setAdapter(list: ArrayList<User>) {
-        val chatsAdapter = ChatsAdapter(list)
+        val chatsAdapter = ChatsAdapter(list) { id ->
+            val intent = Intent(context, ConversationActivity::class.java)
+            intent.putExtra("userId", id)
+            startActivity(intent)
+        }
         recView_displayChats.adapter = chatsAdapter
     }
 

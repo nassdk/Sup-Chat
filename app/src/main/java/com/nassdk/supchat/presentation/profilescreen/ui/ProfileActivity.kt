@@ -12,8 +12,8 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.Glide
 import com.nassdk.supchat.R
 import com.nassdk.supchat.model.User
-import com.nassdk.supchat.presentation.profilescreen.mvp.ProfileActivityPresenter
-import com.nassdk.supchat.presentation.profilescreen.mvp.ProfileActivityView
+import com.nassdk.supchat.presentation.profilescreen.mvp.ProfilePresenter
+import com.nassdk.supchat.presentation.profilescreen.mvp.ProfileView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.fragment_chats.spinner
 import java.lang.Exception
 
 @Suppress("INACCESSIBLE_TYPE")
-class ProfileActivity : MvpAppCompatActivity(), ProfileActivityView {
+class ProfileActivity : MvpAppCompatActivity(), ProfileView {
 
     private lateinit var fbUser: FirebaseUser
     private lateinit var reference: DatabaseReference
@@ -37,7 +37,7 @@ class ProfileActivity : MvpAppCompatActivity(), ProfileActivityView {
     private val IMAGE_REQUEST = 1
 
     @InjectPresenter
-    lateinit var presenter: ProfileActivityPresenter
+    lateinit var presenter: ProfilePresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -134,7 +134,7 @@ class ProfileActivity : MvpAppCompatActivity(), ProfileActivityView {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
-            imageUri = data.data
+            imageUri = data.data!!
 
             if (sTask != null && sTask?.isInProgress!!) {
                 Toast.makeText(applicationContext, "Upload in Progress", Toast.LENGTH_SHORT).show()

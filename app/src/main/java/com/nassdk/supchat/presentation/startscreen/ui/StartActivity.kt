@@ -9,15 +9,15 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.nassdk.supchat.R
 import com.nassdk.supchat.presentation.login.ui.LoginActivity
 import com.nassdk.supchat.presentation.registerscreen.ui.RegisterActivity
-import com.nassdk.supchat.presentation.startscreen.mvp.StartActivityPresenter
-import com.nassdk.supchat.presentation.startscreen.mvp.StartActivityView
+import com.nassdk.supchat.presentation.startscreen.mvp.StartPresenter
+import com.nassdk.supchat.presentation.startscreen.mvp.StartView
 import kotlinx.android.synthetic.main.start_main.*
 
-class StartActivity : MvpAppCompatActivity(), StartActivityView, View.OnClickListener {
+class StartActivity : MvpAppCompatActivity(), StartView, View.OnClickListener {
 
 
     @InjectPresenter
-    lateinit var presenter: StartActivityPresenter
+    lateinit var presenter: StartPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

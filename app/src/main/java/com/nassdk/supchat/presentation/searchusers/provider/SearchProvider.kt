@@ -1,10 +1,10 @@
 package com.nassdk.supchat.presentation.searchusers.provider
 
 import com.nassdk.supchat.model.User
-import com.nassdk.supchat.presentation.searchusers.mvp.SearchActivityPresenter
+import com.nassdk.supchat.presentation.searchusers.mvp.SearchPresenter
 import java.util.ArrayList
 
-class SearchActivityProvider(var presenter: SearchActivityPresenter) {
+class SearchProvider(var presenter: SearchPresenter) {
     fun searchView(newText: String, usersList: List<User>): ArrayList<User> {
         val myList = ArrayList<User>()
 

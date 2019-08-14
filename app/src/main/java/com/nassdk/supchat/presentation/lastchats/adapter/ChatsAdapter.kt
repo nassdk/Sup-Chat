@@ -1,6 +1,5 @@
 package com.nassdk.supchat.presentation.lastchats.adapter
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,15 +12,20 @@ import com.google.firebase.database.*
 import com.nassdk.supchat.R
 import com.nassdk.supchat.model.Chat
 import com.nassdk.supchat.model.User
-import com.nassdk.supchat.presentation.chat.ui.ChatActivity
 import de.hdodenhof.circleimageview.CircleImageView
 
 
-class ChatsAdapter(private val listUsers: List<User>) : RecyclerView.Adapter<ChatsAdapter.ViewHolder>() {
+class ChatsAdapter(
+        private val listUsers: List<User>,
+        private val clickListener: (String) -> Unit
+) : RecyclerView.Adapter<ChatsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.user_item, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(
+                itemView = view,
+                clickListener = clickListener
+        )
     }
 
     override fun getItemCount(): Int {
@@ -32,7 +36,10 @@ class ChatsAdapter(private val listUsers: List<User>) : RecyclerView.Adapter<Cha
         holder.bind(listUsers[position])
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(
+            itemView: View,
+            val clickListener: (String) -> Unit
+    ) : RecyclerView.ViewHolder(itemView) {
 
         private val userName: TextView = itemView.findViewById(R.id.tv_Name)
         private val userImage: CircleImageView = itemView.findViewById(R.id.userImage)
@@ -60,11 +67,7 @@ class ChatsAdapter(private val listUsers: List<User>) : RecyclerView.Adapter<Cha
                 imageStatusOn.visibility = View.GONE
             }
 
-            itemView.setOnClickListener {
-                val intent = Intent(itemView.context, ChatActivity::class.java)
-                intent.putExtra("userId", user.id)
-                itemView.context.startActivity(intent)
-            }
+            itemView.setOnClickListener { clickListener(user.id ?: null!!)}
         }
 
 

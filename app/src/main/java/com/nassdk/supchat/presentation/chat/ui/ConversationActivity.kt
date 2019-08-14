@@ -13,8 +13,8 @@ import com.nassdk.supchat.R
 import com.nassdk.supchat.presentation.chat.adapter.MessageAdapter
 import com.nassdk.supchat.model.Chat
 import com.nassdk.supchat.model.User
-import com.nassdk.supchat.presentation.chat.mvp.ChatActivityPresenter
-import com.nassdk.supchat.presentation.chat.mvp.ChatActivityView
+import com.nassdk.supchat.presentation.chat.mvp.ConversationPresenter
+import com.nassdk.supchat.presentation.chat.mvp.ConversationView
 import com.nassdk.supchat.presentation.diffprofile.ui.DiffProfileActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -22,7 +22,7 @@ import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_chat.*
 import java.util.ArrayList
 
-class ChatActivity : MvpAppCompatActivity(), ChatActivityView {
+class ConversationActivity : MvpAppCompatActivity(), ConversationView {
 
     private lateinit var fbUser: FirebaseUser
     private lateinit var reference: DatabaseReference
@@ -33,7 +33,7 @@ class ChatActivity : MvpAppCompatActivity(), ChatActivityView {
     private lateinit var recViewChats: RecyclerView
 
     @InjectPresenter
-    lateinit var presenter: ChatActivityPresenter
+    lateinit var presenter: ConversationPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -127,7 +127,7 @@ class ChatActivity : MvpAppCompatActivity(), ChatActivityView {
     }
 
     override fun showDialog() {
-        val builder = AlertDialog.Builder(this@ChatActivity)
+        val builder = AlertDialog.Builder(this@ConversationActivity)
         builder.setTitle("Warning!")
                 .setMessage("Your device is not connected to Internet. Please, try later")
                 .setIcon(R.drawable.ic_warning)

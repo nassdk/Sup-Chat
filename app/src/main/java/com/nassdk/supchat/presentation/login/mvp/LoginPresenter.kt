@@ -7,7 +7,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.nassdk.supchat.network.isNetworkAvailable
 
 @InjectViewState
-class LoginActivityPresenter : MvpPresenter<LoginActivityView>() {
+class LoginPresenter : MvpPresenter<LoginView>() {
 
     fun onEmptyError() {
         viewState.showEmptyError()

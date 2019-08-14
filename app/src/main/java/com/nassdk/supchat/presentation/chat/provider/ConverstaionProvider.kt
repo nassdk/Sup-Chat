@@ -1,10 +1,10 @@
 package com.nassdk.supchat.presentation.chat.provider
 
-import com.nassdk.supchat.presentation.chat.mvp.ChatActivityPresenter
+import com.nassdk.supchat.presentation.chat.mvp.ConversationPresenter
 import com.google.firebase.database.FirebaseDatabase
 import java.util.HashMap
 
-class ChatActivityProvider(var presenter: ChatActivityPresenter) {
+class ConverstaionProvider(var presenter: ConversationPresenter) {
     fun updateMessage(sender: String, receiver: String, message: String) {
         val reference = FirebaseDatabase.getInstance().reference
 

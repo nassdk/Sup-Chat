@@ -31,14 +31,14 @@
 
         <activity
             android:name="com.nassdk.supchat.presentation.diffprofile.ui.DiffProfileActivity"
-            android:parentActivityName="com.nassdk.supchat.presentation.chat.ui.ChatActivity" />
+            android:parentActivityName="com.nassdk.supchat.presentation.chat.ui.ConversationActivity" />
 
         <activity
             android:name="com.nassdk.supchat.presentation.searchusers.ui.SearchActivity"
-            android:parentActivityName="com.nassdk.supchat.presentation.chat.ui.ChatActivity" />
+            android:parentActivityName="com.nassdk.supchat.presentation.chat.ui.ConversationActivity" />
 
         <activity
-            android:name="com.nassdk.supchat.presentation.chat.ui.ChatActivity"
+            android:name="com.nassdk.supchat.presentation.chat.ui.ConversationActivity"
             android:parentActivityName="com.nassdk.supchat.presentation.main.ui.MainActivity" />
 
         <activity

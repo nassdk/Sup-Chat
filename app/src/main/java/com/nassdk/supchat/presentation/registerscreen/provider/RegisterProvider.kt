@@ -3,11 +3,11 @@ package com.nassdk.supchat.presentation.registerscreen.provider
 import android.content.Context
 import android.widget.Toast
 import com.nassdk.supchat.model.User
-import com.nassdk.supchat.presentation.registerscreen.mvp.RegisterActivityPresenter
+import com.nassdk.supchat.presentation.registerscreen.mvp.RegisterPresenter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
-class RegisterProvider(var presenter: RegisterActivityPresenter, var context: Context) {
+class RegisterProvider(var presenter: RegisterPresenter, var context: Context) {
 
 
     val database: FirebaseDatabase = FirebaseDatabase.getInstance()

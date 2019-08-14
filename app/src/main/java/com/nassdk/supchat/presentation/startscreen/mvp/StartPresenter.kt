@@ -6,7 +6,7 @@ import com.arellomobile.mvp.MvpPresenter
 import com.nassdk.supchat.network.isNetworkAvailable
 
 @InjectViewState
-class StartActivityPresenter : MvpPresenter<StartActivityView>() {
+class StartPresenter : MvpPresenter<StartView>() {
 
     fun toRegisterActivity() {
         viewState.openRegister()

@@ -4,7 +4,7 @@ import com.arellomobile.mvp.MvpView
 import com.nassdk.supchat.model.Chat
 import java.util.ArrayList
 
-interface ChatActivityView : MvpView {
+interface ConversationView : MvpView {
 
     fun showEmptyError()
     fun toDiffProfile()
