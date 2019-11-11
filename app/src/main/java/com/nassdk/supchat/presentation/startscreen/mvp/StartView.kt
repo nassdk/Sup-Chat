@@ -6,5 +6,5 @@ interface StartView : MvpView {
 
     fun openRegister()
     fun openLogin()
-    fun showDialog()
+    fun showNoInternetDialog()
 }

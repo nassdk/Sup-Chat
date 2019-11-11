@@ -6,12 +6,16 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
+import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.nassdk.supchat.R
+import com.nassdk.supchat.domain.extensions.isNetworkAvailable
 import com.nassdk.supchat.presentation.login.ui.LoginActivity
 import com.nassdk.supchat.presentation.registerscreen.ui.RegisterActivity
 import com.nassdk.supchat.presentation.startscreen.mvp.StartPresenter
 import com.nassdk.supchat.presentation.startscreen.mvp.StartView
 import kotlinx.android.synthetic.main.start_main.*
+import ru.terrakok.cicerone.Router
+
 
 class StartActivity : MvpAppCompatActivity(), StartView, View.OnClickListener {
 
@@ -23,39 +27,35 @@ class StartActivity : MvpAppCompatActivity(), StartView, View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.start_main)
 
-        butLog.setOnClickListener(this)
-        butRegister.setOnClickListener(this)
-
+        butLog.setOnClickListener(this@StartActivity)
+        butRegister.setOnClickListener(this@StartActivity)
     }
 
     override fun onClick(v: View?) {
 
         when (v?.id) {
             R.id.butLog -> {
-                if (presenter.checkInternetConnection(applicationContext)) {
+                if (!isNetworkAvailable(context = this@StartActivity)) {
+                    showNoInternetDialog()
                 } else {
                     presenter.toLoginActivity()
                 }
             }
             R.id.butRegister -> {
-                if (presenter.checkInternetConnection(context = applicationContext)) {
+                if (!isNetworkAvailable(context = this@StartActivity)) {
+                    showNoInternetDialog()
                 } else {
                     presenter.toRegisterActivity()
                 }
             }
-
         }
     }
 
-    override fun openRegister() {
-        startActivity(Intent(this@StartActivity, RegisterActivity::class.java))
-    }
+    override fun openRegister() = startActivity(Intent(this@StartActivity, RegisterActivity::class.java))
 
-    override fun openLogin() {
-        startActivity(Intent(this@StartActivity, LoginActivity::class.java))
-    }
+    override fun openLogin() = startActivity(Intent(this@StartActivity, RegisterActivity::class.java))
 
-    override fun showDialog() {
+    override fun showNoInternetDialog() {
         val builder = AlertDialog.Builder(this@StartActivity)
         builder.setTitle("Warning!")
                 .setMessage("Your device is not connected to Internet. Please, try later")

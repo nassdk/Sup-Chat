@@ -10,8 +10,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.nassdk.supchat.R
-import com.nassdk.supchat.model.Chat
-import com.nassdk.supchat.model.User
+import com.nassdk.supchat.domain.model.Chat
+import com.nassdk.supchat.domain.model.User
 import de.hdodenhof.circleimageview.CircleImageView
 
 

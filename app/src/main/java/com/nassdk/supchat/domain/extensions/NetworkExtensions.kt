@@ -1,4 +1,4 @@
-package com.nassdk.supchat.network
+package com.nassdk.supchat.domain.extensions
 
 import android.content.Context
 import android.net.ConnectivityManager

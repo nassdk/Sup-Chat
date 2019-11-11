@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.nassdk.supchat.R
-import com.nassdk.supchat.model.User
+import com.nassdk.supchat.domain.model.User
 import com.nassdk.supchat.presentation.searchusers.adapter.UserAdapter
 import com.nassdk.supchat.presentation.searchusers.mvp.SearchPresenter
 import com.google.firebase.auth.FirebaseAuth
@@ -23,9 +23,7 @@ import kotlin.collections.ArrayList
 
 class SearchActivity : MvpAppCompatActivity(), com.nassdk.supchat.presentation.searchusers.mvp.SearchView {
 
-    private lateinit var fbUser: FirebaseUser
     private lateinit var usersList: List<User>
-    private lateinit var reference: DatabaseReference
 
     @InjectPresenter
     lateinit var presenter: SearchPresenter
@@ -33,11 +31,7 @@ class SearchActivity : MvpAppCompatActivity(), com.nassdk.supchat.presentation.s
     override fun onStart() {
         super.onStart()
 
-        reference = FirebaseDatabase.getInstance().getReference("Users")
-        fbUser = FirebaseAuth.getInstance().currentUser!!
-
-        usersList = ArrayList<User>()
-
+        usersList = ArrayList()
         presenter.displayUsers(usersList)
     }
 
@@ -75,7 +69,7 @@ class SearchActivity : MvpAppCompatActivity(), com.nassdk.supchat.presentation.s
 
     override fun setAdapter(usersList: ArrayList<User>) {
         val userAdapter = UserAdapter(usersList) { id ->
-            val intent = Intent(applicationContext, DiffProfileActivity::class.java)
+            val intent = Intent(this, DiffProfileActivity::class.java)
             intent.putExtra("id", id)
             startActivity(intent)
         }

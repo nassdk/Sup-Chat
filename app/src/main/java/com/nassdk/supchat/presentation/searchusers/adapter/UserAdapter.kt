@@ -1,6 +1,5 @@
 package com.nassdk.supchat.presentation.searchusers.adapter
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,8 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.nassdk.supchat.R
-import com.nassdk.supchat.model.User
-import com.nassdk.supchat.presentation.diffprofile.ui.DiffProfileActivity
+import com.nassdk.supchat.domain.model.User
 import de.hdodenhof.circleimageview.CircleImageView
 
 class UserAdapter(

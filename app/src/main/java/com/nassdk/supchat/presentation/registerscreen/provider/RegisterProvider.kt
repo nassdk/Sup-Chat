@@ -2,7 +2,7 @@ package com.nassdk.supchat.presentation.registerscreen.provider
 
 import android.content.Context
 import android.widget.Toast
-import com.nassdk.supchat.model.User
+import com.nassdk.supchat.domain.model.User
 import com.nassdk.supchat.presentation.registerscreen.mvp.RegisterPresenter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*

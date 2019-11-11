@@ -1,4 +1,4 @@
-package com.nassdk.supchat.model
+package com.nassdk.supchat.domain.model
 
 class Chat {
 

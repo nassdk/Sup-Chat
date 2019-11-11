@@ -1,6 +1,7 @@
 package com.nassdk.supchat.presentation.profilescreen.mvp
 
 import com.arellomobile.mvp.MvpView
+import com.nassdk.supchat.domain.model.User
 import java.lang.Exception
 
 interface ProfileView : MvpView {
@@ -8,8 +9,9 @@ interface ProfileView : MvpView {
     fun showNoImageError()
     fun showFailError(error: Exception)
     fun showProgressError()
-    fun showProgress()
-    fun hideProgress()
+    fun showProgress(show: Boolean)
     fun uploadInProgress()
-    fun showDialog()
+    fun showNoInternetDialog()
+    fun showData(user: User)
+    fun enablePhotoFab(enable: Boolean)
 }

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.nassdk.supchat.R
-import com.nassdk.supchat.model.Chat
+import com.nassdk.supchat.domain.model.Chat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -36,10 +36,10 @@ class MessageAdapter(private var listChats: List<Chat>) : RecyclerView.Adapter<M
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private var tv_showMessge: TextView = itemView.findViewById(R.id.tv_showMessage)
+        private var tvShowMessage: TextView = itemView.findViewById(R.id.tv_showMessage)
 
         fun bind(chat: Chat) {
-            tv_showMessge.text = chat.message
+            tvShowMessage.text = chat.message
         }
     }
 

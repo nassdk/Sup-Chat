@@ -1,18 +1,16 @@
 package com.nassdk.supchat.presentation.profilescreen.mvp
 
-import android.content.Context
 import android.net.Uri
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
-import com.nassdk.supchat.network.isNetworkAvailable
-import java.util.HashMap
+import com.nassdk.supchat.domain.model.User
+import java.util.*
 
 @Suppress("INACCESSIBLE_TYPE")
 @InjectViewState
@@ -23,21 +21,33 @@ class ProfilePresenter : MvpPresenter<ProfileView>() {
     private lateinit var storage: StorageReference
     private var sTask: StorageTask<*>? = null
 
+    fun fetchData() {
 
-    fun checkInternetConnection(context: Context) : Boolean {
-        if(!isNetworkAvailable(context)) {
-            viewState.showDialog()
-            return true
-        }
-        return false
+        fbUser = FirebaseAuth.getInstance().currentUser!!
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(fbUser.uid)
+
+        reference.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                val user = p0.getValue(User::class.java)
+
+                if (user != null) {
+                    viewState.showData(user = user)
+                }
+            }
+        })
     }
 
     fun uploadImage(imageUri: Uri) {
+
         storage = FirebaseStorage.getInstance().getReference("Uploads")
         fbUser = FirebaseAuth.getInstance().currentUser!!
         reference = FirebaseDatabase.getInstance().getReference("Users").child(fbUser.uid)
         if (imageUri != null) {
-            viewState.showProgress()
+            viewState.showProgress(show = true)
+            viewState.enablePhotoFab(enable = false)
             viewState.uploadInProgress()
             val fileReference = storage.child(System.currentTimeMillis().toString())
 
@@ -57,25 +67,20 @@ class ProfilePresenter : MvpPresenter<ProfileView>() {
                     val map = HashMap<String, Any>()
                     map["imageURL"] = "" + mUri
                     reference.updateChildren(map)
-                    viewState.hideProgress()
+                    viewState.showProgress(show = false)
+                    viewState.enablePhotoFab(enable = true)
                 } else {
 
                 }
             }.addOnFailureListener { e ->
-                viewState.hideProgress()
+                viewState.showProgress(show = false)
+                viewState.enablePhotoFab(enable = true)
                 viewState.showFailError(e)
             }
         } else run {
-            viewState.hideProgress()
+            viewState.showProgress(show = false)
+            viewState.enablePhotoFab(enable = true)
             viewState.showNoImageError()
         }
     }
-
-
-//    private fun getFileExtension(uri: Uri): String? {
-//        val contentResolver: ContentResolver = applicationContext.contentResolver
-//        val mimeTypeMap: MimeTypeMap = MimeTypeMap.getSingleton()
-//        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri))
-//    }
-
 }

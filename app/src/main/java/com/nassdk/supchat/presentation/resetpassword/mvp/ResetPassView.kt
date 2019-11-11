@@ -8,5 +8,5 @@ interface ResetPassView : MvpView {
     fun showEmptyError()
     fun openLogin()
     fun showError(error: String?)
-    fun showDialog()
+    fun showNoInternetDialog()
 }

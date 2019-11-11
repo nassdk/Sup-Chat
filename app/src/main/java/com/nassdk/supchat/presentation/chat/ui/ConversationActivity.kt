@@ -11,14 +11,15 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.Glide
 import com.nassdk.supchat.R
 import com.nassdk.supchat.presentation.chat.adapter.MessageAdapter
-import com.nassdk.supchat.model.Chat
-import com.nassdk.supchat.model.User
+import com.nassdk.supchat.domain.model.Chat
+import com.nassdk.supchat.domain.model.User
 import com.nassdk.supchat.presentation.chat.mvp.ConversationPresenter
 import com.nassdk.supchat.presentation.chat.mvp.ConversationView
 import com.nassdk.supchat.presentation.diffprofile.ui.DiffProfileActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import com.nassdk.supchat.domain.extensions.isNetworkAvailable
 import kotlinx.android.synthetic.main.activity_chat.*
 import java.util.ArrayList
 
@@ -28,9 +29,6 @@ class ConversationActivity : MvpAppCompatActivity(), ConversationView {
     private lateinit var reference: DatabaseReference
 
     private lateinit var messageAdapter: MessageAdapter
-    private lateinit var listOfChat: List<Chat>
-
-    private lateinit var recViewChats: RecyclerView
 
     @InjectPresenter
     lateinit var presenter: ConversationPresenter
@@ -42,18 +40,17 @@ class ConversationActivity : MvpAppCompatActivity(), ConversationView {
         initViews()
     }
 
-
     private fun initViews() {
+
         setSupportActionBar(toolBar)
         supportActionBar?.title = ""
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         toolBar?.setNavigationOnClickListener { finish() }
 
-        recViewChats = findViewById(R.id.recView_Chats)
         recViewChats.setHasFixedSize(true)
-        val linearLayoutManager = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL, false)
+        val linearLayoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         linearLayoutManager.stackFromEnd = true
-        recView_Chats?.layoutManager = linearLayoutManager
+        recViewChats.layoutManager = linearLayoutManager
 
         val intent = intent
 
@@ -67,7 +64,8 @@ class ConversationActivity : MvpAppCompatActivity(), ConversationView {
             if (msg.isEmpty()) {
                 presenter.onEmptyError()
             } else {
-                if (presenter.checkInternetConnection(context = applicationContext)) {
+                if (!isNetworkAvailable(context = this@ConversationActivity)) {
+                    showNoInternetDialog()
                 } else {
                     presenter.sendMessage(fbUser.uid, userId, msg)
                 }
@@ -80,53 +78,27 @@ class ConversationActivity : MvpAppCompatActivity(), ConversationView {
             presenter.toDiffProfile()
         }
 
-        reference.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-
-                val user = dataSnapshot.getValue(User::class.java)
-
-                if (user != null) {
-                    tv_UserName.text = user.userName
-
-                    if (user.imageURL == "default") {
-                        profileImage_Chat.setImageResource(R.mipmap.ic_launcher_round)
-                    } else {
-                        Glide
-                                .with(applicationContext)
-                                .load(user.imageURL)
-                                .into(profileImage_Chat)
-                    }
-                }
-
-                if (user != null) {
-                    presenter.readMessage(fbUser.uid, userId)
-                }
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-            }
-        })
+        presenter.fetchData(userId = userId)
     }
 
-    override fun showEmptyError() {
-        Toast.makeText(applicationContext, "You can't send an empty Message", Toast.LENGTH_SHORT).show()
-    }
+    override fun showEmptyError() = Toast.makeText(this, "You can't send an empty Message", Toast.LENGTH_SHORT).show()
+
 
     override fun toDiffProfile() {
         val intent = intent
         val userId = intent.getStringExtra("userId")
 
-        val intentToDiffProfile = Intent(applicationContext, DiffProfileActivity::class.java)
+        val intentToDiffProfile = Intent(this, DiffProfileActivity::class.java)
         intentToDiffProfile.putExtra("id", userId)
         startActivity(intentToDiffProfile)
     }
 
     override fun setAdapter(listOfChats: ArrayList<Chat>) {
         messageAdapter = MessageAdapter(listOfChats)
-        recView_Chats?.adapter = messageAdapter
+        recViewChats.adapter = messageAdapter
     }
 
-    override fun showDialog() {
+    override fun showNoInternetDialog() {
         val builder = AlertDialog.Builder(this@ConversationActivity)
         builder.setTitle("Warning!")
                 .setMessage("Your device is not connected to Internet. Please, try later")
@@ -136,5 +108,19 @@ class ConversationActivity : MvpAppCompatActivity(), ConversationView {
                 ) { _, _ -> finish() }
         val alert = builder.create()
         alert.show()
+    }
+
+    override fun setData(user: User) {
+
+        tv_UserName.text = user.userName
+
+        if (user.imageURL == "default") {
+            profileImage_Chat.setImageResource(R.mipmap.ic_launcher_round)
+        } else {
+            Glide
+                    .with(this)
+                    .load(user.imageURL)
+                    .into(profileImage_Chat)
+        }
     }
 }

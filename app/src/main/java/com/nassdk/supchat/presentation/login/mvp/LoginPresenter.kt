@@ -2,16 +2,18 @@ package com.nassdk.supchat.presentation.login.mvp
 
 import android.content.Context
 import com.arellomobile.mvp.InjectViewState
-import com.arellomobile.mvp.MvpPresenter
 import com.google.firebase.auth.FirebaseAuth
-import com.nassdk.supchat.network.isNetworkAvailable
+import com.nassdk.supchat.domain.extensions.isNetworkAvailable
+import com.nassdk.supchat.domain.global.BasePresenter
+import ru.terrakok.cicerone.Router
 
 @InjectViewState
-class LoginPresenter : MvpPresenter<LoginView>() {
+class LoginPresenter constructor(private val router: Router)
+    : BasePresenter<LoginView>(router = router) {
 
-    fun onEmptyError() {
-        viewState.showEmptyError()
-    }
+    fun onEmptyError() = viewState.showEmptyError()
+
+    fun userResetPass() = viewState.openResetPass()
 
     fun userLog(email: String, password: String) {
         val auth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -24,19 +26,6 @@ class LoginPresenter : MvpPresenter<LoginView>() {
                     } else {
                         viewState.showAuthError()
                     }
-
                 }
-    }
-
-    fun userResetPass() {
-        viewState.openResetPass()
-    }
-
-    fun checkInternetConnection(context: Context) : Boolean {
-        if(!isNetworkAvailable(context)) {
-            viewState.showDialog()
-            return true
-        }
-        return false
     }
 }

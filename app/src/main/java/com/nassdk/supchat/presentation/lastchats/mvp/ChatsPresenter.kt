@@ -2,8 +2,8 @@ package com.nassdk.supchat.presentation.lastchats.mvp
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import com.nassdk.supchat.model.Chat
-import com.nassdk.supchat.model.User
+import com.nassdk.supchat.domain.model.Chat
+import com.nassdk.supchat.domain.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -11,7 +11,6 @@ import java.util.ArrayList
 
 @InjectViewState
 class ChatsPresenter : MvpPresenter<ChatsView>() {
-
 
     private var fbUser: FirebaseUser? = null
     private var reference: DatabaseReference? = null
@@ -24,7 +23,7 @@ class ChatsPresenter : MvpPresenter<ChatsView>() {
         fbUser = FirebaseAuth.getInstance().currentUser!!
         reference = FirebaseDatabase.getInstance().getReference("Chats")
 
-        viewState.showProgress()
+        viewState.showProgress(show = true)
         reference?.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
 
@@ -50,7 +49,7 @@ class ChatsPresenter : MvpPresenter<ChatsView>() {
                 }
 
                 readChats(usersList)
-                viewState.hideProgress()
+                viewState.showProgress(show = false)
             }
 
         })
@@ -93,8 +92,5 @@ class ChatsPresenter : MvpPresenter<ChatsView>() {
         })
     }
 
-    fun toSearch() {
-        viewState.openSearchUser()
-    }
-
+    fun toSearch() = viewState.openSearchUser()
 }

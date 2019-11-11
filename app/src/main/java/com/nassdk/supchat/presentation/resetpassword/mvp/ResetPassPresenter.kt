@@ -4,7 +4,7 @@ import android.content.Context
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.google.firebase.auth.FirebaseAuth
-import com.nassdk.supchat.network.isNetworkAvailable
+import com.nassdk.supchat.domain.extensions.isNetworkAvailable
 
 @InjectViewState
 class ResetPassPresenter : MvpPresenter<ResetPassView>() {
@@ -30,7 +30,7 @@ class ResetPassPresenter : MvpPresenter<ResetPassView>() {
 
     fun checkInternetConnection(context: Context) : Boolean {
         if(!isNetworkAvailable(context)) {
-            viewState.showDialog()
+            viewState.showNoInternetDialog()
             return true
         }
         return false

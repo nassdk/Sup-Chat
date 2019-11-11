@@ -8,16 +8,16 @@ import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.Glide
 import com.nassdk.supchat.R
-import com.nassdk.supchat.model.User
+import com.nassdk.supchat.domain.extensions.isNetworkAvailable
+import com.nassdk.supchat.domain.model.User
 import com.nassdk.supchat.presentation.chat.ui.ConversationActivity
 import com.nassdk.supchat.presentation.diffprofile.mvp.DiffProfilePresenter
 import com.nassdk.supchat.presentation.diffprofile.mvp.DiffProfileView
-import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_diff_profile.*
 
 class DiffProfileActivity : MvpAppCompatActivity(), DiffProfileView, View.OnClickListener {
 
-    private lateinit var id: String
+    private var id = ""
 
     @InjectPresenter
     lateinit var presenter: DiffProfilePresenter
@@ -31,46 +31,15 @@ class DiffProfileActivity : MvpAppCompatActivity(), DiffProfileView, View.OnClic
 
     private fun initViews() {
         val intent = intent
-        id = intent.getStringExtra("id")
+        id = intent.getStringExtra("id")!!
 
-        val reference: DatabaseReference? = FirebaseDatabase.getInstance().getReference("Users").child(id)
-
-        reference?.addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {
-
-            }
-
-            override fun onDataChange(p0: DataSnapshot) {
-                val userUnit = p0.getValue(User::class.java)
-
-                if (userUnit != null) {
-                    tvDifProfile_Name.text = userUnit.userName
-
-                    if (!userUnit.status.equals("offline")) {
-                        tvDifProfile_Status.visibility = View.VISIBLE
-                    } else {
-                        tvDifProfile_Status.visibility = View.GONE
-                    }
-
-                    if (userUnit.imageURL == "default") {
-                        ivDifProfile_Image.setImageResource(R.mipmap.ic_launcher_round)
-                    } else {
-                        Glide
-                                .with(applicationContext)
-                                .load(userUnit.imageURL)
-                                .into(ivDifProfile_Image)
-                    }
-                }
-            }
-
-        })
-
+        presenter.fetchData(userId = id)
         ibDifProfile_back.setOnClickListener(this)
         fab_message.setOnClickListener(this)
     }
 
     override fun openChat() {
-        val intentToChatActivity = Intent(applicationContext, ConversationActivity::class.java)
+        val intentToChatActivity = Intent(this, ConversationActivity::class.java)
         intentToChatActivity.putExtra("userId", id)
         startActivity(intentToChatActivity)
     }
@@ -80,7 +49,8 @@ class DiffProfileActivity : MvpAppCompatActivity(), DiffProfileView, View.OnClic
         when (v?.id) {
             R.id.ibDifProfile_back -> finish()
             R.id.fab_message -> {
-                if (presenter.checkInternetConnection(context = applicationContext)) {
+                if (!isNetworkAvailable(context = this@DiffProfileActivity)) {
+                    showNoInternetDialog()
                 } else {
                     presenter.toChat()
                 }
@@ -88,7 +58,7 @@ class DiffProfileActivity : MvpAppCompatActivity(), DiffProfileView, View.OnClic
         }
     }
 
-    override fun showDialog() {
+    override fun showNoInternetDialog() {
         val builder = AlertDialog.Builder(this@DiffProfileActivity)
         builder.setTitle("Warning!")
                 .setMessage("Your device is not connected to Internet. Please, try later")
@@ -98,5 +68,24 @@ class DiffProfileActivity : MvpAppCompatActivity(), DiffProfileView, View.OnClic
                 ) { _, _ -> finish() }
         val alert = builder.create()
         alert.show()
+    }
+
+    override fun showData(user: User) {
+        tvDifProfile_Name.text = user.userName
+
+        if (!user.status.equals("offline")) {
+            tvDifProfile_Status.visibility = View.VISIBLE
+        } else {
+            tvDifProfile_Status.visibility = View.GONE
+        }
+
+        if (user.imageURL == "default") {
+            ivDifProfile_Image.setImageResource(R.mipmap.ic_launcher_round)
+        } else {
+            Glide
+                    .with(this)
+                    .load(user.imageURL)
+                    .into(ivDifProfile_Image)
+        }
     }
 }

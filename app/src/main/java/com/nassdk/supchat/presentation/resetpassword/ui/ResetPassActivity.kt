@@ -36,30 +36,22 @@ class ResetPassActivity : MvpAppCompatActivity(), ResetPassView {
         auth = FirebaseAuth.getInstance()
 
         butReset.setOnClickListener {
-            if (presenter.checkInternetConnection(context = applicationContext)) {
+            if (presenter.checkInternetConnection(context = this)) {
             } else {
                 presenter.resetPassword(etEmailReset.text.toString())
             }
         }
     }
 
-    override fun showSuccess() {
-        Toast.makeText(applicationContext, "Message with instruction was send to your email. Please check it", Toast.LENGTH_LONG).show()
-    }
+    override fun showSuccess() = Toast.makeText(this, "Message with instruction was send to your email. Please check it", Toast.LENGTH_LONG).show()
 
-    override fun showEmptyError() {
-        Toast.makeText(applicationContext, "Please, write your email to reset your password", Toast.LENGTH_SHORT).show()
-    }
+    override fun showEmptyError() = Toast.makeText(this, "Please, write your email to reset your password", Toast.LENGTH_SHORT).show()
 
-    override fun openLogin() {
-        startActivity(Intent(this@ResetPassActivity, LoginActivity::class.java))
-    }
+    override fun openLogin() = startActivity(Intent(this@ResetPassActivity, LoginActivity::class.java))
 
-    override fun showError(error: String?) {
-        Toast.makeText(applicationContext, error, Toast.LENGTH_LONG).show()
-    }
+    override fun showError(error: String?) = Toast.makeText(this, error, Toast.LENGTH_LONG).show()
 
-    override fun showDialog() {
+    override fun showNoInternetDialog() {
         val builder = AlertDialog.Builder(this@ResetPassActivity)
         builder.setTitle("Warning!")
                 .setMessage("Your device is not connected to Internet. Please, try later")

@@ -10,26 +10,18 @@ import androidx.appcompat.app.AlertDialog
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.Glide
+import com.google.firebase.storage.StorageTask
 import com.nassdk.supchat.R
-import com.nassdk.supchat.model.User
+import com.nassdk.supchat.domain.extensions.isNetworkAvailable
+import com.nassdk.supchat.domain.model.User
 import com.nassdk.supchat.presentation.profilescreen.mvp.ProfilePresenter
 import com.nassdk.supchat.presentation.profilescreen.mvp.ProfileView
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.*
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.StorageTask
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.fragment_chats.spinner
-import java.lang.Exception
 
 @Suppress("INACCESSIBLE_TYPE")
 class ProfileActivity : MvpAppCompatActivity(), ProfileView {
 
-    private lateinit var fbUser: FirebaseUser
-    private lateinit var reference: DatabaseReference
-    private lateinit var storage: StorageReference
     private var sTask: StorageTask<*>? = null
 
     private lateinit var imageUri: Uri
@@ -42,76 +34,55 @@ class ProfileActivity : MvpAppCompatActivity(), ProfileView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+        presenter.fetchData()
 
         initViews()
     }
 
     private fun initViews() {
+
         ibProfile_back.setOnClickListener {
             finish()
         }
 
-        storage = FirebaseStorage.getInstance().getReference("Uploads")
-        fbUser = FirebaseAuth.getInstance().currentUser!!
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(fbUser.uid)
-
-        reference.addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {
-            }
-
-            override fun onDataChange(p0: DataSnapshot) {
-                val user = p0.getValue(User::class.java)
-
-                if (user != null) {
-                    tvProfile_Name.text = user.userName
-
-                    if (user.imageURL == "default") {
-                        ivProfile_Image.setImageResource(R.mipmap.ic_launcher_round)
-                    } else {
-                        Glide
-                                .with(applicationContext)
-                                .load(user.imageURL)
-                                .into(ivProfile_Image)
-                    }
-                }
-            }
-        })
         fab_photo.setOnClickListener {
-            if (presenter.checkInternetConnection(context = applicationContext)) {
+            if (!isNetworkAvailable(context = this@ProfileActivity)) {
+                showNoInternetDialog()
             } else {
                 openImage()
             }
         }
     }
 
+    override fun showNoImageError() = Toast.makeText(this, "No Image Selected", Toast.LENGTH_SHORT).show()
 
-    override fun showNoImageError() {
-        Toast.makeText(applicationContext, "No Image Selected", Toast.LENGTH_SHORT).show()
+    override fun showFailError(error: Exception) = Toast.makeText(this, error.toString(), Toast.LENGTH_SHORT).show()
+
+    override fun showProgressError() = Toast.makeText(this, "Uploading in Progress", Toast.LENGTH_SHORT).show()
+
+    override fun showProgress(show: Boolean) = if (show) spinner.visibility = View.VISIBLE else spinner.visibility = View.GONE
+
+    override fun uploadInProgress() = Toast.makeText(this, "Upload in Progress", Toast.LENGTH_SHORT).show()
+
+    override fun enablePhotoFab(enable: Boolean) {
+        fab_photo.isEnabled = enable
     }
 
-    override fun showFailError(error: Exception) {
-        Toast.makeText(applicationContext, error.toString(), Toast.LENGTH_SHORT).show()
+    override fun showData(user: User) {
+
+        tvProfile_Name.text = user.userName
+
+        if (user.imageURL == "default") {
+            ivProfile_Image.setImageResource(R.mipmap.ic_launcher_round)
+        } else {
+            Glide
+                    .with(this)
+                    .load(user.imageURL)
+                    .into(ivProfile_Image)
+        }
     }
 
-    override fun showProgressError() {
-        Toast.makeText(applicationContext, "Uploading in Progress", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun showProgress() {
-        spinner.visibility = View.VISIBLE
-        fab_photo.isEnabled = false
-    }
-
-    override fun hideProgress() {
-        spinner.visibility = View.GONE
-        fab_photo.isEnabled = true
-    }
-
-    override fun uploadInProgress() {
-        Toast.makeText(applicationContext, "Upload in Progress", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun showDialog() {
+    override fun showNoInternetDialog() {
         val builder = AlertDialog.Builder(this@ProfileActivity)
         builder.setTitle("Warning!")
                 .setMessage("Your device is not connected to Internet. Please, try later")
@@ -137,7 +108,7 @@ class ProfileActivity : MvpAppCompatActivity(), ProfileView {
             imageUri = data.data!!
 
             if (sTask != null && sTask?.isInProgress!!) {
-                Toast.makeText(applicationContext, "Upload in Progress", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Upload in Progress", Toast.LENGTH_SHORT).show()
             } else {
                 presenter.uploadImage(imageUri)
             }
