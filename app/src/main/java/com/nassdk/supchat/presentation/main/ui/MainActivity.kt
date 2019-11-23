@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.navigation_header.*
 
 class MainActivity : MvpAppCompatActivity(), MainView, NavigationView.OnNavigationItemSelectedListener {
 
-    private lateinit var drawerLayout: DrawerLayout
+    //private lateinit var drawerLayout: DrawerLayout
 
     @InjectPresenter
     lateinit var mainPresenter: MainPresenter
@@ -36,16 +36,16 @@ class MainActivity : MvpAppCompatActivity(), MainView, NavigationView.OnNavigati
 
     private fun initViews() {
 
-        setSupportActionBar(toolBarChats)
-        toolBarChats?.inflateMenu(R.menu.menu_main)
-
-        val toggle = ActionBarDrawerToggle(this, drawerLayout, toolBarChats, R.string.nav_drawer_open, R.string.nav_drawer_close)
-        toggle.isDrawerIndicatorEnabled
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
-
-        nav_view.setNavigationItemSelectedListener(this)
-        val header = nav_view.getHeaderView(0)
+//        setSupportActionBar(toolBarChats)
+//        toolBarChats?.inflateMenu(R.menu.menu_main)
+//
+//        val toggle = ActionBarDrawerToggle(this, drawerLayout, toolBarChats, R.string.nav_drawer_open, R.string.nav_drawer_close)
+//        toggle.isDrawerIndicatorEnabled
+//        drawerLayout.addDrawerListener(toggle)
+//        toggle.syncState()
+//
+//        nav_view.setNavigationItemSelectedListener(this)
+//        val header = nav_view.getHeaderView(0)
     }
 
 
@@ -59,20 +59,20 @@ class MainActivity : MvpAppCompatActivity(), MainView, NavigationView.OnNavigati
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         item.isCheckable = false
 
-        when (item.itemId) {
-            R.id.nav_Home -> {
-            }
-            R.id.nav_LogOut -> {
-                mainPresenter.toLogOut()
-            }
-            R.id.nav_Settings -> {
-            }
-            R.id.nav_Profile -> {
-                mainPresenter.toProfile()
-            }
-        }
-        drawerLayout.closeDrawer(GravityCompat.START)
-        return true
+//        when (item.itemId) {
+//            R.id.nav_Home -> {
+//            }
+//            R.id.nav_LogOut -> {
+//                mainPresenter.toLogOut()
+//            }
+//            R.id.nav_Settings -> {
+//            }
+//            R.id.nav_Profile -> {
+//                mainPresenter.toProfile()
+//            }
+//        }
+//        drawerLayout.closeDrawer(GravityCompat.START)
+        return false
     }
 
     override fun onPostResume() {
@@ -87,26 +87,26 @@ class MainActivity : MvpAppCompatActivity(), MainView, NavigationView.OnNavigati
 
     override fun onBackPressed() {
 
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START)
-        } else {
-            startActivity(Intent(this@MainActivity, StartActivity::class.java))
-            finish()
-        }
+//        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+//            drawerLayout.closeDrawer(GravityCompat.START)
+//        } else {
+//            startActivity(Intent(this@MainActivity, StartActivity::class.java))
+//            finish()
+//        }
     }
 
     override fun showData(user: User) {
 
-        navHeader_tvUserName.text = user.userName
-        navHeader_tvEmail.text = user.geteMail()
-
-        if (user.imageURL == "default") {
-            navHeader_ivProfile.setImageResource(R.mipmap.ic_launcher_round)
-        } else {
-            Glide
-                    .with(this@MainActivity)
-                    .load(user.imageURL)
-                    .into(navHeader_ivProfile)
-        }
+//        navHeader_tvUserName.text = user.userName
+//        navHeader_tvEmail.text = user.geteMail()
+//
+//        if (user.imageURL == "default") {
+//            navHeader_ivProfile.setImageResource(R.mipmap.ic_launcher_round)
+//        } else {
+//            Glide
+//                    .with(this@MainActivity)
+//                    .load(user.imageURL)
+//                    .into(navHeader_ivProfile)
+//        }
     }
 }

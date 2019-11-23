@@ -27,7 +27,6 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
-
     //Tests
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     androidTestImplementation 'androidx.test:runner:1.2.0'
@@ -44,7 +43,7 @@ dependencies {
     //Design
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
     implementation 'com.google.android.material:material:1.0.0'
-    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.google.android.material:material:1.2.0-alpha01'
 
 
     //Images Circle form
@@ -77,12 +76,9 @@ dependencies {
     //Navigation
     implementation 'ru.terrakok.cicerone:cicerone:5.0.0'
 
-    //Dagger
+    //Dagger2
     implementation 'com.google.dagger:dagger:2.22.1'
     kapt 'com.google.dagger:dagger-compiler:2.22.1'
-    implementation 'com.google.dagger:dagger-android-support:2.21'
-    kapt 'com.google.dagger:dagger-android-processor:2.21'
-
 }
 
 apply plugin: 'com.google.gms.google-services'

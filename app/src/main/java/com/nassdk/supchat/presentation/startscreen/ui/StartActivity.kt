@@ -53,7 +53,7 @@ class StartActivity : MvpAppCompatActivity(), StartView, View.OnClickListener {
 
     override fun openRegister() = startActivity(Intent(this@StartActivity, RegisterActivity::class.java))
 
-    override fun openLogin() = startActivity(Intent(this@StartActivity, RegisterActivity::class.java))
+    override fun openLogin() = startActivity(Intent(this@StartActivity, LoginActivity::class.java))
 
     override fun showNoInternetDialog() {
         val builder = AlertDialog.Builder(this@StartActivity)

@@ -1,15 +1,11 @@
 package com.nassdk.supchat.presentation.login.mvp
 
-import android.content.Context
 import com.arellomobile.mvp.InjectViewState
+import com.arellomobile.mvp.MvpPresenter
 import com.google.firebase.auth.FirebaseAuth
-import com.nassdk.supchat.domain.extensions.isNetworkAvailable
-import com.nassdk.supchat.domain.global.BasePresenter
-import ru.terrakok.cicerone.Router
 
 @InjectViewState
-class LoginPresenter constructor(private val router: Router)
-    : BasePresenter<LoginView>(router = router) {
+class LoginPresenter: MvpPresenter<LoginView>() {
 
     fun onEmptyError() = viewState.showEmptyError()
 

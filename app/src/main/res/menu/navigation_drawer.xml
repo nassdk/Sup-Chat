@@ -1,28 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
 
-        <item
-            android:id="@+id/nav_Home"
-            android:icon="@drawable/home_but"
-            android:title="Home" />
+    <item
+        android:id="@+id/navProfile"
+        android:icon="@drawable/profile_icon"
+        android:title="" />
 
-        <item
-            android:id="@+id/nav_Profile"
-            android:icon="@drawable/profile_icon"
-            android:title="Profile" />
+    <item
+        android:id="@+id/navChats"
+        android:icon="@drawable/chat_icon"
+        android:title="" />
 
-        <item
-            android:id="@+id/nav_Settings"
-            android:icon="@drawable/settings_but"
-            android:title="Settings" />
-
-        <item
-            android:id="@+id/nav_LogOut"
-            android:icon="@drawable/log_out_but"
-            android:title="Log out"/>
-    </group>
+    <item
+        android:id="@+id/navSearch"
+        android:icon="@drawable/search_icon"
+        android:title="" />
 </menu>
