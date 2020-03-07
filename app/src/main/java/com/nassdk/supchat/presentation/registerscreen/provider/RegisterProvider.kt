@@ -39,9 +39,8 @@ class RegisterProvider(var presenter: RegisterPresenter, var context: Context) {
     }
 
     private fun updateUser(id: String, textUserName: String, textPassword: String, textEmail: String, imageURL: String, status: String) {
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(id)
-        val user = User(id, textUserName, textPassword, textEmail, imageURL, status)
-        reference.setValue(user)
-    }
-
+    reference = FirebaseDatabase.getInstance().getReference("Users").child(id)
+    val user = User(id, textUserName, textPassword, textEmail, imageURL, status)
+    reference.setValue(user)
+}
 }

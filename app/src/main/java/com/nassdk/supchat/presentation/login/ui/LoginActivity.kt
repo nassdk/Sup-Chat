@@ -7,7 +7,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
-import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.nassdk.supchat.R
 import com.nassdk.supchat.domain.extensions.isNetworkAvailable
 import com.nassdk.supchat.presentation.login.mvp.LoginPresenter
@@ -16,7 +15,6 @@ import com.nassdk.supchat.presentation.main.ui.MainActivity
 import com.nassdk.supchat.presentation.resetpassword.ui.ResetPassActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.bar_layout.*
-import ru.terrakok.cicerone.Router
 
 class LoginActivity : MvpAppCompatActivity(), LoginView {
 

@@ -14,7 +14,6 @@ import com.nassdk.supchat.presentation.registerscreen.ui.RegisterActivity
 import com.nassdk.supchat.presentation.startscreen.mvp.StartPresenter
 import com.nassdk.supchat.presentation.startscreen.mvp.StartView
 import kotlinx.android.synthetic.main.start_main.*
-import ru.terrakok.cicerone.Router
 
 
 class StartActivity : MvpAppCompatActivity(), StartView, View.OnClickListener {
