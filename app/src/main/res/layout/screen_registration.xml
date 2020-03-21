@@ -79,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:background="@drawable/button_pink_background_rounded_eighteen"
+            android:background="@drawable/background_ripple_selector_base_pink"
             android:text="@string/buttonSignUp"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"

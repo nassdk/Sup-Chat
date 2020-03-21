@@ -20,18 +20,19 @@ class StartFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         navController = Navigation.findNavController(view)
-        view.butLog.setOnClickListener(this)
+
+        view.butLog     .setOnClickListener(this)
         view.butRegister.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
 
         when (v?.id) {
-            R.id.butLog -> openLogin()
+            R.id.butLog      -> openLogin()
             R.id.butRegister -> openRegister()
         }
     }
 
     private fun openRegister() = navController.navigate(R.id.registrationFragment)
-    private fun openLogin() = navController.navigate(R.id.loginFragment)
+    private fun openLogin()    = navController.navigate(R.id.loginFragment)
 }

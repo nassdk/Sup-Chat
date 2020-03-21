@@ -15,5 +15,6 @@
     <color name="default_toolbar_background_color">#171717</color>
 
     <color name="default_pink_color">#FF034D</color>
+    <color name="ripple_pink_color">#E994A2</color>
     <color name="hint_text_color">#787777</color>
 </resources>

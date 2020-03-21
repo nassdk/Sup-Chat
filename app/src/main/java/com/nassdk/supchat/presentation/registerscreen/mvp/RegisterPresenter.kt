@@ -8,16 +8,18 @@ import com.nassdk.supchat.domain.model.User
 
 @InjectViewState
 class RegisterPresenter : MvpPresenter<RegisterView>() {
+
     val database: FirebaseDatabase = FirebaseDatabase.getInstance()
     var reference: DatabaseReference = database.getReference("Users")
 
     fun registerUser(textEmail: String, textPassword: String, textUserName: String) {
         when {
-            textEmail.isEmpty() -> viewState.showEmptyError()
-            textPassword.isEmpty() -> viewState.showEmptyError()
-            textUserName.isEmpty() -> viewState.showEmptyError()
+            textEmail.isEmpty()      -> viewState.showEmptyError()
+            textPassword.isEmpty()   -> viewState.showEmptyError()
+            textUserName.isEmpty()   -> viewState.showEmptyError()
             textPassword.count() < 8 -> viewState.showPassError()
-            else -> {
+            else                     ->
+            {
                 val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
                 auth.createUserWithEmailAndPassword(textEmail, textPassword).addOnCompleteListener { task ->
@@ -25,16 +27,17 @@ class RegisterPresenter : MvpPresenter<RegisterView>() {
                         viewState.showSuccessMessage()
                         reference.addValueEventListener(object : ValueEventListener {
                             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                                val firebaseUser = auth.currentUser
-                                val id = firebaseUser!!.uid
+
+                                val firebaseUser= auth.currentUser
+                                val id                = firebaseUser!!.uid
 
                                 updateUser(
-                                        id = id,
+                                        id           = id,
                                         textUserName = textUserName,
                                         textPassword = textPassword,
-                                        textEmail = textEmail,
-                                        imageURL = "",
-                                        status = ""
+                                        textEmail    = textEmail,
+                                        imageURL     = "",
+                                        status       = ""
                                 )
                             }
 
@@ -48,6 +51,7 @@ class RegisterPresenter : MvpPresenter<RegisterView>() {
     }
 
     private fun updateUser(id: String, textUserName: String, textPassword: String, textEmail: String, imageURL: String, status: String) {
+
         reference = FirebaseDatabase.getInstance().getReference("Users").child(id)
         val user = User(id, textUserName, textPassword, textEmail, imageURL, status)
         reference.setValue(user)

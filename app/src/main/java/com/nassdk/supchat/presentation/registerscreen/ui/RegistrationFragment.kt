@@ -44,9 +44,9 @@ class RegistrationFragment : MvpAppCompatFragment(), RegisterView {
         }
     }
 
-    override fun showEmptyError() = Toast.makeText(context, getString(R.string.user_registration_fields_empty_error_message), Toast.LENGTH_SHORT).show()
-    override fun showPassError() = Toast.makeText(context, getString(R.string.user_registration_password_error_message), Toast.LENGTH_SHORT).show()
-    override fun showRegisterError() = Toast.makeText(context, getString(R.string.user_registration_failure_message), Toast.LENGTH_LONG).show()
+    override fun showEmptyError()     = Toast.makeText(context, getString(R.string.user_registration_fields_empty_error_message), Toast.LENGTH_SHORT).show()
+    override fun showPassError()      = Toast.makeText(context, getString(R.string.user_registration_password_error_message), Toast.LENGTH_SHORT).show()
+    override fun showRegisterError()  = Toast.makeText(context, getString(R.string.user_registration_failure_message), Toast.LENGTH_LONG).show()
     override fun showSuccessMessage() = Toast.makeText(context, getString(R.string.user_registration_succes_message), Toast.LENGTH_LONG).show()
 
     override fun showNoInternetDialog() {

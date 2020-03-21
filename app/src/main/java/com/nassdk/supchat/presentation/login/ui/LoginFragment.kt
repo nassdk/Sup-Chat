@@ -34,9 +34,10 @@ class LoginFragment : MvpAppCompatFragment(), LoginView, View.OnClickListener {
     }
 
     private fun initViews(view: View) {
+
         navController = Navigation.findNavController(view)
 
-        view.butLogIn.setOnClickListener(this)
+        view.butLogIn       .setOnClickListener(this)
         view.tvResetPassword.setOnClickListener(this)
     }
 
@@ -54,12 +55,13 @@ class LoginFragment : MvpAppCompatFragment(), LoginView, View.OnClickListener {
     }
 
     override fun showEmptyError() = Toast.makeText(context, getString(R.string.login_field_fill_error_message), Toast.LENGTH_SHORT).show()
-    override fun showSuccess() = Toast.makeText(context, getString(R.string.login_success_enter_to_account_message), Toast.LENGTH_SHORT).show()
-    override fun showAuthError() = Toast.makeText(context, getString(R.string.login_failure_message), Toast.LENGTH_LONG).show()
-    override fun openResetPass() = startActivity(Intent(context, ResetPassActivity::class.java))
+    override fun showSuccess()    = Toast.makeText(context, getString(R.string.login_success_enter_to_account_message), Toast.LENGTH_SHORT).show()
+    override fun showAuthError()  = Toast.makeText(context, getString(R.string.login_failure_message), Toast.LENGTH_LONG).show()
+    override fun openResetPass()  = startActivity(Intent(context, ResetPassActivity::class.java))
     override fun openMain() {}
 
     override fun showNoInternetDialog() {
+
         val builder = AlertDialog.Builder(context!!)
         builder.setTitle(getString(R.string.warning_message_title))
                 .setMessage(getString(R.string.warning_no_internet_message))
