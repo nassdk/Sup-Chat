@@ -7,7 +7,6 @@ import androidx.appcompat.app.AlertDialog
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.nassdk.supchat.R
-import com.nassdk.supchat.presentation.login.ui.LoginActivity
 import com.nassdk.supchat.presentation.resetpassword.mvp.ResetPassPresenter
 import com.nassdk.supchat.presentation.resetpassword.mvp.ResetPassView
 import com.google.firebase.auth.FirebaseAuth
@@ -47,7 +46,9 @@ class ResetPassActivity : MvpAppCompatActivity(), ResetPassView {
 
     override fun showEmptyError() = Toast.makeText(this, "Please, write your email to reset your password", Toast.LENGTH_SHORT).show()
 
-    override fun openLogin() = startActivity(Intent(this@ResetPassActivity, LoginActivity::class.java))
+    override fun openLogin() {
+        //startActivity(Intent(this@ResetPassActivity, LoginActivity::class.java))
+    }
 
     override fun showError(error: String?) = Toast.makeText(this, error, Toast.LENGTH_LONG).show()
 

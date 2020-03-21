@@ -4,8 +4,9 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorWhite</item>
-        <item name="colorPrimaryDark">@color/colorMyColor</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/default_background_color</item>
+        <item name="colorAccent">@color/default_background_color</item>
+        <item name="background">@color/default_background_color</item>
     </style>
 
     <style name="MainMenuStyle" parent="Theme.AppCompat.Light">
@@ -37,4 +38,14 @@
         <item name="colorAccent">@color/colorWhite</item>
     </style>
 
+    <style name="TextInputLayoutHintLabelStyle" parent="TextAppearance.Design.Hint">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/default_pink_color</item>
+    </style>
+
+    <style name="TextInputEditTextControlStyle" parent="Widget.Design.TextInputLayout">
+        <item name="colorControlNormal">@color/colorWhite</item>
+        <item name="colorControlActivated">@color/default_pink_color</item>
+        <item name="colorControlHighlight">@color/default_pink_color</item>
+    </style>
 </resources>

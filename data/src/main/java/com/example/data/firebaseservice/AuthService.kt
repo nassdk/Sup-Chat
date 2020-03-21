@@ -6,17 +6,18 @@ import com.google.firebase.auth.FirebaseAuth
 
 class AuthService {
 
-    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
-
-    fun userLogIn(login: String, pass: String): Task<AuthResult?> {
-        return auth.signInWithEmailAndPassword(login, pass)
+    fun userAuthCase(email: String, password: String): Task<AuthResult?> {
+        val auth: FirebaseAuth = FirebaseAuth.getInstance()
+        return auth.signInWithEmailAndPassword(email, password)
     }
 
-    fun userRegistration(email: String, pass: String): Task<AuthResult?> {
-        return auth.createUserWithEmailAndPassword(email, pass)
+    fun userRegistrationCase(textEmail: String, textPassword: String): Task<AuthResult?> {
+        val auth: FirebaseAuth = FirebaseAuth.getInstance()
+        return auth.createUserWithEmailAndPassword(textEmail, textPassword)
     }
 
-    fun restorePass(email: String): Task<Void?> {
+    fun restorePassCase(email: String): Task<Void?> {
+        val auth: FirebaseAuth = FirebaseAuth.getInstance()
         return auth.sendPasswordResetEmail(email)
     }
 }

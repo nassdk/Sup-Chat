@@ -26,26 +26,23 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.2.0'
+
+    implementation project(':domain')
     testImplementation 'junit:junit:4.12'
 
-    implementation project (':domain')
-
     //Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.6.1'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.1'
+    api "com.squareup.retrofit2:retrofit:$retrofit_version"
+    api "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
 
     //OkHttp3
-    implementation 'com.squareup.okhttp3:okhttp:4.4.0'
+    api "com.squareup.okhttp3:okhttp:$okhttp3_version"
 
     //Gson
-    implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
+    api "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
     //Firebase
-    implementation 'com.google.firebase:firebase-core:17.0.1'
-    implementation 'com.google.firebase:firebase-auth:18.1.0'
-    implementation 'com.google.firebase:firebase-database:18.0.1'
-    implementation 'com.google.firebase:firebase-storage:18.1.1'
+    api "com.google.firebase:firebase-core:$firebase_core_version"
+    api "com.google.firebase:firebase-auth:$firebase_auth_version"
+    api "com.google.firebase:firebase-database:$firebase_database_version"
+    api "com.google.firebase:firebase-storage:$firebase_storage_version"
 }

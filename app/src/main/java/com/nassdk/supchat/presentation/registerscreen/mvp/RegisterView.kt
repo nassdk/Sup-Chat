@@ -6,4 +6,6 @@ interface RegisterView : MvpView {
     fun showEmptyError()
     fun showPassError()
     fun showNoInternetDialog()
+    fun showSuccessMessage()
+    fun showRegisterError()
 }

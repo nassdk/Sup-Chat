@@ -22,68 +22,69 @@ android {
 }
 
 dependencies {
+    implementation project(':di')
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    //noinspection GradleCompatible
+
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
     //Tests
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     testImplementation 'junit:junit:4.12'
 
     //RxJava2
-    implementation "io.reactivex.rxjava2:rxjava:2.2.18"
-    implementation "io.reactivex.rxjava2:rxkotlin:2.4.0"
+    implementation "io.reactivex.rxjava2:rxjava:$rx_java_version"
+    implementation "io.reactivex.rxjava2:rxkotlin:$rx_kotlin_version"
 
     //Firebase
-    implementation 'com.google.firebase:firebase-core:17.0.1'
-    implementation 'com.google.firebase:firebase-auth:18.1.0'
-    implementation 'com.google.firebase:firebase-database:18.0.1'
-    implementation 'com.google.firebase:firebase-storage:18.1.1'
+    implementation "com.google.firebase:firebase-core:$firebase_core_version"
+    implementation "com.google.firebase:firebase-auth:$firebase_auth_version"
+    implementation "com.google.firebase:firebase-database:$firebase_database_version"
+    implementation "com.google.firebase:firebase-storage:$firebase_storage_version"
 
     //Design
-    implementation 'com.google.android.gms:play-services-auth:17.0.0'
-    implementation 'com.google.android.material:material:1.0.0'
-    implementation 'com.google.android.material:material:1.2.0-alpha01'
+    implementation "com.google.android.gms:play-services-auth:$google_gms_service_version"
+    implementation "com.google.android.material:material:$google_material_version"
+    implementation "com.google.android.material:material:$google_material_version_alpha"
 
 
     //Images Circle form
-    implementation 'de.hdodenhof:circleimageview:3.0.0'
+    implementation "de.hdodenhof:circleimageview:$circle_image_view_version"
 
     //Loading Images
-    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    implementation "com.github.bumptech.glide:glide:$glide_version"
 
     //Floating Action Button
-    implementation 'com.github.clans:fab:1.6.4'
+    implementation "com.github.clans:fab:$fab_version"
 
     //Drawer
-    implementation "com.mikepenz:materialdrawer:6.1.1"
+    implementation "com.mikepenz:materialdrawer:$material_drawer_version"
 
     //Search feature
-    implementation 'com.miguelcatalan:materialsearchview:1.4.0'
+    implementation "com.miguelcatalan:materialsearchview:$search_view_version"
 
     //Kotlin
-    implementation 'androidx.core:core-ktx:1.2.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.61"
+    implementation "androidx.core:core-ktx:$ktx_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     //MVP
-    implementation 'tech.schoolhelper:moxy-x:1.7.0'
-    implementation 'tech.schoolhelper:moxy-x-androidx:1.7.0'
-    kapt 'tech.schoolhelper:moxy-x-compiler:1.7.0'
+    implementation "tech.schoolhelper:moxy-x:"
+    implementation "tech.schoolhelper:moxy-x-androidx:$moxy_version"
+    kapt "tech.schoolhelper:moxy-x-compiler:$moxy_version"
 
     //ProgressView
-    implementation 'com.github.rahatarmanahmed:circularprogressview:2.5.0'
+    implementation "com.github.rahatarmanahmed:circularprogressview:$circular_progress_view_version"
 
     //Navigation
-    implementation "androidx.navigation:navigation-fragment-ktx:2.3.0-alpha03"
-    implementation "androidx.navigation:navigation-ui-ktx:2.3.0-alpha03"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_component_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation_component_version"
 
     //DI
-    implementation 'org.koin:koin-android:2.1.3'
-    implementation 'org.koin:koin-android-scope:2.1.3'
-    implementation 'org.koin:koin-test:2.1.3'
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-android-scope:$koin_version"
+    implementation "org.koin:koin-test:$koin_version"
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -5,11 +5,8 @@
     <string name="emailTextView">Email</string>
     <string name="passwordEditText">Password</string>
     <string name="buttonSignUp">Sign Up</string>
-    <string name="please_log_in">Please , Log in</string>
     <string name="sup_chat">Sup Chat</string>
     <string name="sign_up">Sign Up</string>
-    <string name="log_in">Log In</string>
-    <string name="log_in1">Log In</string>
     <string name="username1">UserName</string>
     <string name="logout">Log out</string>
     <string name="log_out">Log out</string>
@@ -28,15 +25,37 @@
     <string name="profile111">Profile</string>
     <string name="settings">Settings</string>
 
-
     <string name="nav_drawer_open">Open Navigation Drawer</string>
     <string name="nav_drawer_close">Close Navigation Drawer</string>
-    <string name="title_activity_main2">Main2Activity</string>
     <string name="offline">offline</string>
-    <string name="forgot_your_password">Forgot your password?</string>
-    <string name="reset_email">Type in your Email</string>
     <string name="reset">RESET</string>
     <string name="user_reg_success_msg">User Successfully Registered! Please Enter in your Profile</string>
     <string name="user_reg_failure_msg">Something went wrong. Please use different email address or try later</string>
+
+
+    <!-- Common -->
+    <string name="warning_message_title">Warning!</string>
+    <string name="warning_no_internet_message">Your device is not connected to Internet. Please, try later</string>
+    <string name="warning_alert_exit_button_title">Exit</string>
+
+    <!-- Login Screen -->
+    <string name="login_password_hint_text">Password</string>
+    <string name="login_email_hint_text">Email</string>
+    <string name="login_log_in_button_text">Log In</string>
+    <string name="login_forgot_pass_button_title">Forgot your password?</string>
+    <string name="login_reset_email">Type in your Email</string>
+    <string name="login_title_text">Please , Log in</string>
+    <string name="login_field_fill_error_message">All fields must be filled!</string>
+    <string name="login_success_enter_to_account_message">Welcome to your Account</string>
+    <string name="login_failure_message">Authentication failed. Wrong password or email</string>
+
+    <!-- Registration Screen -->
+    <string name="user_registration_fields_empty_error_message">All fields must be field</string>
+    <string name="user_registration_password_error_message">Password must consist of at least of 8 characters</string>
+    <string name="user_registration_failure_message">Please use different email address or try later</string>
+    <string name="user_registration_succes_message">User Successfully Registered! Please Enter in your Profile</string>
+    <string name="user_registration_user_name_hint_text">Name</string>
+    <string name="user_registration_email_hint_text">Email</string>
+    <string name="user_registration_pass_hint_text">Password</string>
 
 </resources>

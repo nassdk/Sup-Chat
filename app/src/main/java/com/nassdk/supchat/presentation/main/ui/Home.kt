@@ -3,23 +3,16 @@ package com.nassdk.supchat.presentation.main.ui
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
-import com.bumptech.glide.Glide
 import com.nassdk.supchat.R
 import com.nassdk.supchat.presentation.main.mvp.MainPresenter
 import com.nassdk.supchat.presentation.main.mvp.MainView
 import com.nassdk.supchat.domain.model.User
 import com.nassdk.supchat.presentation.profilescreen.ui.ProfileActivity
-import com.nassdk.supchat.presentation.startscreen.ui.StartActivity
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.navigation_header.*
 
-class MainActivity : MvpAppCompatActivity(), MainView, NavigationView.OnNavigationItemSelectedListener {
+class Home : MvpAppCompatActivity(), MainView, NavigationView.OnNavigationItemSelectedListener {
 
     //private lateinit var drawerLayout: DrawerLayout
 
@@ -51,7 +44,9 @@ class MainActivity : MvpAppCompatActivity(), MainView, NavigationView.OnNavigati
 
     override fun sendStatus(status: String) = mainPresenter.updateStatus(status)
 
-    override fun openStart() = startActivity(Intent(this, StartActivity::class.java))
+    override fun openStart() {
+//        startActivity(Intent(this, StartActivity::class.java))
+    }
 
     override fun openProfile() = startActivity(Intent(this, ProfileActivity::class.java))
 
@@ -90,7 +85,7 @@ class MainActivity : MvpAppCompatActivity(), MainView, NavigationView.OnNavigati
 //        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
 //            drawerLayout.closeDrawer(GravityCompat.START)
 //        } else {
-//            startActivity(Intent(this@MainActivity, StartActivity::class.java))
+//            startActivity(Intent(this@Home, StartActivity::class.java))
 //            finish()
 //        }
     }
@@ -104,7 +99,7 @@ class MainActivity : MvpAppCompatActivity(), MainView, NavigationView.OnNavigati
 //            navHeader_ivProfile.setImageResource(R.mipmap.ic_launcher_round)
 //        } else {
 //            Glide
-//                    .with(this@MainActivity)
+//                    .with(this@Home)
 //                    .load(user.imageURL)
 //                    .into(navHeader_ivProfile)
 //        }
