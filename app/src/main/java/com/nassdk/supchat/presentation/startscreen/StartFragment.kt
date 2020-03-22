@@ -8,14 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.nassdk.supchat.R
+import com.nassdk.supchat.domain.global.BaseFragment
 import kotlinx.android.synthetic.main.screen_start.view.*
 
-class StartFragment : Fragment(), View.OnClickListener {
+class StartFragment : BaseFragment(), View.OnClickListener {
+
+    override val resourceLayout = R.layout.screen_start
 
     private lateinit var navController: NavController
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            layoutInflater.inflate(R.layout.screen_start, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 

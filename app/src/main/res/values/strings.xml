@@ -50,7 +50,7 @@
     <string name="login_failure_message">Authentication failed. Wrong password or email</string>
 
     <!-- Registration Screen -->
-    <string name="user_registration_fields_empty_error_message">All fields must be field</string>
+    <string name="user_registration_email_error_message">Email format is invalid. Please, check it and retry later.</string>
     <string name="user_registration_password_error_message">Password must consist of at least of 8 characters</string>
     <string name="user_registration_failure_message">Please use different email address or try later</string>
     <string name="user_registration_succes_message">User Successfully Registered! Please Enter in your Profile</string>

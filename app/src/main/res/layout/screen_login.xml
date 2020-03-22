@@ -29,14 +29,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            app:hintTextAppearance="@style/TextInputLayoutHintLabelStyle"
-            android:nextFocusDown="@id/tilPassword">
+            android:nextFocusDown="@id/tilPassword"
+            app:hintTextAppearance="@style/TextInputLayoutHintLabelStyle">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/login_email_hint_text"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
                 android:textColor="@color/colorWhite"
                 android:textColorHint="@color/hint_text_color"
                 android:theme="@style/TextInputEditTextControlStyle" />
@@ -48,14 +50,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            app:hintTextAppearance="@style/TextInputLayoutHintLabelStyle">
+            app:hintTextAppearance="@style/TextInputLayoutHintLabelStyle"
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorWhite"
                 android:hint="@string/login_password_hint_text"
+                android:imeOptions="actionDone"
+                android:textColor="@color/colorWhite"
                 android:textColorHint="@color/hint_text_color"
                 android:theme="@style/TextInputEditTextControlStyle" />
 
@@ -66,7 +70,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:background="@drawable/background_ripple_selector_base_pink"
+            android:background="@drawable/backgronud_gray_background_rounded_eighteen"
+            android:enabled="false"
             android:text="@string/login_log_in_button_text"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"

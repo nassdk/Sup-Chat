@@ -13,17 +13,14 @@ class LoginPresenter : MvpPresenter<LoginView>() {
 
         val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
-        when {
-            email.isEmpty()    -> viewState.showEmptyError()
-            password.isEmpty() -> viewState.showEmptyError()
-            else               -> auth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener { task ->
+        auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
 
-                            if (task.isSuccessful) {
-                                viewState.openMain()
-                                viewState.showSuccess()
-                            } else viewState.showAuthError()
-                        }
-        }
+                    if (task.isSuccessful) {
+                        viewState.openMain()
+                        viewState.showSuccess()
+                    } else viewState.showAuthError()
+                }
+
     }
 }

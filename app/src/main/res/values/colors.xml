@@ -13,6 +13,7 @@
     <color name="default_background_color">#2D2D2D</color>
     <color name="default_button_background_color">#FF034D</color>
     <color name="default_toolbar_background_color">#171717</color>
+    <color name="gray999999">#999999</color>
 
     <color name="default_pink_color">#FF034D</color>
     <color name="ripple_pink_color">#E994A2</color>

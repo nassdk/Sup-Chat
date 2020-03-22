@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.nassdk.supchat.R
+import com.nassdk.supchat.domain.global.BaseFragment
 
-class SplashFragment : MvpAppCompatFragment() {
+class SplashFragment : BaseFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            layoutInflater.inflate(R.layout.screen_splash, container, false)
+    override val resourceLayout = R.layout.screen_splash
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val navController = Navigation.findNavController(view)
