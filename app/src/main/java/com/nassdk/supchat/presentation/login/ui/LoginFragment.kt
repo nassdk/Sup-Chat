@@ -2,19 +2,21 @@ package com.nassdk.supchat.presentation.login.ui
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.arellomobile.mvp.presenter.InjectPresenter
+import com.jakewharton.rxbinding2.widget.RxTextView
 import com.nassdk.supchat.R
-import com.nassdk.supchat.domain.extensions.afterTextChanged
+import com.nassdk.supchat.domain.extensions.accessible
 import com.nassdk.supchat.domain.extensions.isNetworkAvailable
 import com.nassdk.supchat.domain.extensions.toTextString
 import com.nassdk.supchat.domain.extensions.toast
 import com.nassdk.supchat.domain.global.BaseFragment
 import com.nassdk.supchat.presentation.login.mvp.LoginPresenter
 import com.nassdk.supchat.presentation.login.mvp.LoginView
+import io.reactivex.rxkotlin.Observables
+import io.reactivex.rxkotlin.plusAssign
+import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.screen_login.*
 import kotlinx.android.synthetic.main.screen_login.view.*
 
@@ -38,18 +40,12 @@ class LoginFragment : BaseFragment(), LoginView, View.OnClickListener {
         view.butLogIn       .setOnClickListener(this)
         view.tvResetPassword.setOnClickListener(this)
 
-        //view.etEmail   .afterTextChanged { validateFields() }
-        //view.etPassword.afterTextChanged { validateFields() }
-    }
-
-    private fun validateFields() {
-
-        butLogIn.isEnabled = etEmail.toTextString().isNotEmpty() && etPassword.toTextString().isNotEmpty()
-
-        if (etEmail.toTextString().isNotEmpty() && etPassword.toTextString().isNotEmpty())
-            butLogIn.background = ContextCompat.getDrawable(context!!, R.drawable.background_ripple_selector_base_pink)
-        else
-            butLogIn.background = ContextCompat.getDrawable(context!!, R.drawable.backgronud_gray_background_rounded_eighteen)
+        subscriptions += Observables.combineLatest(
+                RxTextView.textChanges(etEmail),
+                RxTextView.textChanges(etPassword)
+        ) { email, password ->
+            email.isNotEmpty() && password.isNotEmpty() }
+                .subscribeBy { view.butLogIn.accessible(it) }
     }
 
     override fun onClick(v: View?) {
@@ -58,7 +54,7 @@ class LoginFragment : BaseFragment(), LoginView, View.OnClickListener {
                 if (!isNetworkAvailable(context = context!!))
                     showNoInternetDialog()
                 else
-                    presenter.userLog(etEmail.text.toString(), etPassword.text.toString())
+                    presenter.userLog(etEmail.toTextString(), etPassword.toTextString())
             }
 
             R.id.tvResetPassword -> presenter.userResetPass()

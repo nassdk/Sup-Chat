@@ -10,6 +10,7 @@ buildscript {
         firebase_storage_version = '18.1.1'
 
         rx_java_version = '2.2.18'
+        rx_binding = "2.2.0"
         rx_kotlin_version = '2.4.0'
         rxAndroid_version = '2.1.1'
 

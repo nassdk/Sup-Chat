@@ -1,27 +1,30 @@
 package com.nassdk.supchat.presentation.registerscreen.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
-import com.arellomobile.mvp.MvpAppCompatFragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.arellomobile.mvp.presenter.InjectPresenter
+import com.jakewharton.rxbinding2.widget.RxTextView
 import com.nassdk.supchat.R
-import com.nassdk.supchat.domain.extensions.afterTextChanged
+import com.nassdk.supchat.domain.extensions.accessible
 import com.nassdk.supchat.domain.extensions.isNetworkAvailable
 import com.nassdk.supchat.domain.extensions.toTextString
 import com.nassdk.supchat.domain.extensions.toast
 import com.nassdk.supchat.domain.global.BaseFragment
 import com.nassdk.supchat.presentation.registerscreen.mvp.RegisterPresenter
 import com.nassdk.supchat.presentation.registerscreen.mvp.RegisterView
+import io.reactivex.rxkotlin.Observables
+import io.reactivex.rxkotlin.plusAssign
+import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.screen_registration.*
+import kotlinx.android.synthetic.main.screen_registration.view.*
 
 class RegistrationFragment : BaseFragment(), RegisterView {
 
     override val resourceLayout = R.layout.screen_registration
+
+    private lateinit var navController: NavController
 
     @InjectPresenter
     lateinit var registerPresenter: RegisterPresenter
@@ -32,37 +35,26 @@ class RegistrationFragment : BaseFragment(), RegisterView {
 
     private fun initViews(view: View) {
 
-//        setSupportActionBar(tbForRegisterActivity)
-//        supportActionBar?.title = "Sup Chat"
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        navController = Navigation.findNavController(view)
 
-        etEmail   .afterTextChanged { validateFields() }
-        etUserName.afterTextChanged { validateFields() }
-        etPassword.afterTextChanged { validateFields() }
-
-        butSingUp.setOnClickListener {
+        view.butSingUp.setOnClickListener {
             if (!isNetworkAvailable(context = context!!)) showNoInternetDialog()
             else {
                 registerPresenter.registerUser(
-                        etUserName.text.toString(),
-                        etPassword.text.toString(),
-                        etUserName.text.toString()
+                        view.etUserName.toTextString(),
+                        view.etPassword.toTextString(),
+                        view.etUserName.toTextString()
                 )
             }
         }
-    }
 
-    private fun validateFields() {
-
-        butSingUp.isEnabled =
-                etEmail   .toTextString().isNotEmpty() &&
-                etPassword.toTextString().isNotEmpty() &&
-                etUserName.toTextString().isNotEmpty()
-
-        if (etEmail.toTextString().isNotEmpty() && etPassword.toTextString().isNotEmpty() && etUserName.toTextString().isNotEmpty())
-            butSingUp.background = ContextCompat.getDrawable(context!!, R.drawable.background_ripple_selector_base_pink)
-        else
-            butSingUp.background = ContextCompat.getDrawable(context!!, R.drawable.backgronud_gray_background_rounded_eighteen)
+        subscriptions += Observables.combineLatest(
+                RxTextView.textChanges(etEmail),
+                RxTextView.textChanges(etPassword),
+                RxTextView.textChanges(etUserName)
+        ) { email, password, name ->
+            email.isNotEmpty() && password.isNotEmpty() && name.isNotEmpty() }
+                .subscribeBy { butSingUp.accessible(it) }
     }
 
     override fun showPassError()       = toast(getString(R.string.user_registration_password_error_message))

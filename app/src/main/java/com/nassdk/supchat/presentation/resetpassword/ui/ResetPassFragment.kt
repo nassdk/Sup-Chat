@@ -2,15 +2,11 @@ package com.nassdk.supchat.presentation.resetpassword.ui
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.nassdk.supchat.R
-import com.nassdk.supchat.domain.extensions.afterTextChanged
-import com.nassdk.supchat.domain.extensions.isNetworkAvailable
-import com.nassdk.supchat.domain.extensions.toTextString
-import com.nassdk.supchat.domain.extensions.toast
+import com.nassdk.supchat.domain.extensions.*
 import com.nassdk.supchat.domain.global.BaseFragment
 import com.nassdk.supchat.presentation.resetpassword.mvp.ResetPassPresenter
 import com.nassdk.supchat.presentation.resetpassword.mvp.ResetPassView
@@ -34,27 +30,15 @@ class ResetPassFragment : BaseFragment(), ResetPassView {
     }
 
     private fun initViews(view: View) {
-//        setSupportActionBar(tbForRegisterActivity)
-//        supportActionBar?.title = "Reset Password"
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        view.etEmailReset.afterTextChanged { validateEmailField() }
+        view.etEmailReset.afterTextChanged { butReset.accessible(it.isNotEmpty()) }
 
-        butReset.setOnClickListener {
+        view.butReset.setOnClickListener {
             if (!isNetworkAvailable(context = context!!)) showNoInternetDialog()
             else presenter.resetPassword(etEmailReset.toTextString())
         }
     }
 
-    private fun validateEmailField() {
-
-        butReset.isEnabled = etEmailReset.toTextString().isNotEmpty()
-
-        if (etEmailReset.toTextString().isNotEmpty())
-            butReset.background = ContextCompat.getDrawable(context!!, R.drawable.background_ripple_selector_base_pink)
-        else
-            butReset.background = ContextCompat.getDrawable(context!!, R.drawable.backgronud_gray_background_rounded_eighteen)
-    }
 
     override fun showSuccess()             = toast(getString(R.string.reset_pass_success_message))
     override fun showEmailRegexError()     = toast(getString(R.string.reset_pass_email_regex_error_message))

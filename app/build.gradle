@@ -38,6 +38,9 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$rx_java_version"
     implementation "io.reactivex.rxjava2:rxkotlin:$rx_kotlin_version"
 
+    //RxBinding
+    implementation "com.jakewharton.rxbinding2:rxbinding:$rx_binding"
+
     //Firebase
     implementation "com.google.firebase:firebase-core:$firebase_core_version"
     implementation "com.google.firebase:firebase-auth:$firebase_auth_version"
