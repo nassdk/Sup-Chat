@@ -7,13 +7,20 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.nassdk.supchat.R
+import io.reactivex.disposables.CompositeDisposable
 
 abstract class BaseFragment : MvpAppCompatFragment() {
 
     abstract val resourceLayout: Int
+    protected val subscriptions = CompositeDisposable()
 
     final override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
             layoutInflater.inflate(resourceLayout, container, false)
+
+    override fun onDestroy() {
+        subscriptions.clear()
+        super.onDestroy()
+    }
 
     fun showNoInternetDialog() {
         val builder = AlertDialog.Builder(context!!)
