@@ -37,6 +37,7 @@
     <string name="warning_message_title">Warning!</string>
     <string name="warning_no_internet_message">Your device is not connected to Internet. Please, try later</string>
     <string name="warning_alert_exit_button_title">Exit</string>
+    <string name="common_error_message">Some Error Occurred. Please try later.</string>
 
     <!-- Login Screen -->
     <string name="login_password_hint_text">Password</string>
@@ -57,5 +58,10 @@
     <string name="user_registration_user_name_hint_text">Name</string>
     <string name="user_registration_email_hint_text">Email</string>
     <string name="user_registration_pass_hint_text">Password</string>
+
+    <!-- Reset Password Screen -->
+    <string name="reset_pass_success_message">Message with instruction was send to your email. Please check it</string>
+    <string name="reset_pass_email_regex_error_message">Email format is invalid. Please, check it and retry later</string>
+    <string name="reset_pass_info_message">Put your eMail in and press RESET Button. Then check out your email for details</string>
 
 </resources>

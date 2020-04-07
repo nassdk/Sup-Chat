@@ -5,36 +5,36 @@
     android:background="@color/default_background_color"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp">
+    android:paddingStart="@dimen/base_padding_16"
+    android:paddingEnd="@dimen/base_padding_16">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sup_chat"
         android:textColor="@color/colorWhite"
-        android:textSize="42sp"
+        android:textSize="@dimen/text_size_42"
         android:textStyle="bold" />
 
     <Button
         android:id="@+id/butRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/base_margin_20"
         android:background="@drawable/background_ripple_selector_base_pink"
         android:text="@string/sign_up"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
-        android:textSize="16sp" />
+        android:textSize="@dimen/text_size_16" />
 
     <Button
         android:id="@+id/butLog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/base_margin_16"
         android:background="@drawable/background_ripple_selector_base_pink"
         android:text="@string/login_log_in_button_text"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
-        android:textSize="16sp" />
+        android:textSize="@dimen/text_size_16" />
 </LinearLayout>

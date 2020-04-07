@@ -1,6 +1,5 @@
 package com.nassdk.supchat.presentation.login.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
@@ -16,7 +15,6 @@ import com.nassdk.supchat.domain.extensions.toast
 import com.nassdk.supchat.domain.global.BaseFragment
 import com.nassdk.supchat.presentation.login.mvp.LoginPresenter
 import com.nassdk.supchat.presentation.login.mvp.LoginView
-import com.nassdk.supchat.presentation.resetpassword.ui.ResetPassActivity
 import kotlinx.android.synthetic.main.screen_login.*
 import kotlinx.android.synthetic.main.screen_login.view.*
 
@@ -40,8 +38,8 @@ class LoginFragment : BaseFragment(), LoginView, View.OnClickListener {
         view.butLogIn       .setOnClickListener(this)
         view.tvResetPassword.setOnClickListener(this)
 
-        view.etEmail   .afterTextChanged { validateFields() }
-        view.etPassword.afterTextChanged { validateFields() }
+        //view.etEmail   .afterTextChanged { validateFields() }
+        //view.etPassword.afterTextChanged { validateFields() }
     }
 
     private fun validateFields() {
@@ -69,20 +67,7 @@ class LoginFragment : BaseFragment(), LoginView, View.OnClickListener {
 
     override fun showSuccess()   = toast(getString(R.string.login_success_enter_to_account_message))
     override fun showAuthError() = toast(getString(R.string.login_failure_message))
-    override fun openResetPass() = startActivity(Intent(context, ResetPassActivity::class.java))
+    override fun openResetPass() = navController.navigate(R.id.resetPassFragment)
     override fun openMain() {}
-
-    override fun showNoInternetDialog() {
-
-        val builder = AlertDialog.Builder(context!!)
-        builder.setTitle(getString(R.string.warning_message_title))
-                .setMessage(getString(R.string.warning_no_internet_message))
-                .setIcon(R.drawable.ic_warning)
-                .setCancelable(false)
-                .setNegativeButton(getString(R.string.warning_alert_exit_button_title)
-                ) { _, _ -> activity?.finish() }
-        val alert = builder.create()
-        alert.show()
-    }
 }
 

@@ -13,22 +13,22 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="@dimen/base_padding_20">
 
         <TextView
             android:id="@+id/tvRegisterActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/base_margin_8"
             android:text="@string/login_title_text"
             android:textColor="@color/colorWhite"
-            android:textSize="24sp"
+            android:textSize="@dimen/text_size_24"
             android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/base_margin_20"
             android:nextFocusDown="@id/tilPassword"
             app:hintTextAppearance="@style/TextInputLayoutHintLabelStyle">
 
@@ -49,7 +49,7 @@
             android:id="@+id/tilPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/base_margin_20"
             app:hintTextAppearance="@style/TextInputLayoutHintLabelStyle"
             app:passwordToggleEnabled="true">
 
@@ -69,23 +69,23 @@
             android:id="@+id/butLogIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="@dimen/base_margin_24"
             android:background="@drawable/backgronud_gray_background_rounded_eighteen"
             android:enabled="false"
             android:text="@string/login_log_in_button_text"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"
-            android:textSize="16sp" />
+            android:textSize="@dimen/text_size_16" />
 
         <TextView
             android:id="@+id/tvResetPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/base_margin_16"
             android:text="@string/login_forgot_pass_button_title"
             android:textColor="@color/colorWhite"
-            android:textSize="16sp" />
+            android:textSize="@dimen/text_size_16" />
     </LinearLayout>
 
 </LinearLayout>

@@ -14,22 +14,22 @@
         android:layout_below="@+id/tbForRegisterActivity"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="@dimen/base_padding_20">
 
         <TextView
             android:id="@+id/tvRegisterActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/base_margin_20"
             android:text="@string/RegistrationText"
             android:textColor="@color/colorWhite"
-            android:textSize="28sp"
+            android:textSize="@dimen/text_size_28"
             android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/base_margin_20"
             app:hintTextAppearance="@style/TextInputLayoutHintLabelStyle">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -47,7 +47,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/base_margin_20"
             app:hintTextAppearance="@style/TextInputLayoutHintLabelStyle">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -65,9 +65,9 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:passwordToggleEnabled="true"
-            app:hintTextAppearance="@style/TextInputLayoutHintLabelStyle">
+            android:layout_marginTop="@dimen/base_margin_20"
+            app:hintTextAppearance="@style/TextInputLayoutHintLabelStyle"
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPassword"
@@ -84,13 +84,13 @@
             android:id="@+id/butSingUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/base_margin_20"
             android:background="@drawable/backgronud_gray_background_rounded_eighteen"
             android:enabled="false"
             android:text="@string/buttonSignUp"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"
-            android:textSize="16sp" />
+            android:textSize="@dimen/text_size_16" />
     </LinearLayout>
 
     <ProgressBar

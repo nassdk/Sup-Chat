@@ -55,7 +55,7 @@ class RegistrationFragment : BaseFragment(), RegisterView {
     private fun validateFields() {
 
         butSingUp.isEnabled =
-                etEmail.   toTextString().isNotEmpty() &&
+                etEmail   .toTextString().isNotEmpty() &&
                 etPassword.toTextString().isNotEmpty() &&
                 etUserName.toTextString().isNotEmpty()
 
@@ -69,17 +69,4 @@ class RegistrationFragment : BaseFragment(), RegisterView {
     override fun showRegisterError()   = toast(getString(R.string.user_registration_failure_message))
     override fun showSuccessMessage()  = toast(getString(R.string.user_registration_succes_message))
     override fun showEmailRegexError() = toast(getString(R.string.user_registration_email_error_message))
-
-    override fun showNoInternetDialog() {
-        val builder = AlertDialog.Builder(context!!)
-        builder
-                .setTitle(getString(R.string.warning_message_title))
-                .setMessage(getString(R.string.warning_no_internet_message))
-                .setIcon(R.drawable.ic_warning)
-                .setCancelable(false)
-                .setNegativeButton(getString(R.string.warning_alert_exit_button_title)
-                ) { _, _ -> activity?.finish() }
-        val alert = builder.create()
-        alert.show()
-    }
 }

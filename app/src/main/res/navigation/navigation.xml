@@ -17,29 +17,34 @@
         android:label="StartFragment" >
         <action
             android:id="@+id/action_startFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/fab_slide_in_from_right"
+            app:popUpTo="@+id/startFragment" />
         <action
             android:id="@+id/action_startFragment_to_registrationFragment"
-            app:destination="@id/registrationFragment" />
-        <action
-            android:id="@+id/action_startFragment_to_navigation"
-            app:destination="@id/navigation"
-            app:launchSingleTop="true" />
+            app:destination="@id/registrationFragment"
+            app:enterAnim="@anim/fab_slide_out_to_right"
+            app:popUpTo="@+id/startFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
         android:name="com.nassdk.supchat.presentation.registerscreen.ui.RegistrationFragment"
-        android:label="RegistrationFragment" >
-        <action
-            android:id="@+id/action_registrationFragment_to_startFragment"
-            app:popUpTo="@id/startFragment" />
-    </fragment>
+        android:label="RegistrationFragment" />
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.nassdk.supchat.presentation.login.ui.LoginFragment"
         android:label="LoginFragment" >
         <action
-            android:id="@+id/action_loginFragment_to_startFragment"
-            app:popUpTo="@id/startFragment" />
+            android:id="@+id/action_loginFragment_to_resetPassFragment2"
+            app:destination="@id/resetPassFragment"
+            app:popUpTo="@+id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resetPassFragment"
+        android:name="com.nassdk.supchat.presentation.resetpassword.ui.ResetPassFragment"
+        android:label="ResetPassFragment" >
+        <action
+            android:id="@+id/action_resetPassFragment_to_loginFragment2"
+            app:destination="@id/loginFragment" />
     </fragment>
 </navigation>
