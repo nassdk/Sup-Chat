@@ -3,28 +3,29 @@ package com.nassdk.supchat.presentation.profilescreen.mvp
 import android.net.Uri
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
+import com.example.domain.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
-import com.nassdk.supchat.domain.model.User
+import com.nassdk.supchat.domain.global.BasePresenter
 import java.util.*
 
 @Suppress("INACCESSIBLE_TYPE")
 @InjectViewState
-class ProfilePresenter : MvpPresenter<ProfileView>() {
+class ProfilePresenter : BasePresenter<ProfileView>() {
 
-    private lateinit var fbUser: FirebaseUser
+    private lateinit var firebaseUser: FirebaseUser
     private lateinit var reference: DatabaseReference
     private lateinit var storage: StorageReference
     private var sTask: StorageTask<*>? = null
 
     fun fetchData() {
 
-        fbUser = FirebaseAuth.getInstance().currentUser!!
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(fbUser.uid)
+        firebaseUser = FirebaseAuth.getInstance().currentUser!!
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.uid)
 
         reference.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -43,8 +44,8 @@ class ProfilePresenter : MvpPresenter<ProfileView>() {
     fun uploadImage(imageUri: Uri) {
 
         storage = FirebaseStorage.getInstance().getReference("Uploads")
-        fbUser = FirebaseAuth.getInstance().currentUser!!
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(fbUser.uid)
+        firebaseUser = FirebaseAuth.getInstance().currentUser!!
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.uid)
         if (imageUri != null) {
             viewState.showProgress(show = true)
             viewState.enablePhotoFab(enable = false)
@@ -63,7 +64,7 @@ class ProfilePresenter : MvpPresenter<ProfileView>() {
                     val downloadUri = task.result
                     val mUri = downloadUri!!.toString()
 
-                    reference = FirebaseDatabase.getInstance().getReference("Users").child(fbUser.uid)
+                    reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.uid)
                     val map = HashMap<String, Any>()
                     map["imageURL"] = "" + mUri
                     reference.updateChildren(map)

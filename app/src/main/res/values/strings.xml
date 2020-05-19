@@ -32,7 +32,6 @@
     <string name="user_reg_success_msg">User Successfully Registered! Please Enter in your Profile</string>
     <string name="user_reg_failure_msg">Something went wrong. Please use different email address or try later</string>
 
-
     <!-- Common -->
     <string name="warning_message_title">Warning!</string>
     <string name="warning_no_internet_message">Your device is not connected to Internet. Please, try later</string>
@@ -63,5 +62,13 @@
     <string name="reset_pass_success_message">Message with instruction was send to your email. Please check it</string>
     <string name="reset_pass_email_regex_error_message">Email format is invalid. Please, check it and retry later</string>
     <string name="reset_pass_info_message">Put your eMail in and press RESET Button. Then check out your email for details</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_no_image_selected_error_text">No Image Selected</string>
+    <string name="profile_loading_progress_message">Uploading in Progress</string>
+    <string name="profile_progress_upload_message">Upload in Progress</string>
+
+    <!-- Conversation Screen -->
+    <string name="conversation_screen_empty_message_error_message">You can\'t send an empty Message</string>
 
 </resources>

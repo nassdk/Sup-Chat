@@ -17,16 +17,12 @@ class ResetPassFragment : BaseFragment(), ResetPassView {
 
     override val resourceLayout = R.layout.screen_reset_pass
 
-    private lateinit var navController: NavController
-
     @InjectPresenter
     lateinit var presenter: ResetPassPresenter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        navController = Navigation.findNavController(view)
-
         initViews(view = view)
+        setupToolbar(title = "Reset Password", showNavIcon = true)
     }
 
     private fun initViews(view: View) {
@@ -40,9 +36,10 @@ class ResetPassFragment : BaseFragment(), ResetPassView {
     }
 
 
+    override fun onBackPressed()           = presenter.onBackPressed()
+    override fun openLogin()               = presenter.onBackPressed()
     override fun showSuccess()             = toast(getString(R.string.reset_pass_success_message))
     override fun showEmailRegexError()     = toast(getString(R.string.reset_pass_email_regex_error_message))
     override fun showError(error: String?) = toast(error ?: getString(R.string.common_error_message))
 
-    override fun openLogin() { navController.navigate(R.id.loginFragment) }
 }

@@ -24,23 +24,20 @@ class RegistrationFragment : BaseFragment(), RegisterView {
 
     override val resourceLayout = R.layout.screen_registration
 
-    private lateinit var navController: NavController
-
     @InjectPresenter
-    lateinit var registerPresenter: RegisterPresenter
+    lateinit var presenter: RegisterPresenter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initViews(view = view)
+        setupToolbar(title = "Sign up", showNavIcon = true)
     }
 
     private fun initViews(view: View) {
 
-        navController = Navigation.findNavController(view)
-
         view.butSingUp.setOnClickListener {
             if (!isNetworkAvailable(context = context!!)) showNoInternetDialog()
             else {
-                registerPresenter.registerUser(
+                presenter.registerUser(
                         view.etUserName.toTextString(),
                         view.etPassword.toTextString(),
                         view.etUserName.toTextString()
@@ -56,6 +53,9 @@ class RegistrationFragment : BaseFragment(), RegisterView {
             email.isNotEmpty() && password.isNotEmpty() && name.isNotEmpty() }
                 .subscribeBy { butSingUp.accessible(it) }
     }
+
+
+    override fun onBackPressed()       = presenter.onBackPressed()
 
     override fun showPassError()       = toast(getString(R.string.user_registration_password_error_message))
     override fun showRegisterError()   = toast(getString(R.string.user_registration_failure_message))

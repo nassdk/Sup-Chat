@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_news"
+        android:icon="@drawable/background_news_bottom_nav_selector"
+        android:title="" />
+
+    <item
+        android:id="@+id/navigation_chats"
+        android:icon="@drawable/background_chats_bottom_nav_selector"
+        android:title="" />
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/background_profile_bottom_nav_selector"
+        android:title="" />
+</menu>

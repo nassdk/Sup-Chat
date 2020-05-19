@@ -1,17 +1,15 @@
 package com.nassdk.supchat.presentation.login.mvp
 
 import com.arellomobile.mvp.InjectViewState
-import com.arellomobile.mvp.MvpPresenter
-import com.google.firebase.auth.FirebaseAuth
+import com.nassdk.supchat.domain.global.BasePresenter
+import com.nassdk.supchat.domain.global.navigation.Screens
 
 @InjectViewState
-class LoginPresenter : MvpPresenter<LoginView>() {
+class LoginPresenter : BasePresenter<LoginView>() {
 
     fun userResetPass() = viewState.openResetPass()
 
     fun userLog(email: String, password: String) {
-
-        val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
         auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
@@ -21,6 +19,8 @@ class LoginPresenter : MvpPresenter<LoginView>() {
                         viewState.showSuccess()
                     } else viewState.showAuthError()
                 }
-
     }
+
+    fun openResetPass() = router.navigateTo(Screens.ResetPassScreen)
+    fun openMain() {}
 }

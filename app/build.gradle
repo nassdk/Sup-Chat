@@ -19,7 +19,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
 
 dependencies {
     implementation project(':di')
@@ -91,6 +102,3 @@ dependencies {
 }
 
 apply plugin: 'com.google.gms.google-services'
-repositories {
-    mavenCentral()
-}

@@ -1,16 +1,14 @@
 package com.nassdk.supchat.presentation.diffprofile.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.Glide
+import com.example.domain.model.User
 import com.nassdk.supchat.R
 import com.nassdk.supchat.domain.extensions.isNetworkAvailable
-import com.nassdk.supchat.domain.model.User
-import com.nassdk.supchat.presentation.chat.ui.ConversationActivity
 import com.nassdk.supchat.presentation.diffprofile.mvp.DiffProfilePresenter
 import com.nassdk.supchat.presentation.diffprofile.mvp.DiffProfileView
 import kotlinx.android.synthetic.main.activity_diff_profile.*
@@ -39,9 +37,9 @@ class DiffProfileActivity : MvpAppCompatActivity(), DiffProfileView, View.OnClic
     }
 
     override fun openChat() {
-        val intentToChatActivity = Intent(this, ConversationActivity::class.java)
-        intentToChatActivity.putExtra("userId", id)
-        startActivity(intentToChatActivity)
+//        val intentToChatActivity = Intent(this, ConversationActivity::class.java)
+//        intentToChatActivity.putExtra("userId", id)
+//        startActivity(intentToChatActivity)
     }
 
     override fun onClick(v: View?) {

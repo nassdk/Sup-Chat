@@ -22,6 +22,18 @@ fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
 
 val emailRegex = """(.+)@(.+)\.(.+)""".toRegex()
 
+internal fun View.makeGone() {
+    visibility = View.GONE
+}
+
+internal fun View.makeInvisible() {
+    visibility = View.INVISIBLE
+}
+
+internal fun View.makeVisible() {
+    visibility = View.VISIBLE
+}
+
 fun Fragment.toast(message: String) {
     this.context!!.toast(message)
 }

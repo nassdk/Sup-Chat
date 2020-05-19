@@ -1,11 +1,11 @@
 package com.nassdk.supchat.presentation.registerscreen.mvp
 
-import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
+import com.nassdk.supchat.domain.global.BaseView
 
 @StateStrategyType(AddToEndSingleStrategy::class)
-interface RegisterView : MvpView {
+interface RegisterView : BaseView {
     fun showEmailRegexError()
     fun showPassError()
     fun showNoInternetDialog()

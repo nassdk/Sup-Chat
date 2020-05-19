@@ -12,7 +12,7 @@ val dataModule = module {
     single {
         Retrofit
                 .Builder()
-                .baseUrl("BASE_URL")
+                .baseUrl("https://newsapi.org/v2/")
                 .addConverterFactory(GsonConverterFactory.create(Gson()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()

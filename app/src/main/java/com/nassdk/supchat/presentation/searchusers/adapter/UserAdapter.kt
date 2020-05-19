@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.nassdk.supchat.R
-import com.nassdk.supchat.domain.model.User
+import com.example.domain.model.User
 import de.hdodenhof.circleimageview.CircleImageView
 
 class UserAdapter(

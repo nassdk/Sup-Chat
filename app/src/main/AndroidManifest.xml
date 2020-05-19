@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
+        <activity android:name=".AppActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,14 +24,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.diffprofile.ui.DiffProfileActivity"
-            android:parentActivityName=".presentation.chat.ui.ConversationActivity" />
+            android:name=".presentation.diffprofile.ui.DiffProfileActivity" />
         <activity
-            android:name=".presentation.searchusers.ui.SearchActivity"
-            android:parentActivityName=".presentation.chat.ui.ConversationActivity" />
-        <activity
-            android:name=".presentation.chat.ui.ConversationActivity"
-            android:parentActivityName=".presentation.main.ui.Home" />
+            android:name=".presentation.searchusers.ui.SearchActivity" />
         <activity
             android:name=".presentation.main.ui.Home"
             android:label="Sup Chat" />

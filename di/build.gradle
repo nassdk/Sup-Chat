@@ -38,4 +38,7 @@ dependencies {
     implementation "org.koin:koin-android:$koin_version"
     implementation "org.koin:koin-android-scope:$koin_version"
     implementation "org.koin:koin-test:$koin_version"
+
+    //Cicerone
+    api "ru.terrakok.cicerone:cicerone:$cicerone_version"
 }

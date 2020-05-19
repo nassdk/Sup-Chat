@@ -2,12 +2,12 @@ package com.nassdk.supchat.presentation.main.mvp
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
+import com.example.domain.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.nassdk.supchat.domain.model.User
 import com.nassdk.supchat.presentation.main.provider.MainProvider
 
 @InjectViewState

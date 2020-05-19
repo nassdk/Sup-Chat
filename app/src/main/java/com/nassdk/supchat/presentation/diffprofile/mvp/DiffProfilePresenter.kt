@@ -1,11 +1,9 @@
 package com.nassdk.supchat.presentation.diffprofile.mvp
 
-import android.content.Context
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
+import com.example.domain.model.User
 import com.google.firebase.database.*
-import com.nassdk.supchat.domain.extensions.isNetworkAvailable
-import com.nassdk.supchat.domain.model.User
 
 @InjectViewState
 class DiffProfilePresenter : MvpPresenter<DiffProfileView>() {

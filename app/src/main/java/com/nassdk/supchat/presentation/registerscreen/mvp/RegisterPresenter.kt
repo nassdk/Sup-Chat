@@ -1,17 +1,17 @@
 package com.nassdk.supchat.presentation.registerscreen.mvp
 
 import com.arellomobile.mvp.InjectViewState
-import com.arellomobile.mvp.MvpPresenter
+import com.example.domain.model.User
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.nassdk.supchat.domain.extensions.emailRegex
-import com.nassdk.supchat.domain.model.User
+import com.nassdk.supchat.domain.global.BasePresenter
 
 @InjectViewState
-class RegisterPresenter : MvpPresenter<RegisterView>() {
-
-    val database: FirebaseDatabase = FirebaseDatabase.getInstance()
-    var reference: DatabaseReference = database.getReference("Users")
+class RegisterPresenter : BasePresenter<RegisterView>() {
 
     fun registerUser(textEmail: String, textPassword: String, textUserName: String) {
         when {
@@ -24,7 +24,7 @@ class RegisterPresenter : MvpPresenter<RegisterView>() {
                 auth.createUserWithEmailAndPassword(textEmail, textPassword).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         viewState.showSuccessMessage()
-                        reference.addValueEventListener(object : ValueEventListener {
+                        referenceUsers.addValueEventListener(object : ValueEventListener {
                             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                                 val firebaseUser= auth.currentUser
@@ -51,7 +51,7 @@ class RegisterPresenter : MvpPresenter<RegisterView>() {
 
     private fun updateUser(id: String, textUserName: String, textPassword: String, textEmail: String, imageURL: String, status: String) {
 
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(id)
+        val reference = FirebaseDatabase.getInstance().getReference("Users").child(id)
         val user  = User(id, textUserName, textPassword, textEmail, imageURL, status)
         reference.setValue(user)
     }

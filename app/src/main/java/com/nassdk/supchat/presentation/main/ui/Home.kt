@@ -8,7 +8,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.nassdk.supchat.R
 import com.nassdk.supchat.presentation.main.mvp.MainPresenter
 import com.nassdk.supchat.presentation.main.mvp.MainView
-import com.nassdk.supchat.domain.model.User
+import com.example.domain.model.User
 import com.nassdk.supchat.presentation.profilescreen.ui.ProfileActivity
 import com.google.android.material.navigation.NavigationView
 
@@ -21,7 +21,7 @@ class Home : MvpAppCompatActivity(), MainView, NavigationView.OnNavigationItemSe
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.screen_main_flow)
 
         mainPresenter.fetchData()
         initViews()

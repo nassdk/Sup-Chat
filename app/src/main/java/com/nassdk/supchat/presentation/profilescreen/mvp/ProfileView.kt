@@ -1,10 +1,11 @@
 package com.nassdk.supchat.presentation.profilescreen.mvp
 
 import com.arellomobile.mvp.MvpView
-import com.nassdk.supchat.domain.model.User
+import com.example.domain.model.User
+import com.nassdk.supchat.domain.global.BaseView
 import java.lang.Exception
 
-interface ProfileView : MvpView {
+interface ProfileView : BaseView {
 
     fun showNoImageError()
     fun showFailError(error: Exception)

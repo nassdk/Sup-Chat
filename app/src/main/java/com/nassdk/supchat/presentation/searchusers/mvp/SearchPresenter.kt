@@ -3,7 +3,7 @@ package com.nassdk.supchat.presentation.searchusers.mvp
 import android.widget.SearchView
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import com.nassdk.supchat.domain.model.User
+import com.example.domain.model.User
 import com.nassdk.supchat.presentation.searchusers.provider.SearchProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser

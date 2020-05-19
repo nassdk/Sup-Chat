@@ -30,6 +30,10 @@ dependencies {
     implementation project(':domain')
     testImplementation 'junit:junit:4.12'
 
+    //Kotlin
+    implementation "androidx.core:core-ktx:$ktx_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
     //Retrofit
     api "com.squareup.retrofit2:retrofit:$retrofit_version"
     api "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"

@@ -3,6 +3,7 @@ package com.nassdk.supchat
 import android.app.Application
 import com.example.di.module.dataModule
 import com.example.di.module.domainModule
+import com.example.di.module.navigationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -20,7 +21,8 @@ class AppDelegate : Application() {
             androidContext(this@AppDelegate)
             modules(
                     domainModule,
-                    dataModule
+                    dataModule,
+                    navigationModule
             )
         }
     }

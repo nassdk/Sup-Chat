@@ -27,7 +27,7 @@
                 android:src="@mipmap/ic_launcher_round" />
 
             <TextView
-                android:id="@+id/tv_UserName"
+                android:id="@+id/tvUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
@@ -47,7 +47,9 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/layoutRelative_message"
         android:layout_below="@id/bar_layout"
-        android:layout_centerVertical="false">
+        android:layout_centerVertical="false"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -61,17 +63,17 @@
         android:padding="5dp">
 
         <EditText
-            android:id="@+id/et_Message"
+            android:id="@+id/etMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toStartOf="@id/but_Send"
+            android:layout_toStartOf="@id/butSendMessage"
             android:background="@android:color/transparent"
             android:hint="@string/messagetextRes"
             android:textCursorDrawable="@drawable/cursor_color" />
 
         <ImageButton
-            android:id="@+id/but_Send"
+            android:id="@+id/butSendMessage"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_alignParentEnd="true"

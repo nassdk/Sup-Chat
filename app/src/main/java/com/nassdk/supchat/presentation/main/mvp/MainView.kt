@@ -1,7 +1,7 @@
 package com.nassdk.supchat.presentation.main.mvp
 
 import com.arellomobile.mvp.MvpView
-import com.nassdk.supchat.domain.model.User
+import com.example.domain.model.User
 
 
 interface MainView : MvpView {

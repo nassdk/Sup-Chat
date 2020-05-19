@@ -10,14 +10,14 @@ import androidx.appcompat.app.AlertDialog
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.Glide
+import com.example.domain.model.User
 import com.google.firebase.storage.StorageTask
 import com.nassdk.supchat.R
 import com.nassdk.supchat.domain.extensions.isNetworkAvailable
-import com.nassdk.supchat.domain.model.User
 import com.nassdk.supchat.presentation.profilescreen.mvp.ProfilePresenter
 import com.nassdk.supchat.presentation.profilescreen.mvp.ProfileView
-import kotlinx.android.synthetic.main.activity_profile.*
-import kotlinx.android.synthetic.main.fragment_chats.spinner
+import kotlinx.android.synthetic.main.screen_profile.*
+import kotlinx.android.synthetic.main.screen_my_chats.spinner
 
 @Suppress("INACCESSIBLE_TYPE")
 class ProfileActivity : MvpAppCompatActivity(), ProfileView {
@@ -33,7 +33,7 @@ class ProfileActivity : MvpAppCompatActivity(), ProfileView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile)
+        setContentView(R.layout.screen_profile)
         presenter.fetchData()
 
         initViews()

@@ -1,6 +1,6 @@
 package com.nassdk.supchat.presentation.searchusers.provider
 
-import com.nassdk.supchat.domain.model.User
+import com.example.domain.model.User
 import com.nassdk.supchat.presentation.searchusers.mvp.SearchPresenter
 import java.util.ArrayList
 

@@ -1,25 +1,22 @@
 package com.nassdk.supchat.presentation.startscreen
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import com.nassdk.supchat.R
 import com.nassdk.supchat.domain.global.BaseFragment
+import com.nassdk.supchat.domain.global.navigation.Screens
 import kotlinx.android.synthetic.main.screen_start.view.*
+import org.koin.android.ext.android.inject
+import ru.terrakok.cicerone.Router
+import ru.terrakok.cicerone.Screen
 
 class StartFragment : BaseFragment(), View.OnClickListener {
 
     override val resourceLayout = R.layout.screen_start
 
-    private lateinit var navController: NavController
+    private val router: Router by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        navController = Navigation.findNavController(view)
 
         view.butLog     .setOnClickListener(this)
         view.butRegister.setOnClickListener(this)
@@ -33,6 +30,8 @@ class StartFragment : BaseFragment(), View.OnClickListener {
         }
     }
 
-    private fun openRegister() = navController.navigate(R.id.registrationFragment)
-    private fun openLogin()    = navController.navigate(R.id.loginFragment)
+    override fun onBackPressed() { activity?.finish() }
+
+    private fun openRegister() = router.navigateTo(Screens.RegistrationScreen)
+    private fun openLogin()    = router.navigateTo(Screens.LoginScreen)
 }
