@@ -2,24 +2,19 @@ package com.nassdk.supchat.presentation
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.navigation.Navigation
-import com.arellomobile.mvp.MvpAppCompatFragment
+import com.example.di.customnavigation.CustomRouter
 import com.nassdk.supchat.R
 import com.nassdk.supchat.domain.global.BaseFragment
 import com.nassdk.supchat.domain.global.navigation.Screens
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import org.koin.android.ext.android.inject
-import ru.terrakok.cicerone.Router
-import ru.terrakok.cicerone.Screen
 import java.util.concurrent.TimeUnit
 
 class SplashFragment : BaseFragment() {
 
-    private val router: Router by inject()
+    private val router: CustomRouter by inject()
 
     override val resourceLayout = R.layout.screen_splash
 

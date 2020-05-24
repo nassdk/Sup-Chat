@@ -15,7 +15,13 @@
     <color name="default_toolbar_background_color">#171717</color>
     <color name="gray999999">#999999</color>
 
+    <color name="progress_bar_gradient_start_color">#46383C</color>
+    <color name="progress_bar_gradient_center_color">#E994A2</color>
+    <color name="progress_bar_gradient_end_color">#F3465C</color>
+
+
     <color name="default_pink_color">#FF034D</color>
     <color name="ripple_pink_color">#E994A2</color>
+    <color name="ripple_gray_color">#616161</color>
     <color name="hint_text_color">#787777</color>
 </resources>

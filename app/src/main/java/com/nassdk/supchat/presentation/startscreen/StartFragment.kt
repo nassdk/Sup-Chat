@@ -2,19 +2,18 @@ package com.nassdk.supchat.presentation.startscreen
 
 import android.os.Bundle
 import android.view.View
+import com.example.di.customnavigation.CustomRouter
 import com.nassdk.supchat.R
 import com.nassdk.supchat.domain.global.BaseFragment
 import com.nassdk.supchat.domain.global.navigation.Screens
 import kotlinx.android.synthetic.main.screen_start.view.*
 import org.koin.android.ext.android.inject
-import ru.terrakok.cicerone.Router
-import ru.terrakok.cicerone.Screen
 
 class StartFragment : BaseFragment(), View.OnClickListener {
 
     override val resourceLayout = R.layout.screen_start
 
-    private val router: Router by inject()
+    private val router: CustomRouter by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 

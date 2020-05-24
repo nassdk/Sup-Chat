@@ -55,5 +55,9 @@ abstract class BaseFragment : MvpAppCompatFragment() {
     protected fun getBaseFragment() = (parentFragment as MainFlowFragment)
 
     abstract fun onBackPressed()
+
+    open fun resetStack() {}
+    open fun toSwitchTab(pos: Int) {}
+    open fun previousTab() {}
     open fun showBottomNavigation(show: Boolean) {}
 }

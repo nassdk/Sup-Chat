@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:padding="5dp">
+    android:background="@color/default_background_color">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recViewChats"
@@ -23,17 +21,14 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="30dp"
         android:src="@drawable/pen_but"
-        app:fab_colorNormal="@color/colorMyColor"
-        app:fab_colorPressed="#00BFFF"
-        app:fab_shadowColor="#000000"
-        app:fab_shadowRadius="4dp"
-        app:fab_shadowXOffset="1dp"
-        app:fab_shadowYOffset="3dp"
-        app:fab_showShadow="true" />
+        app:fab_colorNormal="@color/default_pink_color"
+        app:fab_colorPressed="@color/ripple_pink_color" />
 
     <ProgressBar
         android:id="@+id/spinner"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"
+        android:indeterminateDrawable="@drawable/custom_progress_bar_ring"
+        android:indeterminateOnly="true" />
 </RelativeLayout>

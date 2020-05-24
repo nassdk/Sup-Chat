@@ -37,4 +37,8 @@ class MainPresenter : MvpPresenter<MainView>() {
             }
         })
     }
+
+    fun onNewsTabClicked() {
+
+    }
 }

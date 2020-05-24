@@ -1,60 +1,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <FrameLayout
-        android:id="@+id/newTabContainer"
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottomNavigationView">
-
-        <fragment
-            android:id="@+id/newsTab"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:defaultNavHost="false" />
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/myChatsTabContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/bottomNavigationView"
-        android:visibility="invisible">
-
-        <fragment
-            android:id="@+id/myChatsTab"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:defaultNavHost="false" />
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/profileTabContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/bottomNavigationView"
-        android:visibility="invisible">
-
-        <fragment
-            android:id="@+id/profileTab"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:defaultNavHost="false" />
-    </FrameLayout>
+        android:layout_above="@id/bottomNavigationView" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
-        android:layout_width="wrap_content"
-        android:layout_height="52dp"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
         android:layout_alignParentBottom="true"
-        android:background="?android:attr/windowBackground"
-        android:paddingTop="@dimen/base_padding_12"
+        android:background="@color/md_black_1000"
+        app:itemIconSize="21dp"
+        app:itemIconTint="@color/bottom_nav_selector"
+        app:labelVisibilityMode="unlabeled"
         app:menu="@menu/bottom_nav_menu" />
 
 </RelativeLayout>

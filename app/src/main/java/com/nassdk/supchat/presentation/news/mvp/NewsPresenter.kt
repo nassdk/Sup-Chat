@@ -18,13 +18,13 @@ class NewsPresenter : BasePresenter<NewsView>() {
 
     private fun loadNews() {
 
-        subscriptions += newsInteractor.getNews()
-                .doOnSubscribe    { viewState.showLoading() }
-                .doAfterTerminate { viewState.hideLoading() }
-                .subscribeBy(
-                        onSuccess = { viewState.showNews(it.articles) },
-                        onError = { //TODO
-                            })
+//        subscriptions += newsInteractor.getNews()
+//                .doOnSubscribe    { viewState.showLoading() }
+//                .doAfterTerminate { viewState.hideLoading() }
+//                .subscribeBy(
+//                        onSuccess = { viewState.showNews(it.articles) },
+//                        onError = { //TODO
+//                            })
     }
 
     override fun onDestroy() = subscriptions.dispose()

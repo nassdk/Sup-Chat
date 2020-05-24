@@ -1,12 +1,11 @@
 package com.nassdk.supchat.domain.global
 
 import com.arellomobile.mvp.MvpPresenter
+import com.example.di.customnavigation.CustomRouter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import org.koin.core.KoinComponent
 import org.koin.core.inject
-import ru.terrakok.cicerone.Router
-import org.koin.java.KoinJavaComponent.inject as inject1
 
 abstract class BasePresenter<V : BaseView> : MvpPresenter<V>(), KoinComponent  {
 
@@ -16,7 +15,7 @@ abstract class BasePresenter<V : BaseView> : MvpPresenter<V>(), KoinComponent  {
     val referenceChats  = database.getReference(CHATS)
     val fbUser              = FirebaseAuth.getInstance().currentUser
 
-    val router: Router by inject()
+    val router: CustomRouter by inject()
 
     open fun onBackPressed() = router.exit()
 

@@ -22,5 +22,5 @@ class LoginPresenter : BasePresenter<LoginView>() {
     }
 
     fun openResetPass() = router.navigateTo(Screens.ResetPassScreen)
-    fun openMain() {}
+    fun openMain()      = router.newRootChain(Screens.MainScreen)
 }

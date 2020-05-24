@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp">
+    android:background="@drawable/background_list_item_ripple"
+    android:padding="16dp">
 
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -20,7 +21,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/userImage"
-        android:textColor="#000000"
+        android:textColor="@color/md_white_1000"
         android:textSize="23sp"
         tools:text="User Amina" />
 
@@ -45,6 +46,7 @@
         android:layout_marginStart="10dp"
         android:layout_toEndOf="@+id/userImage"
         android:maxLines="1"
+        android:textColor="@color/gray999999"
         android:textSize="15sp"
         android:visibility="visible"
         tools:text="Hey, Sadyk. How are you" />

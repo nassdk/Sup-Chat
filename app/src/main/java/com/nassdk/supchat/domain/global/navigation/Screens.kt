@@ -2,6 +2,13 @@ package com.nassdk.supchat.domain.global.navigation
 
 import com.nassdk.supchat.presentation.SplashFragment
 import com.nassdk.supchat.presentation.login.ui.LoginFragment
+import com.nassdk.supchat.presentation.main.tabfragments.ChatsTabFragment
+import com.nassdk.supchat.presentation.main.tabfragments.NewsTabFragment
+import com.nassdk.supchat.presentation.main.tabfragments.ProfileTabFragment
+import com.nassdk.supchat.presentation.main.ui.MainFlowFragment
+import com.nassdk.supchat.presentation.mychats.ui.MyChatsFragment
+import com.nassdk.supchat.presentation.news.ui.NewsFragment
+import com.nassdk.supchat.presentation.profilescreen.ui.ProfileFragment
 import com.nassdk.supchat.presentation.registerscreen.ui.RegistrationFragment
 import com.nassdk.supchat.presentation.resetpassword.ui.ResetPassFragment
 import com.nassdk.supchat.presentation.startscreen.StartFragment
@@ -27,6 +34,41 @@ object Screens {
     object RegistrationScreen : SupportAppScreen() {
         override fun getFragment()
                 = RegistrationFragment()
+    }
+
+    object MainScreen : SupportAppScreen() {
+        override fun getFragment()
+                = MainFlowFragment()
+    }
+
+    object NewsTabScreen : SupportAppScreen() {
+        override fun getFragment()
+                = NewsTabFragment()
+    }
+
+    object ChatsTabScreen : SupportAppScreen() {
+        override fun getFragment()
+                = ChatsTabFragment()
+    }
+
+    object ProfileTabScreen : SupportAppScreen() {
+        override fun getFragment()
+                = ProfileTabFragment()
+    }
+
+    object NewsScreen : SupportAppScreen() {
+        override fun getFragment()
+                = NewsFragment()
+    }
+
+    object ChatsScreen : SupportAppScreen() {
+        override fun getFragment()
+                = MyChatsFragment()
+    }
+
+    object ProfileScreen : SupportAppScreen() {
+        override fun getFragment()
+                = ProfileFragment()
     }
 
     object ResetPassScreen : SupportAppScreen() {

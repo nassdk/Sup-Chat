@@ -5,13 +5,13 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import com.example.di.customnavigation.CustomRouter
 import com.nassdk.supchat.domain.global.BaseActivity
 import com.nassdk.supchat.domain.global.BaseFragment
 import com.nassdk.supchat.domain.global.navigation.Screens
 import org.koin.android.ext.android.inject
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
-import ru.terrakok.cicerone.Router
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import android.graphics.Rect as Rect1
 
@@ -19,7 +19,7 @@ class AppActivity : BaseActivity() {
 
     override val resourceLayout = R.layout.activit_base
 
-    private val router: Router                    by inject()
+    private val router:  CustomRouter             by inject()
     private val navigationHolder: NavigatorHolder by inject()
 
     private val navigator: Navigator              by lazy {
