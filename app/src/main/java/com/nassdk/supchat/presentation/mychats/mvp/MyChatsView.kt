@@ -13,8 +13,4 @@ interface MyChatsView : BaseView {
 
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun setAdapter(list: ArrayList<User>)
-
-    @StateStrategyType(OneExecutionStateStrategy::class)
-    fun showProgress(show: Boolean)
-
 }

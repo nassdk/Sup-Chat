@@ -9,10 +9,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.nassdk.supchat.R
+import com.nassdk.supchat.domain.extensions.makeGone
+import com.nassdk.supchat.domain.extensions.makeVisible
 import com.nassdk.supchat.presentation.main.ui.MainFlowFragment
 import io.reactivex.disposables.CompositeDisposable
+import kotlinx.android.synthetic.main.loading_view.*
 
-abstract class BaseFragment : MvpAppCompatFragment() {
+abstract class BaseFragment : MvpAppCompatFragment(), BaseView {
 
     abstract val resourceLayout: Int
     protected val subscriptions = CompositeDisposable()
@@ -24,6 +27,9 @@ abstract class BaseFragment : MvpAppCompatFragment() {
         subscriptions.clear()
         super.onDestroy()
     }
+
+    override fun showLoading() = spinner.makeVisible()
+    override fun hideLoading() = spinner.makeGone()
 
     fun showNoInternetDialog() {
         val builder = AlertDialog.Builder(context!!)

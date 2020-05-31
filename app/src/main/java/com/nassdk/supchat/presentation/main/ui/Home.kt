@@ -1,16 +1,14 @@
 package com.nassdk.supchat.presentation.main.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
+import com.example.domain.model.User
+import com.google.android.material.navigation.NavigationView
 import com.nassdk.supchat.R
 import com.nassdk.supchat.presentation.main.mvp.MainPresenter
 import com.nassdk.supchat.presentation.main.mvp.MainView
-import com.example.domain.model.User
-import com.nassdk.supchat.presentation.profilescreen.ui.ProfileActivity
-import com.google.android.material.navigation.NavigationView
 
 class Home : MvpAppCompatActivity(), MainView, NavigationView.OnNavigationItemSelectedListener {
 
@@ -48,7 +46,7 @@ class Home : MvpAppCompatActivity(), MainView, NavigationView.OnNavigationItemSe
 //        startActivity(Intent(this, StartActivity::class.java))
     }
 
-    override fun openProfile() = startActivity(Intent(this, ProfileActivity::class.java))
+    override fun openProfile() {}
 
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

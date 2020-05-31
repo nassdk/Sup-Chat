@@ -1,11 +1,9 @@
 package com.nassdk.supchat.presentation.profilescreen.mvp
 
 import android.net.Uri
+import android.util.Log
 import com.arellomobile.mvp.InjectViewState
-import com.arellomobile.mvp.MvpPresenter
 import com.example.domain.model.User
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
@@ -17,26 +15,28 @@ import java.util.*
 @InjectViewState
 class ProfilePresenter : BasePresenter<ProfileView>() {
 
-    private lateinit var firebaseUser: FirebaseUser
     private lateinit var reference: DatabaseReference
     private lateinit var storage: StorageReference
     private var sTask: StorageTask<*>? = null
 
-    fun fetchData() {
+    override fun onFirstViewAttach() = fetchData()
 
-        firebaseUser = FirebaseAuth.getInstance().currentUser!!
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.uid)
+    private fun fetchData() {
 
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(fbUser?.uid ?: "0")
+
+        viewState.showLoading()
         reference.addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {
+            override fun onCancelled(error: DatabaseError) {
+                viewState.hideLoading()
+                Log.e("ERROR", error.message)
             }
 
             override fun onDataChange(p0: DataSnapshot) {
                 val user = p0.getValue(User::class.java)
 
-                if (user != null) {
-                    viewState.showData(user = user)
-                }
+                user?.let { viewState.showData(user = user) }
+                viewState.hideLoading()
             }
         })
     }
@@ -44,44 +44,39 @@ class ProfilePresenter : BasePresenter<ProfileView>() {
     fun uploadImage(imageUri: Uri) {
 
         storage = FirebaseStorage.getInstance().getReference("Uploads")
-        firebaseUser = FirebaseAuth.getInstance().currentUser!!
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.uid)
-        if (imageUri != null) {
-            viewState.showProgress(show = true)
-            viewState.enablePhotoFab(enable = false)
-            viewState.uploadInProgress()
-            val fileReference = storage.child(System.currentTimeMillis().toString())
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(fbUser?.uid ?: "0")
 
-            sTask = fileReference.putFile(imageUri)
-            sTask!!.continueWithTask { task ->
-                if (!task.isSuccessful) {
-                    throw task.exception!!
-                }
+        viewState.showLoading()
+        viewState.enablePhotoFab(enable = false)
+        viewState.uploadInProgress()
 
-                fileReference.downloadUrl
-            }.addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val downloadUri = task.result
-                    val mUri = downloadUri!!.toString()
+        val fileReference = storage.child(System.currentTimeMillis().toString())
 
-                    reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.uid)
-                    val map = HashMap<String, Any>()
-                    map["imageURL"] = "" + mUri
-                    reference.updateChildren(map)
-                    viewState.showProgress(show = false)
-                    viewState.enablePhotoFab(enable = true)
-                } else {
-
-                }
-            }.addOnFailureListener { e ->
-                viewState.showProgress(show = false)
-                viewState.enablePhotoFab(enable = true)
-                viewState.showFailError(e)
+        sTask = fileReference.putFile(imageUri)
+        sTask!!.continueWithTask { task ->
+            if (!task.isSuccessful) {
+                throw task.exception!!
             }
-        } else run {
-            viewState.showProgress(show = false)
+
+            fileReference.downloadUrl
+        }.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val downloadUri = task.result
+                val mUri = downloadUri!!.toString()
+
+                reference = FirebaseDatabase.getInstance().getReference("Users").child(fbUser?.uid
+                        ?: "0")
+                val map = HashMap<String, Any>()
+                map["imageURL"] = "" + mUri
+                reference.updateChildren(map)
+                viewState.hideLoading()
+                viewState.enablePhotoFab(enable = true)
+            }
+
+        }.addOnFailureListener { e ->
+            viewState.hideLoading()
             viewState.enablePhotoFab(enable = true)
-            viewState.showNoImageError()
+            viewState.showFailError(e)
         }
     }
 }

@@ -21,7 +21,7 @@ class MyChatsPresenter : BasePresenter<MyChatsView>() {
 
         usersList = ArrayList()
 
-        viewState.showProgress(show = true)
+        viewState.showLoading()
         referenceChats.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {}
             override fun onDataChange(p0: DataSnapshot) {
@@ -44,7 +44,7 @@ class MyChatsPresenter : BasePresenter<MyChatsView>() {
                 }
 
                 readChats(usersList)
-                viewState.showProgress(show = false)
+                viewState.hideLoading()
             }
 
         })

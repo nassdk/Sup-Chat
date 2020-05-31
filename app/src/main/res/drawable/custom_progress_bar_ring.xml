@@ -5,11 +5,11 @@
     <shape
         android:innerRadiusRatio="4"
         android:shape="ring"
-        android:thicknessRatio="6"
+        android:thicknessRatio="12"
         android:useLevel="false" >
         <size
-            android:height="18dip"
-            android:width="18dip" />
+            android:height="36dip"
+            android:width="36dip" />
 
         <gradient
             android:centerColor="@color/progress_bar_gradient_center_color"

@@ -5,8 +5,6 @@ import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.example.domain.model.User
 import com.nassdk.supchat.R
-import com.nassdk.supchat.domain.extensions.makeGone
-import com.nassdk.supchat.domain.extensions.makeVisible
 import com.nassdk.supchat.domain.global.BaseFragment
 import com.nassdk.supchat.presentation.mychats.mvp.MyChatsPresenter
 import com.nassdk.supchat.presentation.mychats.mvp.MyChatsView
@@ -42,5 +40,4 @@ class MyChatsFragment : BaseFragment(), MyChatsView {
     override fun openSearchUser() {}
 
     override fun onBackPressed() = presenter.onBackPressed()
-    override fun showProgress(show: Boolean) = if (show) spinner.makeVisible() else spinner.makeGone()
 }

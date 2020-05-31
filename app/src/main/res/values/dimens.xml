@@ -16,4 +16,8 @@
     <dimen name="base_margin_16">16dp</dimen>
     <dimen name="base_margin_12">12dp</dimen>
     <dimen name="base_margin_8">8dp</dimen>
+
+    <dimen name="image_width">120dp</dimen>
+    <dimen name="image_final_width">32dp</dimen>
+    <dimen name="spacing_normal">16dp</dimen>
 </resources>

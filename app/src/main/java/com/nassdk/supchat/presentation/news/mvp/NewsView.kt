@@ -9,7 +9,4 @@ interface NewsView : BaseView {
 
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun showNews(articles: List<ArticlesModel>)
-
-    fun showLoading()
-    fun hideLoading()
 }
