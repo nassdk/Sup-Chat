@@ -3,9 +3,9 @@
     android:pivotY="50%" >
 
     <shape
-        android:innerRadiusRatio="4"
+        android:innerRadiusRatio="3"
         android:shape="ring"
-        android:thicknessRatio="12"
+        android:thicknessRatio="10"
         android:useLevel="false" >
         <size
             android:height="36dip"

@@ -4,8 +4,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.domain.model.ArticlesModel
 import com.nassdk.supchat.R
+import kotlinx.android.synthetic.main.item_news.view.*
 
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
@@ -31,8 +33,18 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
     inner class NewsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bind(article: ArticlesModel) {
+        fun bind(item: ArticlesModel) {
 
+            with(itemView) {
+                tvTitle.text       = item.title
+                tvDescription.text = item.description
+                tvDate.text        = item.publishedAt
+
+                Glide
+                        .with(context)
+                        .load(item.urlToImage)
+                        .into(civNewsLogo)
+            }
         }
     }
 }

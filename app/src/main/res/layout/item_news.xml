@@ -1,46 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="@dimen/base_padding_16">
+    android:layout_marginTop="@dimen/base_margin_12"
+    android:background="?selectableItemBackground"
+    android:orientation="horizontal"
+    app:cardCornerRadius="12dp">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/civNewsLogo"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/base_margin_24"
-        android:layout_marginTop="@dimen/base_margin_8"
-        android:textSize="@dimen/text_size_16"
-        app:layout_constraintStart_toEndOf="@id/civNewsLogo"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Заголововок" />
+        android:background="@color/news_background_color"
+        android:orientation="horizontal"
+        android:padding="8dp">
 
-    <TextView
-        android:id="@+id/tvDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/base_margin_16"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/civNewsLogo"
-        tools:text="Содержание" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/base_margin_8">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/base_margin_16"
-        android:textSize="@dimen/text_size_12"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDescription"
-        tools:text="source:" />
+            <ImageView
+                android:id="@+id/civNewsLogo"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/app_icon" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/base_margin_12"
+                android:lines="2"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/text_size_18"
+                tools:text="Заголововок" />
+
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/base_margin_12"
+                android:layout_marginTop="@dimen/base_margin_8"
+                android:lines="2"
+                android:textColor="@color/grayCCCCCC"
+                tools:text="Содержание" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/base_margin_12"
+                android:layout_marginTop="@dimen/base_margin_8"
+                android:textColor="@color/grayCCCCCC"
+                android:textSize="@dimen/text_size_12"
+                android:textStyle="bold
+"
+                tools:text="source:" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

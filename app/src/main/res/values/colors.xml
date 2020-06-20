@@ -13,7 +13,11 @@
     <color name="default_background_color">#2D2D2D</color>
     <color name="default_button_background_color">#FF034D</color>
     <color name="default_toolbar_background_color">#171717</color>
+
     <color name="gray999999">#999999</color>
+    <color name="grayCCCCCC">#CCCCCC</color>
+
+    <color name="news_background_color">#575656</color>
 
     <color name="progress_bar_gradient_start_color">#46383C</color>
     <color name="progress_bar_gradient_center_color">#E994A2</color>

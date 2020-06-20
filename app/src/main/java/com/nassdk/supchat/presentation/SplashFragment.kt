@@ -27,7 +27,7 @@ class SplashFragment : BaseFragment() {
                 .subscribe { openStartScreen() }
     }
 
-    private fun openStartScreen() = router.newChain(Screens.StartScreen)
+    private fun openStartScreen() = router.newRootScreen(Screens.StartScreen)
 
     override fun onBackPressed() { activity?.finish() }
 }

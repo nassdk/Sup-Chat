@@ -1,5 +1,6 @@
 package com.nassdk.supchat.presentation.news.mvp
 
+import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.example.domain.interactor.NewsInteractor
 import com.nassdk.supchat.domain.global.BasePresenter
@@ -18,13 +19,16 @@ class NewsPresenter : BasePresenter<NewsView>() {
 
     private fun loadNews() {
 
-//        subscriptions += newsInteractor.getNews()
-//                .doOnSubscribe    { viewState.showLoading() }
-//                .doAfterTerminate { viewState.hideLoading() }
-//                .subscribeBy(
-//                        onSuccess = { viewState.showNews(it.articles) },
-//                        onError = { //TODO
-//                            })
+        subscriptions += newsInteractor.getNews()
+                .doOnSubscribe    { viewState.showLoading() }
+                .doAfterTerminate { viewState.hideLoading() }
+                .subscribeBy(
+                        onSuccess = {
+                            viewState.showNews(it.articles)
+                        },
+                        onError = {
+                            Log.e("ERROR", it.message ?: "")
+                        })
     }
 
     override fun onDestroy() = subscriptions.dispose()

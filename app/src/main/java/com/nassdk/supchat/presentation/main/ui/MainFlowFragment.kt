@@ -11,10 +11,9 @@ import com.example.di.customnavigation.CustomRouter
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.nassdk.supchat.R
-import com.nassdk.supchat.domain.extensions.find
+import com.nassdk.supchat.domain.extensions.*
 import com.nassdk.supchat.domain.extensions.makeGone
 import com.nassdk.supchat.domain.extensions.makeVisible
-import com.nassdk.supchat.domain.extensions.toast
 import com.nassdk.supchat.domain.global.BaseFragment
 import com.nassdk.supchat.domain.global.navigation.Screens
 import kotlinx.android.synthetic.main.screen_main_flow.*
@@ -42,7 +41,9 @@ class MainFlowFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         navigator = CustomNavigator(activity!!, childFragmentManager, R.id.container)
+        navigator.setLaunchScreen(Screens.NewsScreen)
 
         initScreenList()
         initBottomNavigation()
@@ -51,7 +52,7 @@ class MainFlowFragment : BaseFragment() {
     private fun initScreenList() {
 
         screensList = arrayListOf(
-                Screens.NewsTabScreen,
+                Screens.NewsScreen,
                 Screens.ChatsScreen,
                 Screens.ProfileScreen
         )
@@ -60,6 +61,7 @@ class MainFlowFragment : BaseFragment() {
     private fun initBottomNavigation() {
 
         var screenPos = 0
+
         bottomNavigation = find(R.id.bottomNavigationView)
         bottomNavigation.setOnNavigationItemSelectedListener { item ->
 
