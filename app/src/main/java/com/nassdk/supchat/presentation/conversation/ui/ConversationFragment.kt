@@ -9,27 +9,26 @@ import com.example.domain.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.nassdk.supchat.R
-import com.nassdk.supchat.domain.extensions.isNetworkAvailable
-import com.nassdk.supchat.domain.extensions.text
-import com.nassdk.supchat.domain.extensions.toast
-import com.nassdk.supchat.domain.extensions.withArgs
-import com.nassdk.supchat.domain.global.BaseFragment
-import com.nassdk.supchat.presentation.conversation.adapter.MessageAdapter
+import com.nassdk.supchat.global.extensions.isNetworkAvailable
+import com.nassdk.supchat.global.extensions.text
+import com.nassdk.supchat.global.extensions.toast
+import com.nassdk.supchat.global.extensions.withArgs
+import com.nassdk.supchat.global.BaseFragment
 import com.nassdk.supchat.presentation.conversation.mvp.ConversationPresenter
 import com.nassdk.supchat.presentation.conversation.mvp.ConversationView
-import kotlinx.android.synthetic.main.activity_chat.*
+import kotlinx.android.synthetic.main.screen_chat.*
 import java.util.*
 
 class ConversationFragment : BaseFragment(), ConversationView, View.OnClickListener {
 
-    override val resourceLayout = R.layout.activity_chat
+    override val resourceLayout = R.layout.screen_chat
 
     @InjectPresenter
     lateinit var presenter: ConversationPresenter
 
     private lateinit var userId: String
 
-    private val adapter: MessageAdapter    by lazy { MessageAdapter() }
+    private val adapter: MessageAdapter by lazy { MessageAdapter() }
     private val fireBaseUser: FirebaseUser by lazy { FirebaseAuth.getInstance().currentUser!! }
 
     override fun onCreate(savedInstanceState: Bundle?) {

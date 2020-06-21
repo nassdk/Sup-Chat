@@ -1,12 +1,8 @@
-package com.nassdk.supchat.domain.global.navigation
+package com.nassdk.supchat.global.navigation
 
-import androidx.fragment.app.Fragment
 import com.nassdk.supchat.presentation.SplashFragment
 import com.nassdk.supchat.presentation.conversation.ui.ConversationFragment
 import com.nassdk.supchat.presentation.login.ui.LoginFragment
-import com.nassdk.supchat.presentation.main.tabfragments.ChatsTabFragment
-import com.nassdk.supchat.presentation.main.tabfragments.NewsTabFragment
-import com.nassdk.supchat.presentation.main.tabfragments.ProfileTabFragment
 import com.nassdk.supchat.presentation.main.ui.MainFlowFragment
 import com.nassdk.supchat.presentation.mychats.ui.MyChatsFragment
 import com.nassdk.supchat.presentation.news.ui.NewsFragment

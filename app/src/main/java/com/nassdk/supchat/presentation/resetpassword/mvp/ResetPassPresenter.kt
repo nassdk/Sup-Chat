@@ -1,8 +1,8 @@
 package com.nassdk.supchat.presentation.resetpassword.mvp
 
 import com.arellomobile.mvp.InjectViewState
-import com.nassdk.supchat.domain.extensions.emailRegex
-import com.nassdk.supchat.domain.global.BasePresenter
+import com.nassdk.supchat.global.extensions.emailRegex
+import com.nassdk.supchat.global.BasePresenter
 
 @InjectViewState
 class ResetPassPresenter : BasePresenter<ResetPassView>() {

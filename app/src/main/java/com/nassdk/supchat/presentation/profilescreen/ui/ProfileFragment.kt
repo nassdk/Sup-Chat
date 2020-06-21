@@ -13,8 +13,8 @@ import com.example.domain.model.User
 import com.google.android.material.appbar.AppBarLayout
 import com.google.firebase.storage.StorageTask
 import com.nassdk.supchat.R
-import com.nassdk.supchat.domain.extensions.toast
-import com.nassdk.supchat.domain.global.BaseFragment
+import com.nassdk.supchat.global.extensions.toast
+import com.nassdk.supchat.global.BaseFragment
 import com.nassdk.supchat.presentation.profilescreen.mvp.ProfilePresenter
 import com.nassdk.supchat.presentation.profilescreen.mvp.ProfileView
 import kotlinx.android.synthetic.main.screen_profile.*

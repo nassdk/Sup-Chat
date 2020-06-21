@@ -1,4 +1,4 @@
-package com.nassdk.supchat.domain.extensions
+package com.nassdk.supchat.global.extensions
 
 import android.content.Context
 import android.os.Bundle

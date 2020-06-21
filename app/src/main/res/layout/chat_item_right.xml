@@ -10,15 +10,13 @@
     <RelativeLayout
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true">
+        android:layout_alignParentEnd="true">
 
         <TextView
             android:id="@+id/tv_showMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:background="@drawable/background_right"
             android:padding="8dp"
             android:textColor="@color/colorWhite"

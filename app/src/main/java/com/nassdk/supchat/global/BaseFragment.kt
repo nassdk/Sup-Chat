@@ -1,4 +1,4 @@
-package com.nassdk.supchat.domain.global
+package com.nassdk.supchat.global
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.nassdk.supchat.R
-import com.nassdk.supchat.domain.extensions.makeGone
-import com.nassdk.supchat.domain.extensions.makeVisible
+import com.nassdk.supchat.global.extensions.makeGone
+import com.nassdk.supchat.global.extensions.makeVisible
 import com.nassdk.supchat.presentation.main.ui.MainFlowFragment
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.loading_view.*

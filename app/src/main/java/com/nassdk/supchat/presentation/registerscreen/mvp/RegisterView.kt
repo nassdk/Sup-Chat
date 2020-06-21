@@ -2,7 +2,7 @@ package com.nassdk.supchat.presentation.registerscreen.mvp
 
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
-import com.nassdk.supchat.domain.global.BaseView
+import com.nassdk.supchat.global.BaseView
 
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface RegisterView : BaseView {

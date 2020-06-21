@@ -1,4 +1,4 @@
-package com.nassdk.supchat.domain.views;
+package com.nassdk.supchat.global.views;
 
 import android.content.Context;
 import android.content.res.TypedArray;

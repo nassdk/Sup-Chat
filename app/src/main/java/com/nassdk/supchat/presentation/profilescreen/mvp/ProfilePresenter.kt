@@ -8,7 +8,7 @@ import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
-import com.nassdk.supchat.domain.global.BasePresenter
+import com.nassdk.supchat.global.BasePresenter
 import java.util.*
 
 @Suppress("INACCESSIBLE_TYPE")

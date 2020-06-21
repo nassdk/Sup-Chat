@@ -8,7 +8,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.Glide
 import com.example.domain.model.User
 import com.nassdk.supchat.R
-import com.nassdk.supchat.domain.extensions.isNetworkAvailable
+import com.nassdk.supchat.global.extensions.isNetworkAvailable
 import com.nassdk.supchat.presentation.diffprofile.mvp.DiffProfilePresenter
 import com.nassdk.supchat.presentation.diffprofile.mvp.DiffProfileView
 import kotlinx.android.synthetic.main.activity_diff_profile.*

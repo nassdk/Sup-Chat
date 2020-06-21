@@ -2,12 +2,10 @@ package com.nassdk.supchat.presentation.resetpassword.ui
 
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.nassdk.supchat.R
-import com.nassdk.supchat.domain.extensions.*
-import com.nassdk.supchat.domain.global.BaseFragment
+import com.nassdk.supchat.global.extensions.*
+import com.nassdk.supchat.global.BaseFragment
 import com.nassdk.supchat.presentation.resetpassword.mvp.ResetPassPresenter
 import com.nassdk.supchat.presentation.resetpassword.mvp.ResetPassView
 import kotlinx.android.synthetic.main.screen_reset_pass.*

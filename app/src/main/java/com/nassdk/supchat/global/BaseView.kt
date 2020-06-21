@@ -1,4 +1,4 @@
-package com.nassdk.supchat.domain.global
+package com.nassdk.supchat.global
 
 import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.OneExecutionStateStrategy

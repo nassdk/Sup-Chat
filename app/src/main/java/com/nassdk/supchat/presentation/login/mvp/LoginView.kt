@@ -3,7 +3,7 @@ package com.nassdk.supchat.presentation.login.mvp
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.OneExecutionStateStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
-import com.nassdk.supchat.domain.global.BaseView
+import com.nassdk.supchat.global.BaseView
 
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface LoginView : BaseView {

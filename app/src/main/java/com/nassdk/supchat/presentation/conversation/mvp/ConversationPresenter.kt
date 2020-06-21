@@ -8,15 +8,21 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.nassdk.supchat.domain.global.BasePresenter
-import com.nassdk.supchat.presentation.conversation.provider.ConverstaionProvider
+import com.nassdk.supchat.global.BasePresenter
 import java.util.*
 
 @InjectViewState
 class ConversationPresenter : BasePresenter<ConversationView>() {
 
     fun sendMessage(sender: String, receiver: String, message: String) {
-        ConverstaionProvider(presenter = this).updateMessage(sender = sender, receiver = receiver, message = message)
+
+        val reference = FirebaseDatabase.getInstance().reference
+
+        reference.child("Chats").push().setValue(hashMapOf(
+                "sender"   to sender,
+                "receiver" to receiver,
+                "message"  to message
+        ))
     }
 
     fun readMessage(myId: String, userId: String) {
@@ -41,9 +47,7 @@ class ConversationPresenter : BasePresenter<ConversationView>() {
                 }
             }
 
-            override fun onCancelled(databaseError: DatabaseError) {
-
-            }
+            override fun onCancelled(databaseError: DatabaseError) { }
         })
     }
 
@@ -66,8 +70,7 @@ class ConversationPresenter : BasePresenter<ConversationView>() {
                 }
             }
 
-            override fun onCancelled(databaseError: DatabaseError) {
-            }
+            override fun onCancelled(databaseError: DatabaseError) {}
         })
     }
 }

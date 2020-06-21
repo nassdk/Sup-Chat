@@ -1,22 +1,19 @@
 package com.nassdk.supchat.presentation.main.ui
 
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
-import android.view.MenuItem
 import android.view.View
-import android.widget.FrameLayout
 import android.widget.RelativeLayout
 import com.example.di.customnavigation.CustomNavigator
 import com.example.di.customnavigation.CustomRouter
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.nassdk.supchat.R
-import com.nassdk.supchat.domain.extensions.*
-import com.nassdk.supchat.domain.extensions.makeGone
-import com.nassdk.supchat.domain.extensions.makeVisible
-import com.nassdk.supchat.domain.global.BaseFragment
-import com.nassdk.supchat.domain.global.navigation.Screens
+import com.nassdk.supchat.global.extensions.*
+import com.nassdk.supchat.global.extensions.makeGone
+import com.nassdk.supchat.global.extensions.makeVisible
+import com.nassdk.supchat.global.BaseFragment
+import com.nassdk.supchat.global.navigation.Screens
 import kotlinx.android.synthetic.main.screen_main_flow.*
 import org.koin.android.ext.android.inject
 import ru.terrakok.cicerone.NavigatorHolder

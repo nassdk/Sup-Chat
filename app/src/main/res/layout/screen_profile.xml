@@ -124,7 +124,7 @@
         android:src="@drawable/ic_launcher_background"
         app:finalHeight="@dimen/image_final_width"
         app:finalYPosition="2dp"
-        app:layout_behavior=".domain.views.AvatarImageBehavior"
+        app:layout_behavior=".global.views.AvatarImageBehavior"
         app:startHeight="2dp"
         app:startToolbarPosition="2dp"
         app:startXPosition="2dp" />

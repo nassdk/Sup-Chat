@@ -6,9 +6,8 @@ import com.example.domain.model.User
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.nassdk.supchat.domain.global.BasePresenter
-import com.nassdk.supchat.domain.global.navigation.Screens
-import ru.terrakok.cicerone.Screen
+import com.nassdk.supchat.global.BasePresenter
+import com.nassdk.supchat.global.navigation.Screens
 import java.util.*
 
 @InjectViewState

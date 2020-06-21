@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@color/default_background_color">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/bar_layout"
@@ -16,7 +16,7 @@
             android:id="@+id/toolBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorMyColor"
+            android:background="@color/default_background_color"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/MainMenuStyle">
 
@@ -49,6 +49,7 @@
         android:layout_below="@id/bar_layout"
         android:layout_centerVertical="false"
         android:orientation="vertical"
+        android:paddingTop="@dimen/base_padding_8"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
 
     </androidx.recyclerview.widget.RecyclerView>
@@ -59,8 +60,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#FFFFFF"
-        android:padding="5dp">
+        android:background="@color/message_type_block_background_color"
+        android:padding="8dp">
 
         <EditText
             android:id="@+id/etMessage"
@@ -70,15 +71,19 @@
             android:layout_toStartOf="@id/butSendMessage"
             android:background="@android:color/transparent"
             android:hint="@string/messagetextRes"
-            android:textCursorDrawable="@drawable/cursor_color" />
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:layout_marginStart="@dimen/base_margin_8"
+            android:layout_marginEnd="@dimen/base_margin_8"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:textSize="14sp" />
 
         <ImageButton
             android:id="@+id/butSendMessage"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/imagebut_send" />
+            android:background="@drawable/ic_btn_send" />
 
     </RelativeLayout>
 

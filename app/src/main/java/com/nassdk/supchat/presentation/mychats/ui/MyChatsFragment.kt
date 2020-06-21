@@ -5,7 +5,7 @@ import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.example.domain.model.User
 import com.nassdk.supchat.R
-import com.nassdk.supchat.domain.global.BaseFragment
+import com.nassdk.supchat.global.BaseFragment
 import com.nassdk.supchat.presentation.mychats.mvp.MyChatsPresenter
 import com.nassdk.supchat.presentation.mychats.mvp.MyChatsView
 import kotlinx.android.synthetic.main.screen_my_chats.*

@@ -3,8 +3,7 @@ package com.nassdk.supchat.presentation.news.mvp
 import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.example.domain.interactor.NewsInteractor
-import com.nassdk.supchat.domain.global.BasePresenter
-import io.reactivex.disposables.CompositeDisposable
+import com.nassdk.supchat.global.BasePresenter
 import io.reactivex.rxkotlin.plusAssign
 import io.reactivex.rxkotlin.subscribeBy
 import org.koin.core.inject
@@ -13,7 +12,6 @@ import org.koin.core.inject
 class NewsPresenter : BasePresenter<NewsView>() {
 
     private val newsInteractor: NewsInteractor by inject()
-    private val subscriptions = CompositeDisposable()
 
     override fun onFirstViewAttach() = loadNews()
 
@@ -30,6 +28,4 @@ class NewsPresenter : BasePresenter<NewsView>() {
                             Log.e("ERROR", it.message ?: "")
                         })
     }
-
-    override fun onDestroy() = subscriptions.dispose()
 }

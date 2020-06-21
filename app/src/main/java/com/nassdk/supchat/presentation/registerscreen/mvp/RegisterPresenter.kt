@@ -7,8 +7,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.nassdk.supchat.domain.extensions.emailRegex
-import com.nassdk.supchat.domain.global.BasePresenter
+import com.nassdk.supchat.global.extensions.emailRegex
+import com.nassdk.supchat.global.BasePresenter
 
 @InjectViewState
 class RegisterPresenter : BasePresenter<RegisterView>() {

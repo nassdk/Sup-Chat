@@ -6,9 +6,9 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import com.example.di.customnavigation.CustomRouter
-import com.nassdk.supchat.domain.global.BaseActivity
-import com.nassdk.supchat.domain.global.BaseFragment
-import com.nassdk.supchat.domain.global.navigation.Screens
+import com.nassdk.supchat.global.BaseActivity
+import com.nassdk.supchat.global.BaseFragment
+import com.nassdk.supchat.global.navigation.Screens
 import org.koin.android.ext.android.inject
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder

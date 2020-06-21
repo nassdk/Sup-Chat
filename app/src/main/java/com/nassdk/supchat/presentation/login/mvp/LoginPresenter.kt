@@ -1,8 +1,8 @@
 package com.nassdk.supchat.presentation.login.mvp
 
 import com.arellomobile.mvp.InjectViewState
-import com.nassdk.supchat.domain.global.BasePresenter
-import com.nassdk.supchat.domain.global.navigation.Screens
+import com.nassdk.supchat.global.BasePresenter
+import com.nassdk.supchat.global.navigation.Screens
 
 @InjectViewState
 class LoginPresenter : BasePresenter<LoginView>() {

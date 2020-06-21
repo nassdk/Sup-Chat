@@ -1,4 +1,4 @@
-package com.nassdk.supchat.domain.extensions
+package com.nassdk.supchat.global.extensions
 
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.android.support.SupportAppScreen

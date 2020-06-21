@@ -5,9 +5,9 @@ import android.view.View
 import com.example.di.customnavigation.CustomNavigator
 import com.example.di.customnavigation.CustomRouter
 import com.nassdk.supchat.R
-import com.nassdk.supchat.domain.extensions.setLaunchScreen
-import com.nassdk.supchat.domain.global.BaseFragment
-import com.nassdk.supchat.domain.global.navigation.Screens
+import com.nassdk.supchat.global.extensions.setLaunchScreen
+import com.nassdk.supchat.global.BaseFragment
+import com.nassdk.supchat.global.navigation.Screens
 import org.koin.android.ext.android.inject
 import ru.terrakok.cicerone.NavigatorHolder
 

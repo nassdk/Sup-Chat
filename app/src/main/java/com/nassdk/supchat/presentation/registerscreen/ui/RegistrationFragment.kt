@@ -5,11 +5,11 @@ import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.nassdk.supchat.R
-import com.nassdk.supchat.domain.extensions.accessible
-import com.nassdk.supchat.domain.extensions.isNetworkAvailable
-import com.nassdk.supchat.domain.extensions.text
-import com.nassdk.supchat.domain.extensions.toast
-import com.nassdk.supchat.domain.global.BaseFragment
+import com.nassdk.supchat.global.extensions.accessible
+import com.nassdk.supchat.global.extensions.isNetworkAvailable
+import com.nassdk.supchat.global.extensions.text
+import com.nassdk.supchat.global.extensions.toast
+import com.nassdk.supchat.global.BaseFragment
 import com.nassdk.supchat.presentation.registerscreen.mvp.RegisterPresenter
 import com.nassdk.supchat.presentation.registerscreen.mvp.RegisterView
 import io.reactivex.rxkotlin.Observables

@@ -1,4 +1,4 @@
-package com.nassdk.supchat.domain.global
+package com.nassdk.supchat.global
 
 import android.os.Bundle
 import androidx.annotation.CallSuper
