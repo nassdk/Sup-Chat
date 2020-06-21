@@ -7,7 +7,10 @@
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
+.idea/caches/build_file_checksums.ser
 .DS_Store
 /build
 /captures
 .externalNativeBuild
+*.apk
+
