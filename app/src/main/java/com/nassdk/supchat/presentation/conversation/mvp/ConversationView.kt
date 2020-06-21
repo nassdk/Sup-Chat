@@ -1,6 +1,5 @@
 package com.nassdk.supchat.presentation.conversation.mvp
 
-import com.arellomobile.mvp.MvpView
 import com.example.domain.model.Chat
 import com.example.domain.model.User
 import com.nassdk.supchat.domain.global.BaseView

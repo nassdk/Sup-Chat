@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.RelativeLayout
 import com.example.di.customnavigation.CustomNavigator
 import com.example.di.customnavigation.CustomRouter
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
@@ -102,9 +103,9 @@ class MainFlowFragment : BaseFragment() {
 
         if (show) bottomNavigationView.makeVisible() else bottomNavigationView.makeGone()
 
-        val layoutParams = FrameLayout.LayoutParams(
-                FrameLayout.LayoutParams.MATCH_PARENT,
-                FrameLayout.LayoutParams.MATCH_PARENT
+        val layoutParams = RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.MATCH_PARENT
         )
 
         layoutParams.setMargins(

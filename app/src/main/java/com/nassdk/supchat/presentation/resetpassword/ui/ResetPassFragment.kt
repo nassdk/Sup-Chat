@@ -31,7 +31,7 @@ class ResetPassFragment : BaseFragment(), ResetPassView {
 
         view.butReset.setOnClickListener {
             if (!isNetworkAvailable(context = context!!)) showNoInternetDialog()
-            else presenter.resetPassword(etEmailReset.toTextString())
+            else presenter.resetPassword(etEmailReset.text())
         }
     }
 

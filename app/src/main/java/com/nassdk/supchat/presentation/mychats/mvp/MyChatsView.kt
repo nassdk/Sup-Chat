@@ -9,8 +9,6 @@ import com.nassdk.supchat.domain.global.BaseView
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface MyChatsView : BaseView {
 
-    fun openSearchUser()
-
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun setAdapter(list: ArrayList<User>)
 }

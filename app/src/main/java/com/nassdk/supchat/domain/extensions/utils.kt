@@ -1,6 +1,7 @@
 package com.nassdk.supchat.domain.extensions
 
 import android.content.Context
+import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -24,6 +25,13 @@ val emailRegex = """(.+)@(.+)\.(.+)""".toRegex()
 
 
 inline fun <reified T : View> Fragment.find(id: Int): T = view?.findViewById(id) as T
+
+inline fun <T : Fragment> T.withArgs(
+        argsBuilder: Bundle.() -> Unit
+): T =
+        this.apply {
+            arguments = Bundle().apply(argsBuilder)
+        }
 
 internal fun View.makeGone() {
     visibility = View.GONE
@@ -53,9 +61,7 @@ fun Context.longToast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_LONG).show()
 }
 
-fun EditText.toTextString() : String {
-    return this.text.toString()
-}
+fun EditText.text() = this.text.toString()
 
 fun View.accessible(access: Boolean) {
 

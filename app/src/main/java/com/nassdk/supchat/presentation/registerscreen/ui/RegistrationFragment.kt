@@ -2,14 +2,12 @@ package com.nassdk.supchat.presentation.registerscreen.ui
 
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.nassdk.supchat.R
 import com.nassdk.supchat.domain.extensions.accessible
 import com.nassdk.supchat.domain.extensions.isNetworkAvailable
-import com.nassdk.supchat.domain.extensions.toTextString
+import com.nassdk.supchat.domain.extensions.text
 import com.nassdk.supchat.domain.extensions.toast
 import com.nassdk.supchat.domain.global.BaseFragment
 import com.nassdk.supchat.presentation.registerscreen.mvp.RegisterPresenter
@@ -38,9 +36,9 @@ class RegistrationFragment : BaseFragment(), RegisterView {
             if (!isNetworkAvailable(context = context!!)) showNoInternetDialog()
             else {
                 presenter.registerUser(
-                        view.etUserName.toTextString(),
-                        view.etPassword.toTextString(),
-                        view.etUserName.toTextString()
+                        view.etUserName.text(),
+                        view.etPassword.text(),
+                        view.etUserName.text()
                 )
             }
         }

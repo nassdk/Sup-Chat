@@ -10,8 +10,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.nassdk.supchat.R
 import com.nassdk.supchat.domain.extensions.isNetworkAvailable
-import com.nassdk.supchat.domain.extensions.toTextString
+import com.nassdk.supchat.domain.extensions.text
 import com.nassdk.supchat.domain.extensions.toast
+import com.nassdk.supchat.domain.extensions.withArgs
 import com.nassdk.supchat.domain.global.BaseFragment
 import com.nassdk.supchat.presentation.conversation.adapter.MessageAdapter
 import com.nassdk.supchat.presentation.conversation.mvp.ConversationPresenter
@@ -32,8 +33,8 @@ class ConversationFragment : BaseFragment(), ConversationView, View.OnClickListe
     private val fireBaseUser: FirebaseUser by lazy { FirebaseAuth.getInstance().currentUser!! }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        userId = arguments?.getString(USER_IDENTIFIER)!!
         super.onCreate(savedInstanceState)
-        userId = arguments!!.getString("userId") ?: "0"
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -43,8 +44,11 @@ class ConversationFragment : BaseFragment(), ConversationView, View.OnClickListe
     }
 
     private fun init() {
+
         presenter.fetchData(userId = userId)
         recViewChats.adapter = adapter
+        butSendMessage.setOnClickListener(this)
+        tvUsername.setOnClickListener(this)
     }
 
     override fun onDestroyView() {
@@ -56,9 +60,9 @@ class ConversationFragment : BaseFragment(), ConversationView, View.OnClickListe
         when (v?.id) {
             R.id.butSendMessage -> {
 
-                if (etMessage.toTextString().isNotEmpty())
+                if (etMessage.text().isNotEmpty())
                     if (!isNetworkAvailable(activity!!)) showNoInternetDialog()
-                    else presenter.sendMessage(fireBaseUser.uid, userId, etMessage.toTextString())
+                    else presenter.sendMessage(fireBaseUser.uid, userId, etMessage.text())
 
                 etMessage.setText("")
             }
@@ -84,6 +88,13 @@ class ConversationFragment : BaseFragment(), ConversationView, View.OnClickListe
     }
 
     companion object {
-        const val IMAGE_DEFAULT_STATE = "default"
+        private const val IMAGE_DEFAULT_STATE = "default"
+        private const val USER_IDENTIFIER     = "user_id"
+
+        fun newInstance(userId: String) = ConversationFragment().withArgs {
+            userId.run {
+                putString(USER_IDENTIFIER, userId)
+            }
+        }
     }
 }

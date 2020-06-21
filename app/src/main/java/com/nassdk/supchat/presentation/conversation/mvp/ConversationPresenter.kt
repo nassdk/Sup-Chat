@@ -1,7 +1,6 @@
 package com.nassdk.supchat.presentation.conversation.mvp
 
 import com.arellomobile.mvp.InjectViewState
-import com.arellomobile.mvp.MvpPresenter
 import com.example.domain.model.Chat
 import com.example.domain.model.User
 import com.google.firebase.auth.FirebaseAuth

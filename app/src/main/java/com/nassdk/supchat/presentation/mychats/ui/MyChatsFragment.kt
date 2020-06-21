@@ -18,14 +18,13 @@ class MyChatsFragment : BaseFragment(), MyChatsView {
     lateinit var presenter: MyChatsPresenter
 
     private val adapter: ChatsAdapter by lazy {
-        ChatsAdapter(chatClickListener = { openConversation() })
+        ChatsAdapter(chatClickListener = { presenter.toConversationWith(userId = it) })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
     }
-    private fun openConversation() {}
 
     private fun initViews() {
         fabStartNewChat.setOnClickListener { presenter.toSearch() }
@@ -36,8 +35,6 @@ class MyChatsFragment : BaseFragment(), MyChatsView {
         adapter.setData(list)
         recViewChats.adapter = adapter
     }
-
-    override fun openSearchUser() {}
 
     override fun onBackPressed() = presenter.onBackPressed()
 }

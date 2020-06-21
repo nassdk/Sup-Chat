@@ -7,6 +7,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.nassdk.supchat.domain.global.BasePresenter
+import com.nassdk.supchat.domain.global.navigation.Screens
+import ru.terrakok.cicerone.Screen
 import java.util.*
 
 @InjectViewState
@@ -83,5 +85,7 @@ class MyChatsPresenter : BasePresenter<MyChatsView>() {
         })
     }
 
-    fun toSearch() = viewState.openSearchUser()
+    fun toConversationWith(userId: String) = router.navigateTo(Screens.ConversationScreen(userId = userId))
+
+    fun toSearch() = router.navigateTo(Screens.ChatsScreen)
 }

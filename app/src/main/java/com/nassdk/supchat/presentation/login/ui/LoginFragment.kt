@@ -2,15 +2,12 @@ package com.nassdk.supchat.presentation.login.ui
 
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.navArgs
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.nassdk.supchat.R
 import com.nassdk.supchat.domain.extensions.accessible
 import com.nassdk.supchat.domain.extensions.isNetworkAvailable
-import com.nassdk.supchat.domain.extensions.toTextString
+import com.nassdk.supchat.domain.extensions.text
 import com.nassdk.supchat.domain.extensions.toast
 import com.nassdk.supchat.domain.global.BaseFragment
 import com.nassdk.supchat.presentation.login.mvp.LoginPresenter
@@ -18,7 +15,6 @@ import com.nassdk.supchat.presentation.login.mvp.LoginView
 import io.reactivex.rxkotlin.Observables
 import io.reactivex.rxkotlin.plusAssign
 import io.reactivex.rxkotlin.subscribeBy
-import kotlinx.android.synthetic.main.bar_layout.*
 import kotlinx.android.synthetic.main.screen_login.*
 import kotlinx.android.synthetic.main.screen_login.view.*
 
@@ -54,7 +50,7 @@ class LoginFragment : BaseFragment(), LoginView, View.OnClickListener {
                 if (!isNetworkAvailable(context = context!!))
                     showNoInternetDialog()
                 else
-                    presenter.userLog(etEmail.toTextString(), etPassword.toTextString())
+                    presenter.userLog(etEmail.text(), etPassword.text())
             }
 
             R.id.tvResetPassword -> presenter.userResetPass()
