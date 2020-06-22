@@ -38,16 +38,19 @@ class ConversationFragment : BaseFragment(), ConversationView, View.OnClickListe
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        showBottomNavigation(show = false)
         init()
     }
 
     private fun init() {
 
         presenter.fetchData(userId = userId)
+
+        showBottomNavigation(show = false)
+
         recViewChats.adapter = adapter
+
         butSendMessage.setOnClickListener(this)
-        tvUsername.setOnClickListener(this)
+        tvUsername    .setOnClickListener(this)
     }
 
     override fun onDestroyView() {

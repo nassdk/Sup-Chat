@@ -1,4 +1,4 @@
-package com.nassdk.supchat.presentation.main.tabfragments
+package com.nassdk.supchat.presentation.mainflow.tabfragments
 
 import android.os.Bundle
 import android.view.View
@@ -11,9 +11,9 @@ import com.nassdk.supchat.global.navigation.Screens
 import org.koin.android.ext.android.inject
 import ru.terrakok.cicerone.NavigatorHolder
 
-class ProfileTabFragment: BaseFragment() {
+class ChatsTabFragment: BaseFragment() {
 
-    override val resourceLayout = R.layout.screen_profile_tab
+    override val resourceLayout = R.layout.screen_chats_tab
 
     private val router         : CustomRouter by inject()
     private val navigatorHolder: NavigatorHolder by inject()
@@ -23,8 +23,8 @@ class ProfileTabFragment: BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        navigator = CustomNavigator(activity!!, childFragmentManager, R.id.profileTabContainer)
-        navigator.setLaunchScreen(Screens.ProfileScreen)
+        navigator = CustomNavigator(activity!!, childFragmentManager, R.id.chatsTabContainer)
+        navigator.setLaunchScreen(Screens.ChatsScreen)
     }
 
     override fun onResume() {

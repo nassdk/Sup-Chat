@@ -1,58 +1,57 @@
 package com.nassdk.supchat.presentation.searchusers.mvp
 
-import android.widget.SearchView
 import com.arellomobile.mvp.InjectViewState
-import com.arellomobile.mvp.MvpPresenter
 import com.example.domain.model.User
-import com.nassdk.supchat.presentation.searchusers.provider.SearchProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
-import java.util.ArrayList
+import com.nassdk.supchat.global.BasePresenter
+import java.util.*
 
 @InjectViewState
-class SearchPresenter : MvpPresenter<com.nassdk.supchat.presentation.searchusers.mvp.SearchView>() {
+class SearchPresenter : BasePresenter<SearchView>() {
 
+    override fun onFirstViewAttach() = displayUsers()
 
-    fun searchUser(searchView: SearchView, usersList: List<User>) {
-        searchView.setOnQueryTextListener(
-                object : SearchView.OnQueryTextListener {
-                    override fun onQueryTextSubmit(query: String): Boolean {
-                        return false
-                    }
+    private val usersModel = arrayListOf<User>()
 
-                    override fun onQueryTextChange(newText: String): Boolean {
-                        viewState.setAdapter(SearchProvider(presenter = this@SearchPresenter).searchView(newText, usersList))
-                        return true
-                    }
-                })
+    fun searchUser(searchQuery: String) {
+
+        val resultUserList = ArrayList<User>()
+
+        for (user in usersModel) {
+            if (user.userName.toLowerCase(Locale.getDefault()).contains(searchQuery.toLowerCase(Locale.getDefault()))) {
+                resultUserList.add(user)
+            }
+        }
+
+        viewState.setData(usersList = resultUserList)
     }
 
 
-    fun displayUsers(usersList: List<User>) {
-        val reference: DatabaseReference = FirebaseDatabase.getInstance().getReference("Users")
+    private fun displayUsers() {
+
+        val reference: DatabaseReference = FirebaseDatabase.getInstance().getReference(USERS)
         val fbUser: FirebaseUser = FirebaseAuth.getInstance().currentUser!!
 
         reference.addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {
 
-            }
+            override fun onCancelled(p0: DatabaseError) {}
 
             override fun onDataChange(p0: DataSnapshot) {
-                (usersList as ArrayList<User>).clear()
 
                 for (snapshot in p0.children) {
                     val user = snapshot.getValue(User::class.java)
 
-                    if (user != null) {
-
-                        if (user.id != fbUser.uid) {
-                            usersList.add(user)
-                        }
+                    if (user?.id != fbUser.uid) {
+                        user?.let { usersModel.add(it) }
                     }
                 }
-                viewState.setAdapter(usersList)
+
+                viewState.setData(usersModel)
             }
         })
     }
+
+    fun toProfileScreen(id: String) {}
 }

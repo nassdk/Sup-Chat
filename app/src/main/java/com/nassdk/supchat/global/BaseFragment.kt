@@ -11,7 +11,7 @@ import com.arellomobile.mvp.MvpAppCompatFragment
 import com.nassdk.supchat.R
 import com.nassdk.supchat.global.extensions.makeGone
 import com.nassdk.supchat.global.extensions.makeVisible
-import com.nassdk.supchat.presentation.main.ui.MainFlowFragment
+import com.nassdk.supchat.presentation.mainflow.ui.MainFlowFragment
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.loading_view.*
 

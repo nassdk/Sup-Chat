@@ -28,7 +28,7 @@
         <activity
             android:name=".presentation.searchusers.ui.SearchActivity" />
         <activity
-            android:name=".presentation.main.ui.Home"
+            android:name=".presentation.mainflow.ui.Home"
             android:label="Sup Chat" />
         <activity android:name=".presentation.profilescreen.ui.ProfileActivity" />
     </application>

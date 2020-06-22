@@ -1,4 +1,4 @@
-package com.nassdk.supchat.presentation.main.tabfragments
+package com.nassdk.supchat.presentation.mainflow.tabfragments
 
 import android.os.Bundle
 import android.view.View
