@@ -1,4 +1,4 @@
-package com.nassdk.supchat.presentation.main.ui
+package com.nassdk.supchat.presentation.mainflow.ui
 
 import android.os.Bundle
 import android.util.Log

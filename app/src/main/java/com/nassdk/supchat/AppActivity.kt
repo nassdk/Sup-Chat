@@ -6,8 +6,12 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import com.example.di.customnavigation.CustomRouter
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.nassdk.supchat.global.BaseActivity
 import com.nassdk.supchat.global.BaseFragment
+import com.nassdk.supchat.global.BasePresenter
 import com.nassdk.supchat.global.navigation.Screens
 import org.koin.android.ext.android.inject
 import ru.terrakok.cicerone.Navigator
@@ -19,10 +23,10 @@ class AppActivity : BaseActivity() {
 
     override val resourceLayout = R.layout.activit_base
 
-    private val router:  CustomRouter             by inject()
+    private val router: CustomRouter by inject()
     private val navigationHolder: NavigatorHolder by inject()
 
-    private val navigator: Navigator              by lazy {
+    private val navigator: Navigator by lazy {
         SupportAppNavigator(this, supportFragmentManager, R.id.container)
     }
 
@@ -40,11 +44,25 @@ class AppActivity : BaseActivity() {
 
     override fun onPause() {
         navigationHolder.removeNavigator()
+        //sendStatus("offline")
         super.onPause()
     }
 
     override fun onBackPressed() {
         currentFragment?.onBackPressed() ?: router.exit()
+    }
+
+    private fun sendStatus(status: String) {
+
+        val fbUser = FirebaseAuth.getInstance().currentUser
+        val reference: DatabaseReference = FirebaseDatabase.getInstance().getReference(BasePresenter.USERS).child(fbUser!!.uid)
+
+        reference.updateChildren(hashMapOf("status" to status) as Map<String, Any>)
+    }
+
+    override fun onPostResume() {
+        super.onPostResume()
+        //sendStatus("online")
     }
 
     override fun dispatchTouchEvent(event: MotionEvent): Boolean {

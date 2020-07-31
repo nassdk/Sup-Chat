@@ -48,10 +48,13 @@ class ConversationFragment : BaseFragment(), ConversationView, View.OnClickListe
 
         presenter.fetchData(userId = userId)
 
+
+        showBottomNavigation(show = false)
+
         recViewChats.adapter = adapter
 
         butSendMessage.setOnClickListener(this)
-        tvUsername.setOnClickListener(this)
+        tvUsername    .setOnClickListener(this)
     }
 
     override fun onDestroyView() {

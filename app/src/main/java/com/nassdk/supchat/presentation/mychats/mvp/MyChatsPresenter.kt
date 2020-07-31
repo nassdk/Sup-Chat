@@ -76,5 +76,5 @@ class MyChatsPresenter : BasePresenter<MyChatsView>() {
 
     fun toConversationWith(userId: String) = router.navigateTo(Screens.ConversationScreen(userId = userId))
 
-    fun toSearch() = router.navigateTo(Screens.ChatsScreen)
+    fun toSearch() = router.navigateTo(Screens.SearchScreen)
 }

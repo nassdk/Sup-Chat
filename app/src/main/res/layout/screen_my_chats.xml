@@ -13,7 +13,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <com.github.clans.fab.FloatingActionButton
-        android:id="@+id/fabStartNewChat"
+        android:id="@+id/searchFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
