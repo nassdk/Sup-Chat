@@ -7,8 +7,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.nassdk.supchat.global.extensions.emailRegex
 import com.nassdk.supchat.global.BasePresenter
+import com.nassdk.supchat.global.extensions.emailRegex
 
 @InjectViewState
 class RegisterPresenter : BasePresenter<RegisterView>() {
@@ -34,9 +34,7 @@ class RegisterPresenter : BasePresenter<RegisterView>() {
                                         id           = id,
                                         textUserName = textUserName,
                                         textPassword = textPassword,
-                                        textEmail    = textEmail,
-                                        imageURL     = "",
-                                        status       = ""
+                                        textEmail    = textEmail
                                 )
                             }
 
@@ -49,10 +47,10 @@ class RegisterPresenter : BasePresenter<RegisterView>() {
         }
     }
 
-    private fun updateUser(id: String, textUserName: String, textPassword: String, textEmail: String, imageURL: String, status: String) {
+    private fun updateUser(id: String, textUserName: String, textPassword: String, textEmail: String) {
 
         val reference = FirebaseDatabase.getInstance().getReference("Users").child(id)
-        val user  = User(id, textUserName, textPassword, textEmail, imageURL, status)
+        val user  = User(id, textUserName, textPassword, textEmail, "", "")
         reference.setValue(user)
     }
 }

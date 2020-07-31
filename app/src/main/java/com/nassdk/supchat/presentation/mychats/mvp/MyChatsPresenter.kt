@@ -31,17 +31,13 @@ class MyChatsPresenter : BasePresenter<MyChatsView>() {
                 for (snapshot in p0.children) {
 
                     val chat = snapshot.getValue(Chat::class.java)
-                    if (chat != null) {
 
-                        if (chat.sender == fbUser?.uid && (!usersList.contains(chat.receiver))) {
-                            usersList.add(chat.receiver)
-                        }
+                    chat?.run {
 
-                        if (chat.receiver == fbUser?.uid && (!usersList.contains(chat.sender))) {
-                            usersList.add(chat.sender)
-                        }
+                        if (sender == fbUser?.uid && (!usersList.contains(receiver))) usersList.add(receiver)
+
+                        if (receiver == fbUser?.uid && (!usersList.contains(sender))) usersList.add(sender)
                     }
-
                 }
 
                 readChats(usersList)
@@ -65,15 +61,9 @@ class MyChatsPresenter : BasePresenter<MyChatsView>() {
                     for (id in (usersList)) {
                         if (user?.id == id) {
                             if (mList.isNotEmpty()) {
-                                for (user1 in mList as ArrayList<User>) {
-                                    if (user.id != user1.id) {
-                                        (mList as ArrayList<User>).add(user)
-                                        break
-                                    }
-                                }
-                            } else {
+                                mList.firstOrNull { it.id == user.id } ?: (mList as ArrayList<User>).add(user)
+                            } else
                                 (mList as ArrayList<User>).add(user)
-                            }
                         }
                     }
                 }

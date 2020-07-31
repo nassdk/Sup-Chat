@@ -62,8 +62,6 @@
             android:id="@+id/recViewNews"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="@dimen/base_margin_16"
-            android:paddingEnd="@dimen/base_margin_16"
             android:paddingBottom="@dimen/base_padding_8"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 

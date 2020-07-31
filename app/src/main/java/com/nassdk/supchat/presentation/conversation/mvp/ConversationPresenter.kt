@@ -19,9 +19,9 @@ class ConversationPresenter : BasePresenter<ConversationView>() {
         val reference = FirebaseDatabase.getInstance().reference
 
         reference.child("Chats").push().setValue(hashMapOf(
-                "sender"   to sender,
+                "sender" to sender,
                 "receiver" to receiver,
-                "message"  to message
+                "message" to message
         ))
     }
 
@@ -47,7 +47,7 @@ class ConversationPresenter : BasePresenter<ConversationView>() {
                 }
             }
 
-            override fun onCancelled(databaseError: DatabaseError) { }
+            override fun onCancelled(databaseError: DatabaseError) {}
         })
     }
 
@@ -61,11 +61,8 @@ class ConversationPresenter : BasePresenter<ConversationView>() {
 
                 val user = dataSnapshot.getValue(User::class.java)
 
-                if (user != null) {
-                    viewState.setData(user = user)
-                }
-
-                if (user != null) {
+                user?.let {
+                    viewState.setData(user = it)
                     readMessage(fbUser.uid, userId)
                 }
             }

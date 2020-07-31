@@ -9,11 +9,11 @@ import com.example.domain.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.nassdk.supchat.R
+import com.nassdk.supchat.global.BaseFragment
 import com.nassdk.supchat.global.extensions.isNetworkAvailable
 import com.nassdk.supchat.global.extensions.text
 import com.nassdk.supchat.global.extensions.toast
 import com.nassdk.supchat.global.extensions.withArgs
-import com.nassdk.supchat.global.BaseFragment
 import com.nassdk.supchat.presentation.conversation.mvp.ConversationPresenter
 import com.nassdk.supchat.presentation.conversation.mvp.ConversationView
 import kotlinx.android.synthetic.main.screen_chat.*
@@ -35,17 +35,21 @@ class ConversationFragment : BaseFragment(), ConversationView, View.OnClickListe
         userId = arguments?.getString(USER_IDENTIFIER)!!
         super.onCreate(savedInstanceState)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        showBottomNavigation(show = false)
         init()
     }
 
     private fun init() {
 
+        showBottomNavigation(show = false)
+
         presenter.fetchData(userId = userId)
+
         recViewChats.adapter = adapter
+
         butSendMessage.setOnClickListener(this)
         tvUsername.setOnClickListener(this)
     }
@@ -69,11 +73,12 @@ class ConversationFragment : BaseFragment(), ConversationView, View.OnClickListe
         }
     }
 
-    override fun showBottomNavigation(show: Boolean) = getBaseFragment().showBottomNavigation(show = false)
+    override fun showBottomNavigation(show: Boolean) = getBaseFragment().showBottomNavigation(show = show)
 
     override fun onBackPressed() = presenter.onBackPressed()
     override fun showEmptyError() = toast(getString(R.string.conversation_screen_empty_message_error_message))
     override fun setupMessages(listOfChats: ArrayList<Chat>) = adapter.setData(listOfChats)
+
     override fun setData(user: User) {
 
         tvUsername.text = user.userName
