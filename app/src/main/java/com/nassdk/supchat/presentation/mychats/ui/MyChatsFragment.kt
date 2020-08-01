@@ -28,7 +28,7 @@ class MyChatsFragment : BaseFragment(), MyChatsView {
 
     private fun initViews() {
         searchFab.setOnClickListener { presenter.toSearch() }
-    }
+}
 
     override fun setAdapter(list: ArrayList<User>) {
 

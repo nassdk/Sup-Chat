@@ -28,7 +28,6 @@
     <string name="nav_drawer_open">Open Navigation Drawer</string>
     <string name="nav_drawer_close">Close Navigation Drawer</string>
     <string name="offline">offline</string>
-    <string name="reset">RESET</string>
     <string name="user_reg_success_msg">User Successfully Registered! Please Enter in your Profile</string>
     <string name="user_reg_failure_msg">Something went wrong. Please use different email address or try later</string>
 
@@ -59,6 +58,7 @@
     <string name="user_registration_pass_hint_text">Password</string>
 
     <!-- Reset Password Screen -->
+    <string name="reset_pass_button_title">Reset Password</string>
     <string name="reset_pass_success_message">Message with instruction was send to your email. Please check it</string>
     <string name="reset_pass_email_regex_error_message">Email format is invalid. Please, check it and retry later</string>
     <string name="reset_pass_info_message">Put your eMail in and press RESET Button. Then check out your email for details</string>

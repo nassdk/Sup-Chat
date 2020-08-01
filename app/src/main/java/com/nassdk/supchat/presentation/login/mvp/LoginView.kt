@@ -11,8 +11,8 @@ interface LoginView : BaseView {
     fun showAuthError()
 
     @StateStrategyType(OneExecutionStateStrategy::class)
-    fun openResetPass()
+    fun showLocalLoading()
 
     @StateStrategyType(OneExecutionStateStrategy::class)
-    fun openMain()
+    fun hideLocalLoading()
 }

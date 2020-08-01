@@ -13,6 +13,7 @@ import com.nassdk.supchat.global.extensions.*
 import com.nassdk.supchat.global.extensions.makeGone
 import com.nassdk.supchat.global.extensions.makeVisible
 import com.nassdk.supchat.global.BaseFragment
+import com.nassdk.supchat.global.extensions.UtilsCompanion.Companion.DP
 import com.nassdk.supchat.global.navigation.Screens
 import kotlinx.android.synthetic.main.screen_main_flow.*
 import org.koin.android.ext.android.inject
@@ -108,7 +109,7 @@ class MainFlowFragment : BaseFragment() {
         layoutParams.setMargins(
                 0, 0, 0,
                 if (show)
-                    resources.getDimension(R.dimen.materialize_toolbar).toInt()
+                    DP.toInt() * 42
                 else
                     0
         )

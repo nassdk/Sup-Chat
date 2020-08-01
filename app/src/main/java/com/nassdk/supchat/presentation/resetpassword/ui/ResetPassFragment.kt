@@ -40,4 +40,22 @@ class ResetPassFragment : BaseFragment(), ResetPassView {
     override fun showEmailRegexError()     = toast(getString(R.string.reset_pass_email_regex_error_message))
     override fun showError(error: String?) = toast(error ?: getString(R.string.common_error_message))
 
+    override fun showLocalLoading() {
+
+        butReset.run {
+            text = ""
+            isEnabled = false
+        }
+        resetButtonProgress.makeVisible()
+    }
+
+    override fun hideLocalLoading() {
+
+        butReset.run {
+            text = getString(R.string.reset_pass_button_title)
+            isEnabled = true
+        }
+        resetButtonProgress.makeGone()
+    }
+
 }

@@ -5,11 +5,8 @@ import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.nassdk.supchat.R
-import com.nassdk.supchat.global.extensions.accessible
-import com.nassdk.supchat.global.extensions.isNetworkAvailable
-import com.nassdk.supchat.global.extensions.text
-import com.nassdk.supchat.global.extensions.toast
 import com.nassdk.supchat.global.BaseFragment
+import com.nassdk.supchat.global.extensions.*
 import com.nassdk.supchat.presentation.registerscreen.mvp.RegisterPresenter
 import com.nassdk.supchat.presentation.registerscreen.mvp.RegisterView
 import io.reactivex.rxkotlin.Observables
@@ -52,6 +49,23 @@ class RegistrationFragment : BaseFragment(), RegisterView {
                 .subscribeBy { butSingUp.accessible(it) }
     }
 
+    override fun showLocalLoading() {
+
+        butSingUp.run {
+            text = ""
+            isEnabled = false
+        }
+        signUpButtonProgress.makeVisible()
+    }
+
+    override fun hideLocalLoading() {
+
+        butSingUp.run {
+            text = getString(R.string.reset_pass_button_title)
+            isEnabled = true
+        }
+        signUpButtonProgress.makeGone()
+    }
 
     override fun onBackPressed()       = presenter.onBackPressed()
 

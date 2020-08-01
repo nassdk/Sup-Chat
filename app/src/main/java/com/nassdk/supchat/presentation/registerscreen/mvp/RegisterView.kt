@@ -1,6 +1,7 @@
 package com.nassdk.supchat.presentation.registerscreen.mvp
 
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
+import com.arellomobile.mvp.viewstate.strategy.OneExecutionStateStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 import com.nassdk.supchat.global.BaseView
 
@@ -11,4 +12,10 @@ interface RegisterView : BaseView {
     fun showNoInternetDialog()
     fun showSuccessMessage()
     fun showRegisterError()
+
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun showLocalLoading()
+
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun hideLocalLoading()
 }

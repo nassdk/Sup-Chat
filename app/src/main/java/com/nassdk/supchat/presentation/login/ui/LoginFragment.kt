@@ -5,11 +5,8 @@ import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.nassdk.supchat.R
-import com.nassdk.supchat.global.extensions.accessible
-import com.nassdk.supchat.global.extensions.isNetworkAvailable
-import com.nassdk.supchat.global.extensions.text
-import com.nassdk.supchat.global.extensions.toast
 import com.nassdk.supchat.global.BaseFragment
+import com.nassdk.supchat.global.extensions.*
 import com.nassdk.supchat.presentation.login.mvp.LoginPresenter
 import com.nassdk.supchat.presentation.login.mvp.LoginView
 import io.reactivex.rxkotlin.Observables
@@ -32,14 +29,15 @@ class LoginFragment : BaseFragment(), LoginView, View.OnClickListener {
 
     private fun initViews(view: View) {
 
-        view.butLogIn       .setOnClickListener(this)
+        view.butLogIn.setOnClickListener(this)
         view.tvResetPassword.setOnClickListener(this)
 
         subscriptions += Observables.combineLatest(
                 RxTextView.textChanges(etEmail),
                 RxTextView.textChanges(etPassword)
         ) { email, password ->
-            email.isNotEmpty() && password.isNotEmpty() }
+            email.isNotEmpty() && password.isNotEmpty()
+        }
                 .subscribeBy { view.butLogIn.accessible(it) }
 
     }
@@ -57,10 +55,26 @@ class LoginFragment : BaseFragment(), LoginView, View.OnClickListener {
         }
     }
 
-    override fun openMain()       = presenter.openMain()
-    override fun openResetPass()  = presenter.openResetPass()
-    override fun onBackPressed()  = presenter.onBackPressed()
-    override fun showSuccess()    = toast(getString(R.string.login_success_enter_to_account_message))
-    override fun showAuthError()  = toast(getString(R.string.login_failure_message))
+    override fun showLocalLoading() {
+
+        butLogIn.run {
+            text = ""
+            isEnabled = false
+        }
+        loginButtonProgress.makeVisible()
+    }
+
+    override fun hideLocalLoading() {
+
+        butLogIn.run {
+            text = getString(R.string.reset_pass_button_title)
+            isEnabled = true
+        }
+        loginButtonProgress.makeGone()
+    }
+
+    override fun onBackPressed() = presenter.onBackPressed()
+    override fun showSuccess() = toast(getString(R.string.login_success_enter_to_account_message))
+    override fun showAuthError() = toast(getString(R.string.login_failure_message))
 }
 

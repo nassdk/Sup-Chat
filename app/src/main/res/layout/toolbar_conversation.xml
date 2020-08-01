@@ -1,0 +1,28 @@
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolBarConversation"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/default_background_color"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    app:navigationIcon="@drawable/ic_back_arrow_white"
+    app:popupTheme="@style/MainMenuStyle">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profileImage_Chat"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/ic_launcher_round" />
+
+    <TextView
+        android:id="@+id/tvUsername"
+        tools:text="@string/username1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:textColor="@color/colorWhite"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+</androidx.appcompat.widget.Toolbar>
