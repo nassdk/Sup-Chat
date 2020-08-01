@@ -61,7 +61,7 @@ class RegistrationFragment : BaseFragment(), RegisterView {
     override fun hideLocalLoading() {
 
         butSingUp.run {
-            text = getString(R.string.reset_pass_button_title)
+            text = getString(R.string.buttonSignUp)
             isEnabled = true
         }
         signUpButtonProgress.makeGone()

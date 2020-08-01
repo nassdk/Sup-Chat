@@ -67,7 +67,7 @@ class LoginFragment : BaseFragment(), LoginView, View.OnClickListener {
     override fun hideLocalLoading() {
 
         butLogIn.run {
-            text = getString(R.string.reset_pass_button_title)
+            text = getString(R.string.login_log_in_button_text)
             isEnabled = true
         }
         loginButtonProgress.makeGone()

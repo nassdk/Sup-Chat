@@ -27,7 +27,7 @@
 
 
     <color name="default_pink_color">#FF034D</color>
-    <color name="ripple_pink_color">#E994A2</color>
+    <color name="ripple_pink_color">#C34B5E</color>
     <color name="ripple_gray_color">#616161</color>
     <color name="hint_text_color">#787777</color>
 </resources>
