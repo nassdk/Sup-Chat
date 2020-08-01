@@ -29,10 +29,9 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <RelativeLayout
-
         android:id="@+id/layoutRelative_message"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="42dp"
         android:layout_alignParentBottom="true"
         android:background="@color/message_type_block_background_color"
         android:padding="8dp">
@@ -54,8 +53,8 @@
 
         <ImageButton
             android:id="@+id/butSendMessage"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_alignParentEnd="true"
             android:background="@drawable/ic_btn_send" />
 

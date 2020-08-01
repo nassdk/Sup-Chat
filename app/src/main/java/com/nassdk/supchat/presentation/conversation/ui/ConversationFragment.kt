@@ -17,6 +17,7 @@ import com.nassdk.supchat.global.extensions.withArgs
 import com.nassdk.supchat.presentation.conversation.mvp.ConversationPresenter
 import com.nassdk.supchat.presentation.conversation.mvp.ConversationView
 import kotlinx.android.synthetic.main.screen_chat.*
+import kotlinx.android.synthetic.main.toolbar_conversation.*
 import java.util.*
 
 class ConversationFragment : BaseFragment(), ConversationView, View.OnClickListener {
@@ -48,13 +49,10 @@ class ConversationFragment : BaseFragment(), ConversationView, View.OnClickListe
 
         presenter.fetchData(userId = userId)
 
-
-        showBottomNavigation(show = false)
-
         recViewChats.adapter = adapter
 
         butSendMessage.setOnClickListener(this)
-        tvUsername    .setOnClickListener(this)
+        userInfoView  .setOnClickListener(this)
     }
 
     override fun onDestroyView() {
@@ -72,7 +70,7 @@ class ConversationFragment : BaseFragment(), ConversationView, View.OnClickListe
 
                 etMessage.setText("")
             }
-            R.id.tvUsername     -> {}
+            R.id.userInfoView     -> {}
         }
     }
 
@@ -92,6 +90,8 @@ class ConversationFragment : BaseFragment(), ConversationView, View.OnClickListe
                     .load(user.imageURL)
                     .into(profileImage_Chat)
         }
+
+        toolBarConversation.setNavigationOnClickListener { presenter.onBackPressed() }
     }
 
     companion object {
