@@ -9,6 +9,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.nassdk.supchat.global.BasePresenter
+import com.nassdk.supchat.global.navigation.Screens
 import java.util.*
 
 @InjectViewState
@@ -70,4 +71,6 @@ class ConversationPresenter : BasePresenter<ConversationView>() {
             override fun onCancelled(databaseError: DatabaseError) {}
         })
     }
+
+    fun toUserProfileScreen(userId: String) = router.navigateTo(Screens.DiffProfileScreen(userId = userId))
 }

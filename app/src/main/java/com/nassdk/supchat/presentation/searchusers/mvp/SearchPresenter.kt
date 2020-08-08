@@ -6,6 +6,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.nassdk.supchat.global.BasePresenter
+import com.nassdk.supchat.global.navigation.Screens
 import java.util.*
 
 @InjectViewState
@@ -53,5 +54,5 @@ class SearchPresenter : BasePresenter<SearchView>() {
         })
     }
 
-    fun toProfileScreen(id: String) {}
+    fun toProfileScreen(id: String) = router.navigateTo(Screens.DiffProfileScreen(userId = id))
 }

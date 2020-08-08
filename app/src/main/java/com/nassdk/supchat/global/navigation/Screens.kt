@@ -69,4 +69,9 @@ object Screens {
         override fun getFragment()
                 = ConversationFragment.newInstance(userId = userId)
     }
+
+    data class DiffProfileScreen(val userId: String): SupportAppScreen() {
+        override fun getFragment()
+                = ProfileFragment.newInstance(userId = userId)
+    }
 }

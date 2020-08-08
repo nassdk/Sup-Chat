@@ -1,7 +1,6 @@
 package com.nassdk.supchat.presentation.profilescreen.mvp
 
 import android.net.Uri
-import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.example.domain.model.User
 import com.google.firebase.database.*
@@ -19,17 +18,17 @@ class ProfilePresenter : BasePresenter<ProfileView>() {
     private lateinit var storage: StorageReference
     private var sTask: StorageTask<*>? = null
 
-    override fun onFirstViewAttach() = fetchData()
+    fun fetchData(userId: String = "") {
 
-    private fun fetchData() {
-
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(fbUser?.uid ?: "0")
+        reference = if (userId.isEmpty())
+            FirebaseDatabase.getInstance().getReference("Users").child(fbUser?.uid ?: "0")
+        else
+            FirebaseDatabase.getInstance().getReference("Users").child(userId.toString())
 
         viewState.showLoading()
         reference.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {
                 viewState.hideLoading()
-                Log.e("ERROR", error.message)
             }
 
             override fun onDataChange(p0: DataSnapshot) {

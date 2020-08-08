@@ -70,7 +70,7 @@ class ConversationFragment : BaseFragment(), ConversationView, View.OnClickListe
 
                 etMessage.setText("")
             }
-            R.id.userInfoView     -> {}
+            R.id.userInfoView     -> presenter.toUserProfileScreen(userId = userId)
         }
     }
 
