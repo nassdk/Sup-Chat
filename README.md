@@ -10,9 +10,9 @@
 ### Multi-module structure 
 ### Clean Architecture
 
-<img src="screenshot/Screenshot_1596925909.png" width=300 height=500>
+<img src="screenshots/Screenshot_1596925909.png" width=300 height=500>
 
-<img src="screenshot/Screenshot_1596926068.png" width=300 height=500>       <img src="screenshot/Screenshot_1596925992.png" width=300 height=500>
+<img src="screenshots/Screenshot_1596926068.png" width=300 height=500>       <img src="screenshots/Screenshot_1596925992.png" width=300 height=500>
 
-<img src="screenshot/Screenshot_1596926005.png" width=300 height=500>       <img src="screenshot/Screenshot_1596926026.png" width=300 height=500>
+<img src="screenshots/Screenshot_1596926005.png" width=300 height=500>       <img src="screenshots/Screenshot_1596926026.png" width=300 height=500>
 
