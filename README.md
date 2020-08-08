@@ -7,6 +7,7 @@
 ### RxJava
 ### Retrofit
 ### Firebase Database
+### Single Activity
 ### Multi-module structure 
 ### Clean Architecture
 
