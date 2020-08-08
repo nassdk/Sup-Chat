@@ -24,7 +24,10 @@ class MyChatsPresenter : BasePresenter<MyChatsView>() {
 
         viewState.showLoading()
         referenceChats.addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {}
+            override fun onCancelled(p0: DatabaseError) {
+                viewState.hideLoading()
+            }
+
             override fun onDataChange(p0: DataSnapshot) {
                 usersList.clear()
 
@@ -75,6 +78,5 @@ class MyChatsPresenter : BasePresenter<MyChatsView>() {
     }
 
     fun toConversationWith(userId: String) = router.navigateTo(Screens.ConversationScreen(userId = userId))
-
     fun toSearch() = router.navigateTo(Screens.SearchScreen)
 }

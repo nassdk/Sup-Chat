@@ -18,7 +18,9 @@ class MyChatsFragment : BaseFragment(), MyChatsView {
     lateinit var presenter: MyChatsPresenter
 
     private val adapter: ChatsAdapter by lazy {
-        ChatsAdapter(chatClickListener = { presenter.toConversationWith(userId = it) })
+        ChatsAdapter(
+                chatClickListener = { presenter.toConversationWith(userId = it) }
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -28,7 +30,7 @@ class MyChatsFragment : BaseFragment(), MyChatsView {
 
     private fun initViews() {
         searchFab.setOnClickListener { presenter.toSearch() }
-}
+    }
 
     override fun setAdapter(list: ArrayList<User>) {
 
