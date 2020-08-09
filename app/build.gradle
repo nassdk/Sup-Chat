@@ -45,6 +45,12 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     testImplementation 'junit:junit:4.12'
 
+    //Mockk
+    testImplementation "io.mockk:mockk:$mockk_version"
+
+    //Mockito
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_version"
+
     //RxJava2
     implementation "io.reactivex.rxjava2:rxjava:$rx_java_version"
     implementation "io.reactivex.rxjava2:rxkotlin:$rx_kotlin_version"
@@ -63,7 +69,6 @@ dependencies {
     implementation "com.google.android.material:material:$google_material_version"
     implementation "com.google.android.material:material:$google_material_version_alpha"
 
-
     //Images Circle form
     implementation "de.hdodenhof:circleimageview:$circle_image_view_version"
 
@@ -72,9 +77,6 @@ dependencies {
 
     //Floating Action Button
     implementation "com.github.clans:fab:$fab_version"
-
-    //Drawer
-    implementation "com.mikepenz:materialdrawer:$material_drawer_version"
 
     //Search feature
     implementation "com.miguelcatalan:materialsearchview:$search_view_version"
@@ -87,13 +89,6 @@ dependencies {
     implementation "tech.schoolhelper:moxy-x:"
     implementation "tech.schoolhelper:moxy-x-androidx:$moxy_version"
     kapt "tech.schoolhelper:moxy-x-compiler:$moxy_version"
-
-    //ProgressView
-    implementation "com.github.rahatarmanahmed:circularprogressview:$circular_progress_view_version"
-
-    //Navigation
-    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_component_version"
-    implementation "androidx.navigation:navigation-ui-ktx:$navigation_component_version"
 
     //DI
     implementation "org.koin:koin-android:$koin_version"
